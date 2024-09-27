@@ -1,0 +1,44 @@
+name: Feature request
+description: Suggest an idea, an enhancement, a refactor or an update for this project.
+labels: ["feature"]
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: |
+        Describe the problem you are facing.
+      placeholder: |
+        E.G. We wish to be able to run command with a test mode.
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: ToDo
+      description: |
+        Describe the tasks to do.
+      placeholder: |
+         E.G.:
+         - [ ] first task
+         - [ ] second task
+           - [ ] sub task
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: |
+        How you became aware of the problem, what other people are affected by this.
+      placeholder: |
+        E.G.:
+        - Talked to Bob debugging the command is not very easy.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: |
+        A set of things the assignee should not forget while doing the issue.
+      placeholder: |
+        E.G.:
+        - Note that this code shall be removed anyway in a few weeks.

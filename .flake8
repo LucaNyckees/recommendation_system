@@ -1,0 +1,7 @@
+[flake8]
+exclude = .git,__pycache__,docs,dist,venv,*_pb2.py,*_grpc.py,*.ipynb
+max-line-length = 120
+ignore = W391, W503, E722
+
+# unused imports in __init__
+per-file-ignores = __init__.py: F401
