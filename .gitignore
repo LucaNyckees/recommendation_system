@@ -72,7 +72,6 @@ target/
 # Database
 *.db
 *.rdb
-data/*
 
 # Reports
 reports/*
