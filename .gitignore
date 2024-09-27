@@ -92,7 +92,6 @@ figures/*
 .ipynb_checkpoints/
 
 # exclude data from source control by default
-/data/
 /data_old/
 /reports/
 /tmp/
