@@ -2,6 +2,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
 from transformers import BertTokenizer, BertModel
+import torch
 
 
 # Define a simple dataset with triplets (anchor, positive, negative text)
@@ -58,8 +59,8 @@ class EmbedderPipeline():
         self.negative_texts = ["dog", "cat", "germany"]
         
     def _opt_setup(self) -> None:
-        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-        dataset = TripletTextDataset(self.anchor_texts, self.positive_texts, self.negative_texts, tokenizer, max_len=8)
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        dataset = TripletTextDataset(self.anchor_texts, self.positive_texts, self.negative_texts, self.tokenizer, max_len=8)
         self.dataloader = DataLoader(dataset, batch_size=2, shuffle=True)
         self.embedding_net = BertEmbeddingNet(pretrained_model_name='bert-base-uncased')
         self.triplet_loss_fn = TripletLoss(margin=1.0)
@@ -98,3 +99,12 @@ class EmbedderPipeline():
                 running_loss += loss.item()
 
             print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(self.dataloader):.4f}")
+            
+    def _get_embedding(self, text: str, max_len: int = 32):
+        self.embedding_net.eval()
+        with torch.no_grad():
+            inputs = self.tokenizer(text, padding="max_length", truncation=True, max_length=max_len, return_tensors="pt")
+            input_ids = inputs["input_ids"]
+            attention_mask = inputs["attention_mask"]
+            embedding = self.embedding_net(input_ids, attention_mask)
+            return embedding.cpu().numpy()  # convert embedding tensor to a numpy array
