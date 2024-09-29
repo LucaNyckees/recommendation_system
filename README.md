@@ -12,6 +12,9 @@ We download Amazon product reviews data from https://amazon-reviews-2023.github.
 - Luca Nyckees
 - Silvio Innocenti-Malini
 
+## Pipeline Snapshot
+<img src="https://github.com/LucaNyckees/recommendation_system/blob/feature/exploration/images/recommendation_pipeline.png?raw=true" width="700">
+
 ## Virtual environment
 Use the following command lines to create and use venv python package:
 ```
