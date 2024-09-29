@@ -105,3 +105,7 @@ figures/*
 
 # Mypy cache
 .mypy_cache/
+
+# Data
+data/*
+/data/
