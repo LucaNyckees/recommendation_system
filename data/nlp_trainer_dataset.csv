@@ -1,0 +1,885 @@
+,id,anchor,target,context,score,input
+0,37d61fd2272659b1,abatement,abatement of pollution,A47,0.5,TEXT1: A47; TEXT2: abatement of pollution; ANC1: abatement
+1,7b9652b17b68b7a4,abatement,act of abating,A47,0.75,TEXT1: A47; TEXT2: act of abating; ANC1: abatement
+2,36d72442aefd8232,abatement,active catalyst,A47,0.25,TEXT1: A47; TEXT2: active catalyst; ANC1: abatement
+3,5296b0c19e1ce60e,abatement,eliminating process,A47,0.5,TEXT1: A47; TEXT2: eliminating process; ANC1: abatement
+4,54c1e3b9184cb5b6,abatement,forest region,A47,0.0,TEXT1: A47; TEXT2: forest region; ANC1: abatement
+5,067203128142739c,abatement,greenhouse gases,A47,0.25,TEXT1: A47; TEXT2: greenhouse gases; ANC1: abatement
+6,061d17f04be2d1cf,abatement,increased rate,A47,0.25,TEXT1: A47; TEXT2: increased rate; ANC1: abatement
+7,e1f44e48399a2027,abatement,measurement level,A47,0.25,TEXT1: A47; TEXT2: measurement level; ANC1: abatement
+8,0a425937a3e86d10,abatement,minimising sounds,A47,0.5,TEXT1: A47; TEXT2: minimising sounds; ANC1: abatement
+9,ef2d4c2e6bbb208d,abatement,mixing core materials,A47,0.25,TEXT1: A47; TEXT2: mixing core materials; ANC1: abatement
+10,4c3f2750e7540ab7,abatement,multi pollution abatement device,A47,0.5,TEXT1: A47; TEXT2: multi pollution abatement device; ANC1: abatement
+11,84261a11e5d1b68b,abatement,noise reduction,A47,0.5,TEXT1: A47; TEXT2: noise reduction; ANC1: abatement
+12,bfd7270f57530991,abatement,pollution abatement,A47,0.5,TEXT1: A47; TEXT2: pollution abatement; ANC1: abatement
+13,b3832eac81b73dfd,abatement,pollution abatement incinerator,A47,0.5,TEXT1: A47; TEXT2: pollution abatement incinerator; ANC1: abatement
+14,9001756895ec8ca1,abatement,pollution certificate,A47,0.0,TEXT1: A47; TEXT2: pollution certificate; ANC1: abatement
+15,cc96541d4987b399,abatement,rent abatement,A47,0.0,TEXT1: A47; TEXT2: rent abatement; ANC1: abatement
+16,deb9204cd9783e8b,abatement,sorbent material,A47,0.25,TEXT1: A47; TEXT2: sorbent material; ANC1: abatement
+17,45db77f26e5ac39f,abatement,source items pollution abatement technology,A47,0.5,TEXT1: A47; TEXT2: source items pollution abatement technology; ANC1: abatement
+18,1222e36d9a94c2a4,abatement,stone abutments,A47,0.0,TEXT1: A47; TEXT2: stone abutments; ANC1: abatement
+19,a8c9e9f37d4d836a,abatement,tax abatement,A47,0.0,TEXT1: A47; TEXT2: tax abatement; ANC1: abatement
+20,c450cc69fa315db9,abatement,water bodies,A47,0.0,TEXT1: A47; TEXT2: water bodies; ANC1: abatement
+21,09913d3964d4c881,abatement,emission abatement,A61,0.5,TEXT1: A61; TEXT2: emission abatement; ANC1: abatement
+22,87af8ea095cc18d4,abatement,prevention,A61,0.5,TEXT1: A61; TEXT2: prevention; ANC1: abatement
+23,d7bb1ea2b761fef2,abatement,prophylaxis,A61,0.25,TEXT1: A61; TEXT2: prophylaxis; ANC1: abatement
+24,f6dfaebab0d209b7,abatement,pollution abatement,A62,0.5,TEXT1: A62; TEXT2: pollution abatement; ANC1: abatement
+25,ee25d53aac9ecaf0,abatement,abatement apparatus,C01,0.5,TEXT1: C01; TEXT2: abatement apparatus; ANC1: abatement
+26,4fd7d0a3b8887846,abatement,treatment,F16,0.0,TEXT1: F16; TEXT2: treatment; ANC1: abatement
+27,506f8d0a6feae789,abatement,abatement apparatus,F24,0.5,TEXT1: F24; TEXT2: abatement apparatus; ANC1: abatement
+28,473137168ebf7484,abatement,abating,F24,1.0,TEXT1: F24; TEXT2: abating; ANC1: abatement
+29,56acc49e0f5da095,abatement,central hub,F24,0.0,TEXT1: F24; TEXT2: central hub; ANC1: abatement
+30,bc5af15a01442792,abatement,control panel,F24,0.0,TEXT1: F24; TEXT2: control panel; ANC1: abatement
+31,c652ac20bb14b2b0,abatement,deficiency,F24,0.25,TEXT1: F24; TEXT2: deficiency; ANC1: abatement
+32,f0b0f0898ec291eb,abatement,diminished chord,F24,0.0,TEXT1: F24; TEXT2: diminished chord; ANC1: abatement
+33,4bb652c1091f3d1d,abatement,diminished image,F24,0.0,TEXT1: F24; TEXT2: diminished image; ANC1: abatement
+34,142436708875e523,abatement,diminishing,F24,0.5,TEXT1: F24; TEXT2: diminishing; ANC1: abatement
+35,b539d0f45bff2213,abatement,eliminating,F24,0.5,TEXT1: F24; TEXT2: eliminating; ANC1: abatement
+36,fde22bfb2f89383c,abatement,eliminating emissions,F24,0.25,TEXT1: F24; TEXT2: eliminating emissions; ANC1: abatement
+37,e490558573ed44ff,abatement,eliminating pollutants,F24,0.5,TEXT1: F24; TEXT2: eliminating pollutants; ANC1: abatement
+38,62dbb14376eb40ac,abatement,increasing,F24,0.25,TEXT1: F24; TEXT2: increasing; ANC1: abatement
+39,13b13c212a1756f5,abatement,increasing order,F24,0.0,TEXT1: F24; TEXT2: increasing order; ANC1: abatement
+40,8524aecd17299b63,abatement,mitigation,F24,0.25,TEXT1: F24; TEXT2: mitigation; ANC1: abatement
+41,f1c655d247630730,abatement,pollution control,F24,0.25,TEXT1: F24; TEXT2: pollution control; ANC1: abatement
+42,6917b6123c373233,abatement,processing unit,F24,0.0,TEXT1: F24; TEXT2: processing unit; ANC1: abatement
+43,7ab0bc7f2b94c401,abatement,removing air pollutants,F24,0.5,TEXT1: F24; TEXT2: removing air pollutants; ANC1: abatement
+44,4d9fb5ff45c8ab1d,abatement,subsiding,F24,0.5,TEXT1: F24; TEXT2: subsiding; ANC1: abatement
+45,1d4a73e6a5e56a01,abatement,treating emissions,F24,0.5,TEXT1: F24; TEXT2: treating emissions; ANC1: abatement
+46,98a851a58d837fb0,abatement,noise abatement,F28,0.5,TEXT1: F28; TEXT2: noise abatement; ANC1: abatement
+47,09db0a872aa1d88c,abatement,noise abatement,H01,0.5,TEXT1: H01; TEXT2: noise abatement; ANC1: abatement
+48,6bdd1d05ffa3401e,abatement,emission abatement,H04,0.5,TEXT1: H04; TEXT2: emission abatement; ANC1: abatement
+49,8ff16a96af7558f0,abnormal position,abnormal position data,B23,0.5,TEXT1: B23; TEXT2: abnormal position data; ANC1: abnormal position
+50,edfb98a9ff1d471b,abnormal position,attitude,B23,0.25,TEXT1: B23; TEXT2: attitude; ANC1: abnormal position
+51,5fd26b0436ca8d94,abnormal position,closed position shown,B23,0.25,TEXT1: B23; TEXT2: closed position shown; ANC1: abnormal position
+52,0d32e5f72293247d,abnormal position,condition illustrated,B23,0.25,TEXT1: B23; TEXT2: condition illustrated; ANC1: abnormal position
+53,8aedbf799717e3e7,abnormal position,condition shown,B23,0.25,TEXT1: B23; TEXT2: condition shown; ANC1: abnormal position
+54,856cef1a4eefc3aa,abnormal position,data,B23,0.25,TEXT1: B23; TEXT2: data; ANC1: abnormal position
+55,285e870def5f465e,abnormal position,information,B23,0.25,TEXT1: B23; TEXT2: information; ANC1: abnormal position
+56,903348f5bf47757f,abnormal position,inoperative condition,B23,0.5,TEXT1: B23; TEXT2: inoperative condition; ANC1: abnormal position
+57,89b44fe4b2014455,abnormal position,inoperative position,B23,0.5,TEXT1: B23; TEXT2: inoperative position; ANC1: abnormal position
+58,bf372a0f3662e295,abnormal position,open as shown,B23,0.25,TEXT1: B23; TEXT2: open as shown; ANC1: abnormal position
+59,4d0b732250d2940d,abnormal position,open condition,B23,0.25,TEXT1: B23; TEXT2: open condition; ANC1: abnormal position
+60,611645de95674898,abnormal position,open position,B23,0.25,TEXT1: B23; TEXT2: open position; ANC1: abnormal position
+61,b4fc3daf3fc2430b,abnormal position,open position illustrated,B23,0.25,TEXT1: B23; TEXT2: open position illustrated; ANC1: abnormal position
+62,392c5b8b62adf22d,abnormal position,open position shown,B23,0.25,TEXT1: B23; TEXT2: open position shown; ANC1: abnormal position
+63,0bad0cd5213fb783,abnormal position,orientation,B23,0.25,TEXT1: B23; TEXT2: orientation; ANC1: abnormal position
+64,6445620272b7dd75,abnormal position,position illustrated,B23,0.25,TEXT1: B23; TEXT2: position illustrated; ANC1: abnormal position
+65,93e12fb8f2b9ff44,abnormal position,position shown,B23,0.25,TEXT1: B23; TEXT2: position shown; ANC1: abnormal position
+66,89f5d02f1f35a796,abnormal position,tip data,B23,0.25,TEXT1: B23; TEXT2: tip data; ANC1: abnormal position
+67,6e89c332c3bc6310,abnormal position,tip information,B23,0.25,TEXT1: B23; TEXT2: tip information; ANC1: abnormal position
+68,7ce7ec17ae212bfd,abnormal position,wear data,B23,0.25,TEXT1: B23; TEXT2: wear data; ANC1: abnormal position
+69,a3d868244b35909c,abnormal position,angular position,B41,0.25,TEXT1: B41; TEXT2: angular position; ANC1: abnormal position
+70,9c0105f34aedca0d,abnormal position,positions,B41,0.5,TEXT1: B41; TEXT2: positions; ANC1: abnormal position
+71,86f51d5b4f88f1c9,abnormal position,abnormal breathing,D03,0.0,TEXT1: D03; TEXT2: abnormal breathing; ANC1: abnormal position
+72,3c23fa5c3894d9f2,abnormal position,abnormal manner,D03,0.5,TEXT1: D03; TEXT2: abnormal manner; ANC1: abnormal position
+73,80126fcecd1c57c9,abnormal position,abnormal placement,D03,0.75,TEXT1: D03; TEXT2: abnormal placement; ANC1: abnormal position
+74,0ff1349355ce5b66,abnormal position,abnormal posture,D03,0.75,TEXT1: D03; TEXT2: abnormal posture; ANC1: abnormal position
+75,cf244c76da9b3383,abnormal position,abnormal profit,D03,0.0,TEXT1: D03; TEXT2: abnormal profit; ANC1: abnormal position
+76,3e410ad7a4a355ff,abnormal position,abnormal side,D03,0.75,TEXT1: D03; TEXT2: abnormal side; ANC1: abnormal position
+77,ba4ffdf9c7abdd05,abnormal position,anomaly scan,D03,0.0,TEXT1: D03; TEXT2: anomaly scan; ANC1: abnormal position
+78,6756c97d8e854f4e,abnormal position,depression,D03,0.25,TEXT1: D03; TEXT2: depression; ANC1: abnormal position
+79,bbb1ad23807f952a,abnormal position,deviated from,D03,0.25,TEXT1: D03; TEXT2: deviated from; ANC1: abnormal position
+80,f13ef1f56df101a5,abnormal position,engagement,D03,0.25,TEXT1: D03; TEXT2: engagement; ANC1: abnormal position
+81,3db26a1f4e165795,abnormal position,implant positioning,D03,0.0,TEXT1: D03; TEXT2: implant positioning; ANC1: abnormal position
+82,24257e1b2f5ff283,abnormal position,irregular configuration,D03,0.5,TEXT1: D03; TEXT2: irregular configuration; ANC1: abnormal position
+83,4f8d18e7ee6f98e9,abnormal position,locked position,D03,0.5,TEXT1: D03; TEXT2: locked position; ANC1: abnormal position
+84,7e1e95ee1391c3c7,abnormal position,locked relationship,D03,0.25,TEXT1: D03; TEXT2: locked relationship; ANC1: abnormal position
+85,9c1bdf2239b0e910,abnormal position,normal position,D03,0.25,TEXT1: D03; TEXT2: normal position; ANC1: abnormal position
+86,29de10bbd3f15b11,abnormal position,odd position,D03,0.75,TEXT1: D03; TEXT2: odd position; ANC1: abnormal position
+87,57a026611dddb7b9,abnormal position,place,D03,0.25,TEXT1: D03; TEXT2: place; ANC1: abnormal position
+88,8fb46bccf1c86c33,abnormal position,position,D03,0.25,TEXT1: D03; TEXT2: position; ANC1: abnormal position
+89,7b16ec4481a25536,abnormal position,position isomerism,D03,0.0,TEXT1: D03; TEXT2: position isomerism; ANC1: abnormal position
+90,115dcdbc38948359,abnormal position,position vector,D03,0.0,TEXT1: D03; TEXT2: position vector; ANC1: abnormal position
+91,0e8238c34746f7c4,abnormal position,rare placement,D03,0.25,TEXT1: D03; TEXT2: rare placement; ANC1: abnormal position
+92,1ae1c093187e3b73,abnormal position,recess,D03,0.0,TEXT1: D03; TEXT2: recess; ANC1: abnormal position
+93,fe30aa28e8d0563a,abnormal position,relative position,D03,0.5,TEXT1: D03; TEXT2: relative position; ANC1: abnormal position
+94,ea12e2954b85c599,abnormal position,relative relationship,D03,0.25,TEXT1: D03; TEXT2: relative relationship; ANC1: abnormal position
+95,4285cdf2221cc6d5,abnormal position,situation,D03,0.25,TEXT1: D03; TEXT2: situation; ANC1: abnormal position
+96,f6b53890ef57f9c5,abnormal position,unexpected position,D03,0.75,TEXT1: D03; TEXT2: unexpected position; ANC1: abnormal position
+97,414373bc5329e819,abnormal position,unison,D03,0.0,TEXT1: D03; TEXT2: unison; ANC1: abnormal position
+98,d2304657a1e12333,abnormal position,unusal arrangement,D03,0.5,TEXT1: D03; TEXT2: unusal arrangement; ANC1: abnormal position
+99,c4b30e7b8e853b87,abnormal position,unusual manner,D03,0.25,TEXT1: D03; TEXT2: unusual manner; ANC1: abnormal position
+100,d32b4f6cdf710e0a,abnormal position,abnormal,E03,0.5,TEXT1: E03; TEXT2: abnormal; ANC1: abnormal position
+101,20d74695a08952db,abnormal position,abnormal condition,E03,0.75,TEXT1: E03; TEXT2: abnormal condition; ANC1: abnormal position
+102,f8a028167a0aad23,abnormal position,abnormal molar mass,E03,0.0,TEXT1: E03; TEXT2: abnormal molar mass; ANC1: abnormal position
+103,eb44d02ca330b2b5,abnormal position,abnormal presentations,E03,0.75,TEXT1: E03; TEXT2: abnormal presentations; ANC1: abnormal position
+104,dccdd9c697602fad,abnormal position,abnormal psychology,E03,0.0,TEXT1: E03; TEXT2: abnormal psychology; ANC1: abnormal position
+105,38f53c8ab704b32b,abnormal position,abnormality state,E03,0.75,TEXT1: E03; TEXT2: abnormality state; ANC1: abnormal position
+106,44eaeb8410af02e2,abnormal position,axial position,E03,0.5,TEXT1: E03; TEXT2: axial position; ANC1: abnormal position
+107,428f5e687590e685,abnormal position,elevation,E03,0.25,TEXT1: E03; TEXT2: elevation; ANC1: abnormal position
+108,2b58116bbba1bef5,abnormal position,emergency condition,E03,0.5,TEXT1: E03; TEXT2: emergency condition; ANC1: abnormal position
+109,52c33ea0c24771a1,abnormal position,emergency position,E03,0.75,TEXT1: E03; TEXT2: emergency position; ANC1: abnormal position
+110,852386d786c57f73,abnormal position,extent,E03,0.25,TEXT1: E03; TEXT2: extent; ANC1: abnormal position
+111,6de822045200c01a,abnormal position,facing forward,E03,0.75,TEXT1: E03; TEXT2: facing forward; ANC1: abnormal position
+112,2908fae62ececec1,abnormal position,failure,E03,0.25,TEXT1: E03; TEXT2: failure; ANC1: abnormal position
+113,bc109cbe2441d87e,abnormal position,fault position,E03,0.75,TEXT1: E03; TEXT2: fault position; ANC1: abnormal position
+114,2db04a5863b16cdd,abnormal position,fixed failure,E03,0.5,TEXT1: E03; TEXT2: fixed failure; ANC1: abnormal position
+115,8d8926dbdfc1568e,abnormal position,forward axis,E03,0.0,TEXT1: E03; TEXT2: forward axis; ANC1: abnormal position
+116,99eb846e7f7fdbd6,abnormal position,hardware abnormality,E03,0.5,TEXT1: E03; TEXT2: hardware abnormality; ANC1: abnormal position
+117,edd7a8b70dc94f43,abnormal position,hardware manufacturer,E03,0.0,TEXT1: E03; TEXT2: hardware manufacturer; ANC1: abnormal position
+118,6e37e1f0890a81b2,abnormal position,inoperative position,E03,0.5,TEXT1: E03; TEXT2: inoperative position; ANC1: abnormal position
+119,7e2874e997cf0e2b,abnormal position,leakage,E03,0.25,TEXT1: E03; TEXT2: leakage; ANC1: abnormal position
+120,48c4b666af6f1f58,abnormal position,normal position,E03,0.25,TEXT1: E03; TEXT2: normal position; ANC1: abnormal position
+121,afab4895708915b8,abnormal position,open position,E03,0.5,TEXT1: E03; TEXT2: open position; ANC1: abnormal position
+122,75ac4f9a57e95ec8,abnormal position,operating abnormality,E03,0.5,TEXT1: E03; TEXT2: operating abnormality; ANC1: abnormal position
+123,36b50348c1172fc2,abnormal position,operative position,E03,0.5,TEXT1: E03; TEXT2: operative position; ANC1: abnormal position
+124,25442153418d7486,abnormal position,overflow,E03,0.25,TEXT1: E03; TEXT2: overflow; ANC1: abnormal position
+125,5a291d8d5bd8bd6b,abnormal position,position vector,E03,0.0,TEXT1: E03; TEXT2: position vector; ANC1: abnormal position
+126,0eec7490003c075a,abnormal position,state name,E03,0.0,TEXT1: E03; TEXT2: state name; ANC1: abnormal position
+127,f3d68ae77bb19226,abnormal position,unusual position,E03,0.75,TEXT1: E03; TEXT2: unusual position; ANC1: abnormal position
+128,ae1a01517b6386fc,abnormal position,unusual state,E03,0.25,TEXT1: E03; TEXT2: unusual state; ANC1: abnormal position
+129,a21de05326bbadb8,abnormal position,upper position,E03,0.5,TEXT1: E03; TEXT2: upper position; ANC1: abnormal position
+130,58e4f0268a24af9b,abnormal position,warning,E03,0.25,TEXT1: E03; TEXT2: warning; ANC1: abnormal position
+131,76baf8ed4ae57ec1,absorbent properties,adsorbent properties,C08,0.5,TEXT1: C08; TEXT2: adsorbent properties; ANC1: absorbent properties
+132,fc03dad16ee7e5fb,absorbent properties,cao,C08,0.25,TEXT1: C08; TEXT2: cao; ANC1: absorbent properties
+133,094f2535b2f03691,absorbent properties,characterization,C08,0.25,TEXT1: C08; TEXT2: characterization; ANC1: absorbent properties
+134,0b34da85b33b4126,absorbent properties,collateral properties,C08,0.0,TEXT1: C08; TEXT2: collateral properties; ANC1: absorbent properties
+135,82d4d3492122a3a3,absorbent properties,colligative properties,C08,0.0,TEXT1: C08; TEXT2: colligative properties; ANC1: absorbent properties
+136,3f0330f3344be46f,absorbent properties,conformational properties,C08,0.25,TEXT1: C08; TEXT2: conformational properties; ANC1: absorbent properties
+137,1c506d121cb6194b,absorbent properties,dehumidifying properties,C08,0.5,TEXT1: C08; TEXT2: dehumidifying properties; ANC1: absorbent properties
+138,92931b055ee01fd5,absorbent properties,elastomeric properties,C08,0.0,TEXT1: C08; TEXT2: elastomeric properties; ANC1: absorbent properties
+139,84a195425e7f34d4,absorbent properties,evaporated salt,C08,0.25,TEXT1: C08; TEXT2: evaporated salt; ANC1: absorbent properties
+140,1c330c48a33e82b4,absorbent properties,fluorescent properties,C08,0.0,TEXT1: C08; TEXT2: fluorescent properties; ANC1: absorbent properties
+141,f7832078c30df1f5,absorbent properties,geometrical properties,C08,0.0,TEXT1: C08; TEXT2: geometrical properties; ANC1: absorbent properties
+142,0e754b806271178a,absorbent properties,housing properties,C08,0.0,TEXT1: C08; TEXT2: housing properties; ANC1: absorbent properties
+143,b794d431cea707b3,absorbent properties,hygroscopic,C08,0.5,TEXT1: C08; TEXT2: hygroscopic; ANC1: absorbent properties
+144,bf1222d93e59ceca,absorbent properties,hygroscopic properties,C08,0.5,TEXT1: C08; TEXT2: hygroscopic properties; ANC1: absorbent properties
+145,16479a99b5c37673,absorbent properties,ionic compound,C08,0.25,TEXT1: C08; TEXT2: ionic compound; ANC1: absorbent properties
+146,ec050b5360ebba22,absorbent properties,liquid holding capacity,C08,0.5,TEXT1: C08; TEXT2: liquid holding capacity; ANC1: absorbent properties
+147,0eba34ed68ed88b8,absorbent properties,mechanical characteristics,C08,0.25,TEXT1: C08; TEXT2: mechanical characteristics; ANC1: absorbent properties
+148,ef8a6631ccd28df0,absorbent properties,mechanical properties,C08,0.25,TEXT1: C08; TEXT2: mechanical properties; ANC1: absorbent properties
+149,7b42f808e08c68b2,absorbent properties,moisture barrier properties,C08,0.5,TEXT1: C08; TEXT2: moisture barrier properties; ANC1: absorbent properties
+150,71ac9fcb07aaec6e,absorbent properties,moisture proof properties,C08,0.5,TEXT1: C08; TEXT2: moisture proof properties; ANC1: absorbent properties
+151,2cb4f15e5861ea51,absorbent properties,nacl,C08,0.25,TEXT1: C08; TEXT2: nacl; ANC1: absorbent properties
+152,762621349ef66ca1,absorbent properties,naoh,C08,0.25,TEXT1: C08; TEXT2: naoh; ANC1: absorbent properties
+153,750c20ea1b72078e,absorbent properties,physical properties,C08,0.25,TEXT1: C08; TEXT2: physical properties; ANC1: absorbent properties
+154,288310ffbde6450d,absorbent properties,properties,C08,0.25,TEXT1: C08; TEXT2: properties; ANC1: absorbent properties
+155,8201115f67ded668,absorbent properties,reusable salt,C08,0.25,TEXT1: C08; TEXT2: reusable salt; ANC1: absorbent properties
+156,437a29c073ccf68e,absorbent properties,soaking properties,C08,0.75,TEXT1: C08; TEXT2: soaking properties; ANC1: absorbent properties
+157,661d7d1d8807fa6b,absorbent properties,absorbency,D01,0.75,TEXT1: D01; TEXT2: absorbency; ANC1: absorbent properties
+158,621b048d70aa8867,absorbent properties,absorbent characteristics,D01,1.0,TEXT1: D01; TEXT2: absorbent characteristics; ANC1: absorbent properties
+159,96f015d748e1333a,absorbent properties,absorbing polymer,D01,0.5,TEXT1: D01; TEXT2: absorbing polymer; ANC1: absorbent properties
+160,e6f92889099fd908,absorbent properties,absorption characteristics,D01,0.75,TEXT1: D01; TEXT2: absorption characteristics; ANC1: absorbent properties
+161,bc20a1c961cb073a,absorbent properties,absorption properties,D01,1.0,TEXT1: D01; TEXT2: absorption properties; ANC1: absorbent properties
+162,8a33a8c962cf36f1,absorbent properties,adsorbent properties,D01,0.5,TEXT1: D01; TEXT2: adsorbent properties; ANC1: absorbent properties
+163,718bd7b5b416af38,absorbent properties,adsorption performance,D01,0.5,TEXT1: D01; TEXT2: adsorption performance; ANC1: absorbent properties
+164,9e04e83b91c5a26d,absorbent properties,capable of absorbing,D01,0.5,TEXT1: D01; TEXT2: capable of absorbing; ANC1: absorbent properties
+165,7fb7109c1cb77c32,absorbent properties,characteristic,D01,0.25,TEXT1: D01; TEXT2: characteristic; ANC1: absorbent properties
+166,e0e1ca90a19d93ce,absorbent properties,desiccant,D01,0.25,TEXT1: D01; TEXT2: desiccant; ANC1: absorbent properties
+167,c3a71343cdd163f3,absorbent properties,dielectric properties,D01,0.0,TEXT1: D01; TEXT2: dielectric properties; ANC1: absorbent properties
+168,9b4be6865a6a7d88,absorbent properties,food absorption,D01,0.0,TEXT1: D01; TEXT2: food absorption; ANC1: absorbent properties
+169,4aceb34c827489b2,absorbent properties,mechanical properties,D01,0.25,TEXT1: D01; TEXT2: mechanical properties; ANC1: absorbent properties
+170,9dd002fa5c1ab0b3,absorbent properties,mechanical resistance,D01,0.25,TEXT1: D01; TEXT2: mechanical resistance; ANC1: absorbent properties
+171,bf87a44a7ef7986f,absorbent properties,metal properties,D01,0.0,TEXT1: D01; TEXT2: metal properties; ANC1: absorbent properties
+172,4e2321fa76cac0c1,absorbent properties,moisture,D01,0.25,TEXT1: D01; TEXT2: moisture; ANC1: absorbent properties
+173,6985fcc0a72d6efc,absorbent properties,optical properties,D01,0.0,TEXT1: D01; TEXT2: optical properties; ANC1: absorbent properties
+174,49c355296f89e42e,absorbent properties,performance,D01,0.25,TEXT1: D01; TEXT2: performance; ANC1: absorbent properties
+175,d79f949f5e767ed8,absorbent properties,physical properties,D01,0.5,TEXT1: D01; TEXT2: physical properties; ANC1: absorbent properties
+176,7f71cfa3cfd274c3,absorbent properties,physical resistance,D01,0.25,TEXT1: D01; TEXT2: physical resistance; ANC1: absorbent properties
+177,4c5430e37544ca9f,absorbent properties,physiological properties,D01,0.0,TEXT1: D01; TEXT2: physiological properties; ANC1: absorbent properties
+178,86c37efbf9add8b4,absorbent properties,plastic properties,D01,0.0,TEXT1: D01; TEXT2: plastic properties; ANC1: absorbent properties
+179,0c95ec8908cac866,absorbent properties,polymer,D01,0.25,TEXT1: D01; TEXT2: polymer; ANC1: absorbent properties
+180,028faac1cefe4f7d,absorbent properties,properties,D01,0.5,TEXT1: D01; TEXT2: properties; ANC1: absorbent properties
+181,ddd36c73b9ece884,absorbent properties,samples,D01,0.25,TEXT1: D01; TEXT2: samples; ANC1: absorbent properties
+182,6db7ef8d8421bcac,absorbent properties,soaking,D01,0.5,TEXT1: D01; TEXT2: soaking; ANC1: absorbent properties
+183,ee015d21956c9d4d,absorbent properties,soaking properties,D01,0.75,TEXT1: D01; TEXT2: soaking properties; ANC1: absorbent properties
+184,ba7e30f46cf2e34b,absorbent properties,sponge,D01,0.25,TEXT1: D01; TEXT2: sponge; ANC1: absorbent properties
+185,da7052634b294dbb,absorbent properties,water,D01,0.25,TEXT1: D01; TEXT2: water; ANC1: absorbent properties
+186,c068f3a417547e96,absorbent properties,water penetration capacity,D01,0.75,TEXT1: D01; TEXT2: water penetration capacity; ANC1: absorbent properties
+187,f9a985b9e1772f8f,absorbent properties,amount,D21,0.25,TEXT1: D21; TEXT2: amount; ANC1: absorbent properties
+188,895794bda535b343,absorbent properties,formation,D21,0.25,TEXT1: D21; TEXT2: formation; ANC1: absorbent properties
+189,3608a96d8c6d4ecb,absorbent properties,strength,D21,0.25,TEXT1: D21; TEXT2: strength; ANC1: absorbent properties
+190,7606c6fa59a125f8,acan,aggrecan core protein,C07,0.75,TEXT1: C07; TEXT2: aggrecan core protein; ANC1: acan
+191,f7b25dd02c06f8d0,acan,aggrecan core protein precursor,C07,0.75,TEXT1: C07; TEXT2: aggrecan core protein precursor; ANC1: acan
+192,50a44303d260f1fc,acan,cartilage extracellular matrix,C07,0.25,TEXT1: C07; TEXT2: cartilage extracellular matrix; ANC1: acan
+193,b4a7556ad626f0bc,acan,cartilage specific proteoglycan core protein,C07,0.75,TEXT1: C07; TEXT2: cartilage specific proteoglycan core protein; ANC1: acan
+194,00a1e5f0484ca4c1,acan,chondroitin sulfate proteoglycan 1,C07,0.75,TEXT1: C07; TEXT2: chondroitin sulfate proteoglycan 1; ANC1: acan
+195,199f0b8833011e49,acan,coding language,C07,0.0,TEXT1: C07; TEXT2: coding language; ANC1: acan
+196,60a4c191bdccff4f,acan,coding languages,C07,0.0,TEXT1: C07; TEXT2: coding languages; ANC1: acan
+197,dc29c774e92b0b65,acan,coding programming,C07,0.0,TEXT1: C07; TEXT2: coding programming; ANC1: acan
+198,f524d90c3d85bdeb,acan,core strength,C07,0.0,TEXT1: C07; TEXT2: core strength; ANC1: acan
+199,cb1cd1f70f89ecf0,acan,gene,C07,0.25,TEXT1: C07; TEXT2: gene; ANC1: acan
+200,526e7b2433cfa5da,acan,genes,C07,0.25,TEXT1: C07; TEXT2: genes; ANC1: acan
+201,8a5573ec16949f4b,acan,hyalectans,C07,0.5,TEXT1: C07; TEXT2: hyalectans; ANC1: acan
+202,1cf08c7f43cfd1b0,acan,large aggregating proteoglycan,C07,0.75,TEXT1: C07; TEXT2: large aggregating proteoglycan; ANC1: acan
+203,5c70e4760d8d8ff4,acan,lecticans,C07,0.5,TEXT1: C07; TEXT2: lecticans; ANC1: acan
+204,2d7f1b3ea74e2c38,acan,machine learning,C07,0.0,TEXT1: C07; TEXT2: machine learning; ANC1: acan
+205,a6dee66427c6fb90,acan,neural network,C07,0.0,TEXT1: C07; TEXT2: neural network; ANC1: acan
+206,8726542c434bd282,acan,precursor,C07,0.25,TEXT1: C07; TEXT2: precursor; ANC1: acan
+207,c8527b0605b19db1,acan,protein,C07,0.25,TEXT1: C07; TEXT2: protein; ANC1: acan
+208,913e2562771cbb0c,acan,protein coding gene,C07,0.5,TEXT1: C07; TEXT2: protein coding gene; ANC1: acan
+209,8f5ece74ab9299eb,acan,proteins,C07,0.25,TEXT1: C07; TEXT2: proteins; ANC1: acan
+210,ba0d2831300d9b37,acan,proteoglycans,C07,0.25,TEXT1: C07; TEXT2: proteoglycans; ANC1: acan
+211,ee26739c23fefe2b,acan,sox,C07,0.25,TEXT1: C07; TEXT2: sox; ANC1: acan
+212,7ba63f8f90f24670,acan,tissue expression,C07,0.25,TEXT1: C07; TEXT2: tissue expression; ANC1: acan
+213,e6d6b1713f4b3a3e,accept information,accept the establishment,A45,0.0,TEXT1: A45; TEXT2: accept the establishment; ANC1: accept information
+214,1b9e8b4b43d11ca6,accept information,accept this information,A45,0.75,TEXT1: A45; TEXT2: accept this information; ANC1: accept information
+215,f463e4e26cb4c3d6,accept information,acceptance angle,A45,0.0,TEXT1: A45; TEXT2: acceptance angle; ANC1: accept information
+216,c94e7b08d9402064,accept information,accepting information from,A45,0.75,TEXT1: A45; TEXT2: accepting information from; ANC1: accept information
+217,0c9325df3a6dde0a,accept information,approve information,A45,0.5,TEXT1: A45; TEXT2: approve information; ANC1: accept information
+218,a617e96ffd84f668,accept information,authorization of information,A45,0.5,TEXT1: A45; TEXT2: authorization of information; ANC1: accept information
+219,9139cc91e466bc1c,accept information,behaviour information analysis,A45,0.0,TEXT1: A45; TEXT2: behaviour information analysis; ANC1: accept information
+220,d5cebe572de28ec9,accept information,contain information,A45,0.5,TEXT1: A45; TEXT2: contain information; ANC1: accept information
+221,2f27415964b30abb,accept information,contain items,A45,0.25,TEXT1: A45; TEXT2: contain items; ANC1: accept information
+222,6f1f9a291daa2d78,accept information,data accepted,A45,0.5,TEXT1: A45; TEXT2: data accepted; ANC1: accept information
+223,1b4d79c285ba330b,accept information,data set,A45,0.25,TEXT1: A45; TEXT2: data set; ANC1: accept information
+224,df6de3890013e7a6,accept information,display,A45,0.25,TEXT1: A45; TEXT2: display; ANC1: accept information
+225,2771e4ab047a52f8,accept information,display a data,A45,0.25,TEXT1: A45; TEXT2: display a data; ANC1: accept information
+226,d9628d2cbc2d20df,accept information,display a information,A45,0.5,TEXT1: A45; TEXT2: display a information; ANC1: accept information
+227,8d4e33dff5418e62,accept information,display an information,A45,0.5,TEXT1: A45; TEXT2: display an information; ANC1: accept information
+228,a9aef9cb5ef22537,accept information,display data,A45,0.25,TEXT1: A45; TEXT2: display data; ANC1: accept information
+229,e9ce0059e0db62e9,accept information,display information,A45,0.5,TEXT1: A45; TEXT2: display information; ANC1: accept information
+230,7868f55cb35297ab,accept information,indicate a data,A45,0.25,TEXT1: A45; TEXT2: indicate a data; ANC1: accept information
+231,75974d6019242c17,accept information,indicate data,A45,0.25,TEXT1: A45; TEXT2: indicate data; ANC1: accept information
+232,8658715eab34a30b,accept information,indicate information,A45,0.5,TEXT1: A45; TEXT2: indicate information; ANC1: accept information
+233,dcbf5eb733ce6b7a,accept information,informal letter,A45,0.0,TEXT1: A45; TEXT2: informal letter; ANC1: accept information
+234,09f623895803d55a,accept information,information,A45,0.5,TEXT1: A45; TEXT2: information; ANC1: accept information
+235,e865c688d8198872,accept information,information data,A45,0.25,TEXT1: A45; TEXT2: information data; ANC1: accept information
+236,5ea3fa4f9aa2e4e6,accept information,information processing apparatus,A45,0.25,TEXT1: A45; TEXT2: information processing apparatus; ANC1: accept information
+237,481dd9137a1021a2,accept information,information storage,A45,0.25,TEXT1: A45; TEXT2: information storage; ANC1: accept information
+238,f4bf99c180c8b41e,accept information,information value,A45,0.25,TEXT1: A45; TEXT2: information value; ANC1: accept information
+239,1399d5ede123e907,accept information,price he or she accepts,A45,0.0,TEXT1: A45; TEXT2: price he or she accepts; ANC1: accept information
+240,cfe4a53278917f5b,accept information,receiving information,A45,0.5,TEXT1: A45; TEXT2: receiving information; ANC1: accept information
+241,b36d81ddf0791a98,accept information,sanction information,A45,0.5,TEXT1: A45; TEXT2: sanction information; ANC1: accept information
+242,0bf7a68130117d92,accept information,third option to accept,A45,0.0,TEXT1: A45; TEXT2: third option to accept; ANC1: accept information
+243,d47638cfa77bc4aa,accept information,transaction information,A45,0.25,TEXT1: A45; TEXT2: transaction information; ANC1: accept information
+244,4994def77e2b9e7f,accept information,undertake information,A45,0.5,TEXT1: A45; TEXT2: undertake information; ANC1: accept information
+245,a937ae580ea4bd97,achieve authentication,achieve access,H04,0.75,TEXT1: H04; TEXT2: achieve access; ANC1: achieve authentication
+246,ea154b802bebc48a,achieve authentication,achieve authentication accuracy,H04,0.5,TEXT1: H04; TEXT2: achieve authentication accuracy; ANC1: achieve authentication
+247,24eda11bf0665917,achieve authentication,achieve authorization,H04,0.75,TEXT1: H04; TEXT2: achieve authorization; ANC1: achieve authentication
+248,14c027729175aedd,achieve authentication,achieve goal,H04,0.0,TEXT1: H04; TEXT2: achieve goal; ANC1: achieve authentication
+249,6553f33ff35f0e58,achieve authentication,achieve goals,H04,0.0,TEXT1: H04; TEXT2: achieve goals; ANC1: achieve authentication
+250,76a67059397b6ab4,achieve authentication,achieve local authentication,H04,0.5,TEXT1: H04; TEXT2: achieve local authentication; ANC1: achieve authentication
+251,b1f6c5153065d1f4,achieve authentication,achieve mutual authentication,H04,0.5,TEXT1: H04; TEXT2: achieve mutual authentication; ANC1: achieve authentication
+252,8f503153606f57ba,achieve authentication,achieve success,H04,0.0,TEXT1: H04; TEXT2: achieve success; ANC1: achieve authentication
+253,c48fe27988cb335a,achieve authentication,achieve target,H04,0.0,TEXT1: H04; TEXT2: achieve target; ANC1: achieve authentication
+254,0d40fb13a68069f1,achieve authentication,achieve the authentication requirement,H04,0.75,TEXT1: H04; TEXT2: achieve the authentication requirement; ANC1: achieve authentication
+255,7a33ea9b3475af14,achieve authentication,achieve verification,H04,0.75,TEXT1: H04; TEXT2: achieve verification; ANC1: achieve authentication
+256,d2088cdd8be8761b,achieve authentication,biometric,H04,0.25,TEXT1: H04; TEXT2: biometric; ANC1: achieve authentication
+257,804ab9af5a8550f6,achieve authentication,denial of authorization,H04,0.25,TEXT1: H04; TEXT2: denial of authorization; ANC1: achieve authentication
+258,a9517b7094b76f0c,achieve authentication,denied access,H04,0.25,TEXT1: H04; TEXT2: denied access; ANC1: achieve authentication
+259,86a215a06817e866,achieve authentication,encryption,H04,0.5,TEXT1: H04; TEXT2: encryption; ANC1: achieve authentication
+260,63ae5e20e8e310dd,achieve authentication,failed authorization request,H04,0.25,TEXT1: H04; TEXT2: failed authorization request; ANC1: achieve authentication
+261,67dbbc523e25a8b1,achieve authentication,login,H04,0.25,TEXT1: H04; TEXT2: login; ANC1: achieve authentication
+262,1a76d7a9dadc8deb,achieve authentication,multi factor authentication,H04,0.5,TEXT1: H04; TEXT2: multi factor authentication; ANC1: achieve authentication
+263,2ad713aa54d461ba,achieve authentication,signature,H04,0.25,TEXT1: H04; TEXT2: signature; ANC1: achieve authentication
+264,35546bdc044efe91,achieve authentication,target achieved,H04,0.0,TEXT1: H04; TEXT2: target achieved; ANC1: achieve authentication
+265,ae669f9980698f21,achieve authentication,vehicle verification,H04,0.0,TEXT1: H04; TEXT2: vehicle verification; ANC1: achieve authentication
+266,3b4ba853a71438bf,acid absorption,absorbent cotton,B01,0.0,TEXT1: B01; TEXT2: absorbent cotton; ANC1: acid absorption
+267,5fd6fe279671b601,acid absorption,absorption spectrum,B01,0.0,TEXT1: B01; TEXT2: absorption spectrum; ANC1: acid absorption
+268,7c0ead66438745af,acid absorption,acid,B01,0.5,TEXT1: B01; TEXT2: acid; ANC1: acid absorption
+269,fce069a07304db12,acid absorption,acid absorption column,B01,0.5,TEXT1: B01; TEXT2: acid absorption column; ANC1: acid absorption
+270,0885d130fd9d50a4,acid absorption,acid absorption tower,B01,0.5,TEXT1: B01; TEXT2: acid absorption tower; ANC1: acid absorption
+271,3ad51d1654fa78aa,acid absorption,acid digestion,B01,0.75,TEXT1: B01; TEXT2: acid digestion; ANC1: acid absorption
+272,197377910826e9a0,acid absorption,acid distillation,B01,0.25,TEXT1: B01; TEXT2: acid distillation; ANC1: acid absorption
+273,5613325cb8a57bc8,acid absorption,acid recovery,B01,0.5,TEXT1: B01; TEXT2: acid recovery; ANC1: acid absorption
+274,3eaee93303a76295,acid absorption,acid stripping,B01,0.5,TEXT1: B01; TEXT2: acid stripping; ANC1: acid absorption
+275,c133361db6dde71d,acid absorption,acid wash,B01,0.25,TEXT1: B01; TEXT2: acid wash; ANC1: acid absorption
+276,8a2f7a09c36e7f27,acid absorption,acid wash distillation,B01,0.25,TEXT1: B01; TEXT2: acid wash distillation; ANC1: acid absorption
+277,4dd4b29c517ce25b,acid absorption,acid water distillation,B01,0.25,TEXT1: B01; TEXT2: acid water distillation; ANC1: acid absorption
+278,0a5c9cab09de9020,acid absorption,acid water wash,B01,0.25,TEXT1: B01; TEXT2: acid water wash; ANC1: acid absorption
+279,f6e67f136fb163a3,acid absorption,acrylic acid absorption,B01,0.5,TEXT1: B01; TEXT2: acrylic acid absorption; ANC1: acid absorption
+280,6f3b2f2804c199b4,acid absorption,amino acids,B01,0.25,TEXT1: B01; TEXT2: amino acids; ANC1: acid absorption
+281,94cd797823f9191a,acid absorption,catalytic hydrogenation,B01,0.25,TEXT1: B01; TEXT2: catalytic hydrogenation; ANC1: acid absorption
+282,6312f42d8f1c37b3,acid absorption,catalytic oxidation,B01,0.25,TEXT1: B01; TEXT2: catalytic oxidation; ANC1: acid absorption
+283,fc63c89be37a059c,acid absorption,chemical analysis,B01,0.25,TEXT1: B01; TEXT2: chemical analysis; ANC1: acid absorption
+284,62a99710bc868d0b,acid absorption,chemical inhibition,B01,0.25,TEXT1: B01; TEXT2: chemical inhibition; ANC1: acid absorption
+285,6c895aabbc9d825a,acid absorption,h2so4 absorption,B01,0.5,TEXT1: B01; TEXT2: h2so4 absorption; ANC1: acid absorption
+286,a6cc840343fda298,acid absorption,hydro catalytic hydrogenation,B01,0.25,TEXT1: B01; TEXT2: hydro catalytic hydrogenation; ANC1: acid absorption
+287,571e7d26da0b0ccd,acid absorption,hydro catalytic oxidation,B01,0.25,TEXT1: B01; TEXT2: hydro catalytic oxidation; ANC1: acid absorption
+288,61afb3b881ba6c9b,acid absorption,hydrochloric acid absorption,B01,0.5,TEXT1: B01; TEXT2: hydrochloric acid absorption; ANC1: acid absorption
+289,67a024b4eb4393f1,acid absorption,hydroformylation,B01,0.25,TEXT1: B01; TEXT2: hydroformylation; ANC1: acid absorption
+290,d78ec0c053366b48,acid absorption,hydrogenation,B01,0.25,TEXT1: B01; TEXT2: hydrogenation; ANC1: acid absorption
+291,a9d797d846588bd9,acid absorption,hydroxycarboxylicacid absorption,B01,0.5,TEXT1: B01; TEXT2: hydroxycarboxylicacid absorption; ANC1: acid absorption
+292,40c303263680ce7f,acid absorption,membrane catalytic hydrogenation,B01,0.25,TEXT1: B01; TEXT2: membrane catalytic hydrogenation; ANC1: acid absorption
+293,e9a68b29140ca25f,acid absorption,membrane catalytic oxidation,B01,0.25,TEXT1: B01; TEXT2: membrane catalytic oxidation; ANC1: acid absorption
+294,1ec8a21f478ae0f1,acid absorption,membrane hydrogenation,B01,0.25,TEXT1: B01; TEXT2: membrane hydrogenation; ANC1: acid absorption
+295,9bf4385b1b63006a,acid absorption,membrane oxidation,B01,0.25,TEXT1: B01; TEXT2: membrane oxidation; ANC1: acid absorption
+296,ec77ccb538cc139a,acid absorption,near infrared ray absorption,B01,0.0,TEXT1: B01; TEXT2: near infrared ray absorption; ANC1: acid absorption
+297,2404594ff2ed4ecb,acid absorption,nitric acid absorption,B01,0.5,TEXT1: B01; TEXT2: nitric acid absorption; ANC1: acid absorption
+298,d52e638b3c4c9c1e,acid absorption,oxidation,B01,0.25,TEXT1: B01; TEXT2: oxidation; ANC1: acid absorption
+299,89e3573a4d5f2fc2,acid absorption,oxidative hydrogenation,B01,0.25,TEXT1: B01; TEXT2: oxidative hydrogenation; ANC1: acid absorption
+300,aa8d8bfa1765e3e2,acid absorption,oxide,B01,0.25,TEXT1: B01; TEXT2: oxide; ANC1: acid absorption
+301,dd2b26cf17fb74ea,acid absorption,oxide distillation,B01,0.25,TEXT1: B01; TEXT2: oxide distillation; ANC1: acid absorption
+302,e045ed5f662fe98c,acid absorption,oxide recovery,B01,0.25,TEXT1: B01; TEXT2: oxide recovery; ANC1: acid absorption
+303,6c3036760f90c39c,acid absorption,oxide stripping,B01,0.25,TEXT1: B01; TEXT2: oxide stripping; ANC1: acid absorption
+304,940cc037b242d2da,acid absorption,oxide wash,B01,0.25,TEXT1: B01; TEXT2: oxide wash; ANC1: acid absorption
+305,0d8d700c7a3532f1,acid absorption,photon absorption,B01,0.0,TEXT1: B01; TEXT2: photon absorption; ANC1: acid absorption
+306,bc5e0b5cc383448c,acid absorption,photosynthesis,B01,0.0,TEXT1: B01; TEXT2: photosynthesis; ANC1: acid absorption
+307,a7aff614211f90d7,acid absorption,phytic acid,B01,0.25,TEXT1: B01; TEXT2: phytic acid; ANC1: acid absorption
+308,f798712a28d6660b,acid absorption,rosmarinic acid,B01,0.25,TEXT1: B01; TEXT2: rosmarinic acid; ANC1: acid absorption
+309,311b7cc6e1bc6c14,acid absorption,sulfuric acid,B01,0.25,TEXT1: B01; TEXT2: sulfuric acid; ANC1: acid absorption
+310,679f5c4ab8fa0c47,acid absorption,transdermal absorption,B01,0.0,TEXT1: B01; TEXT2: transdermal absorption; ANC1: acid absorption
+311,e955700dffd68624,acid absorption,absorption of acid,B08,1.0,TEXT1: B08; TEXT2: absorption of acid; ANC1: acid absorption
+312,c9c438a56243d1af,acid absorption,absorption of carbohydrates,B08,0.0,TEXT1: B08; TEXT2: absorption of carbohydrates; ANC1: acid absorption
+313,7ce9dd8327d5cce1,acid absorption,absorption tower,B08,0.25,TEXT1: B08; TEXT2: absorption tower; ANC1: acid absorption
+314,1a8e9c58ee5e34ca,acid absorption,acid,B08,0.5,TEXT1: B08; TEXT2: acid; ANC1: acid absorption
+315,3a09aba546aac675,acid absorption,acid absorption,B08,1.0,TEXT1: B08; TEXT2: acid absorption; ANC1: acid absorption
+316,ec4fab7c9b9bd303,acid absorption,acid adsorption,B08,0.25,TEXT1: B08; TEXT2: acid adsorption; ANC1: acid absorption
+317,9afe664508a7baf0,acid absorption,acid distillation,B08,0.25,TEXT1: B08; TEXT2: acid distillation; ANC1: acid absorption
+318,34444e60e67a87e5,acid absorption,acid exchange,B08,0.25,TEXT1: B08; TEXT2: acid exchange; ANC1: acid absorption
+319,14d69f3548d36186,acid absorption,acid gas distillation,B08,0.25,TEXT1: B08; TEXT2: acid gas distillation; ANC1: acid absorption
+320,a4ac7b3741cb5980,acid absorption,acid gas exchange,B08,0.25,TEXT1: B08; TEXT2: acid gas exchange; ANC1: acid absorption
+321,d561ddf728f88157,acid absorption,acid gas scrubbing,B08,0.25,TEXT1: B08; TEXT2: acid gas scrubbing; ANC1: acid absorption
+322,9517cc6e239e319d,acid absorption,acid immersion,B08,0.75,TEXT1: B08; TEXT2: acid immersion; ANC1: acid absorption
+323,9d9930c089943b9c,acid absorption,acid indigestion,B08,0.0,TEXT1: B08; TEXT2: acid indigestion; ANC1: acid absorption
+324,57ce3adc96d82fca,acid absorption,acid oxide distillation,B08,0.25,TEXT1: B08; TEXT2: acid oxide distillation; ANC1: acid absorption
+325,11bb11d822dc391e,acid absorption,acid oxide scrubbing,B08,0.25,TEXT1: B08; TEXT2: acid oxide scrubbing; ANC1: acid absorption
+326,0956aa30948f0755,acid absorption,acid purification,B08,0.25,TEXT1: B08; TEXT2: acid purification; ANC1: acid absorption
+327,de645e182bf2ef1c,acid absorption,acid rain,B08,0.0,TEXT1: B08; TEXT2: acid rain; ANC1: acid absorption
+328,3e012c773242affa,acid absorption,acid reflux,B08,0.0,TEXT1: B08; TEXT2: acid reflux; ANC1: acid absorption
+329,390417e5c0161bbc,acid absorption,acid scrubbing,B08,0.25,TEXT1: B08; TEXT2: acid scrubbing; ANC1: acid absorption
+330,58677c3403b7867c,acid absorption,acid water,B08,0.5,TEXT1: B08; TEXT2: acid water; ANC1: acid absorption
+331,f5e6c93ffe34fff2,acid absorption,acid water distillation,B08,0.25,TEXT1: B08; TEXT2: acid water distillation; ANC1: acid absorption
+332,4e09b687bfafe30c,acid absorption,acid water exchange,B08,0.25,TEXT1: B08; TEXT2: acid water exchange; ANC1: acid absorption
+333,f63c2e1e537e8a44,acid absorption,acidic foods,B08,0.0,TEXT1: B08; TEXT2: acidic foods; ANC1: acid absorption
+334,5f744aa51da08828,acid absorption,acidic immersion,B08,0.75,TEXT1: B08; TEXT2: acidic immersion; ANC1: acid absorption
+335,c49dad6b7b652370,acid absorption,amino acid absorption,B08,0.5,TEXT1: B08; TEXT2: amino acid absorption; ANC1: acid absorption
+336,dd63f0d530d1a597,acid absorption,chemical absorption,B08,0.5,TEXT1: B08; TEXT2: chemical absorption; ANC1: acid absorption
+337,6b94d69939983587,acid absorption,chemically soaked,B08,0.25,TEXT1: B08; TEXT2: chemically soaked; ANC1: acid absorption
+338,39e7a72e21b2701c,acid absorption,fertilizer absorption,B08,0.5,TEXT1: B08; TEXT2: fertilizer absorption; ANC1: acid absorption
+339,87e9e1b7523c7915,acid absorption,hcl acid absorption,B08,0.5,TEXT1: B08; TEXT2: hcl acid absorption; ANC1: acid absorption
+340,a2cf5cace208d214,acid absorption,multi section connection pipe,B08,0.25,TEXT1: B08; TEXT2: multi section connection pipe; ANC1: acid absorption
+341,6bfe4f3295caaa68,acid absorption,oxide,B08,0.25,TEXT1: B08; TEXT2: oxide; ANC1: acid absorption
+342,6265e716b9e52c8e,acid absorption,oxide acid distillation,B08,0.25,TEXT1: B08; TEXT2: oxide acid distillation; ANC1: acid absorption
+343,3c28d1c686f44f23,acid absorption,oxide acid exchange,B08,0.25,TEXT1: B08; TEXT2: oxide acid exchange; ANC1: acid absorption
+344,55816671cd61e343,acid absorption,oxide distillation,B08,0.25,TEXT1: B08; TEXT2: oxide distillation; ANC1: acid absorption
+345,3e6bb01944e2d139,acid absorption,oxide exchange,B08,0.25,TEXT1: B08; TEXT2: oxide exchange; ANC1: acid absorption
+346,781af4b26cf52346,acid absorption,oxide gas distillation,B08,0.25,TEXT1: B08; TEXT2: oxide gas distillation; ANC1: acid absorption
+347,67ee8857bc1aba94,acid absorption,oxide gas exchange,B08,0.25,TEXT1: B08; TEXT2: oxide gas exchange; ANC1: acid absorption
+348,dc1b5a41da00fb12,acid absorption,oxide gas scrubbing,B08,0.25,TEXT1: B08; TEXT2: oxide gas scrubbing; ANC1: acid absorption
+349,d02d224b8958fdbe,acid absorption,oxide purification,B08,0.25,TEXT1: B08; TEXT2: oxide purification; ANC1: acid absorption
+350,6c058949ceca4857,acid absorption,oxide scrubbing,B08,0.25,TEXT1: B08; TEXT2: oxide scrubbing; ANC1: acid absorption
+351,46173840ad8a4ff8,acid absorption,oxide water,B08,0.25,TEXT1: B08; TEXT2: oxide water; ANC1: acid absorption
+352,e8fdef46db333a1a,acid absorption,oxide water distillation,B08,0.25,TEXT1: B08; TEXT2: oxide water distillation; ANC1: acid absorption
+353,07a3358b92400793,acid absorption,oxide water exchange,B08,0.25,TEXT1: B08; TEXT2: oxide water exchange; ANC1: acid absorption
+354,adaa71de2e893bbb,acid absorption,soil water absorption,B08,0.0,TEXT1: B08; TEXT2: soil water absorption; ANC1: acid absorption
+355,73a2f0b016fa700f,acid absorption,spray washing bottle body,B08,0.25,TEXT1: B08; TEXT2: spray washing bottle body; ANC1: acid absorption
+356,bbcfc92543e58f1e,acid absorption,steel structural member cleaning maintenance device,B08,0.25,TEXT1: B08; TEXT2: steel structural member cleaning maintenance device; ANC1: acid absorption
+357,989ba1e96412f2e6,ack,acknowledgement,G04,0.75,TEXT1: G04; TEXT2: acknowledgement; ANC1: ack
+358,0b69675568e7564b,ack,communication protocol,G04,0.25,TEXT1: G04; TEXT2: communication protocol; ANC1: ack
+359,23090ec49265de76,ack,data,G04,0.5,TEXT1: G04; TEXT2: data; ANC1: ack
+360,753de89863b03020,ack,data network,G04,0.25,TEXT1: G04; TEXT2: data network; ANC1: ack
+361,b4c9ef7b355bf1f0,ack,data networks,G04,0.25,TEXT1: G04; TEXT2: data networks; ANC1: ack
+362,c43922c93168280d,ack,flad holder pole,G04,0.0,TEXT1: G04; TEXT2: flad holder pole; ANC1: ack
+363,2c875aea7a58aa3a,ack,flag,G04,0.5,TEXT1: G04; TEXT2: flag; ANC1: ack
+364,7f84f16356836f3c,ack,flag hoist,G04,0.0,TEXT1: G04; TEXT2: flag hoist; ANC1: ack
+365,b0a1ada01c297a74,ack,frame,G04,0.5,TEXT1: G04; TEXT2: frame; ANC1: ack
+366,c5dc2dc55b392031,ack,header,G04,0.25,TEXT1: G04; TEXT2: header; ANC1: ack
+367,cfa3fc016dbc08d2,ack,indications of cystoscopy,G04,0.0,TEXT1: G04; TEXT2: indications of cystoscopy; ANC1: ack
+368,d0efdd2ed0b447f9,ack,indicative device,G04,0.0,TEXT1: G04; TEXT2: indicative device; ANC1: ack
+369,393b8816cd961b35,ack,indicative message,G04,0.5,TEXT1: G04; TEXT2: indicative message; ANC1: ack
+370,6212d9f7155dc84c,ack,indicator,G04,0.25,TEXT1: G04; TEXT2: indicator; ANC1: ack
+371,06356fa510db9a4a,ack,message,G04,0.5,TEXT1: G04; TEXT2: message; ANC1: ack
+372,148cdd036ae3f0c4,ack,message ringtone,G04,0.0,TEXT1: G04; TEXT2: message ringtone; ANC1: ack
+373,27f9b139ce0a2ea0,ack,red signal,G04,0.0,TEXT1: G04; TEXT2: red signal; ANC1: ack
+374,736e6a0cf95051fb,ack,signal,G04,0.5,TEXT1: G04; TEXT2: signal; ANC1: ack
+375,d8262be6984bc530,ack,telecommunication,G04,0.25,TEXT1: G04; TEXT2: telecommunication; ANC1: ack
+376,4b1cc4c10b1f12e9,ack,acknowledge,G06,0.75,TEXT1: G06; TEXT2: acknowledge; ANC1: ack
+377,48009477385eda7a,ack,address id,G06,0.25,TEXT1: G06; TEXT2: address id; ANC1: ack
+378,53d1379463a4f455,ack,bus acknowledge,G06,0.5,TEXT1: G06; TEXT2: bus acknowledge; ANC1: ack
+379,b6d7705aea460cec,ack,bus acknowledgement,G06,0.5,TEXT1: G06; TEXT2: bus acknowledgement; ANC1: ack
+380,a7df63266a0cd792,ack,busy acknowledge,G06,0.5,TEXT1: G06; TEXT2: busy acknowledge; ANC1: ack
+381,606e4af9e8c561a7,ack,busy path,G06,0.0,TEXT1: G06; TEXT2: busy path; ANC1: ack
+382,35ad64716a1f895e,ack,data,G06,0.25,TEXT1: G06; TEXT2: data; ANC1: ack
+383,e62b72945a9a7468,ack,flag pole,G06,0.0,TEXT1: G06; TEXT2: flag pole; ANC1: ack
+384,44af86052f6154da,ack,frame flag,G06,0.5,TEXT1: G06; TEXT2: frame flag; ANC1: ack
+385,6c5e11ecb9b1e12c,ack,header id,G06,0.5,TEXT1: G06; TEXT2: header id; ANC1: ack
+386,9f63d6366e231552,ack,liveness message,G06,0.25,TEXT1: G06; TEXT2: liveness message; ANC1: ack
+387,315f532c8e37e265,ack,negative acknowledgement,G06,0.5,TEXT1: G06; TEXT2: negative acknowledgement; ANC1: ack
+388,eca487b69ed50db3,ack,network,G06,0.25,TEXT1: G06; TEXT2: network; ANC1: ack
+389,00bc7a5b949fb235,ack,null data,G06,0.25,TEXT1: G06; TEXT2: null data; ANC1: ack
+390,33b9c9c35e9d6482,ack,positive acknowledgement,G06,0.5,TEXT1: G06; TEXT2: positive acknowledgement; ANC1: ack
+391,f0f728a174113a0d,ack,positive acknowledgement packet,G06,0.5,TEXT1: G06; TEXT2: positive acknowledgement packet; ANC1: ack
+392,27457261a9fd430e,ack,provide for tuning,G06,0.0,TEXT1: G06; TEXT2: provide for tuning; ANC1: ack
+393,6f725686c1fdce23,ack,provide restoring force,G06,0.0,TEXT1: G06; TEXT2: provide restoring force; ANC1: ack
+394,78c7b962c17ec8fe,ack,provided acknowledgement,G06,0.75,TEXT1: G06; TEXT2: provided acknowledgement; ANC1: ack
+395,adce9247f98c8670,ack,provider networks,G06,0.0,TEXT1: G06; TEXT2: provider networks; ANC1: ack
+396,12884aa9ed7d2a80,ack,server message,G06,0.25,TEXT1: G06; TEXT2: server message; ANC1: ack
+397,015e022df7350b2a,ack,sms acknowledgement,G06,0.5,TEXT1: G06; TEXT2: sms acknowledgement; ANC1: ack
+398,b54dcabc8b1187c7,ack,tcp acknowledgement,G06,0.5,TEXT1: G06; TEXT2: tcp acknowledgement; ANC1: ack
+399,447af5cc4f38c7c8,ack,window frame,G06,0.0,TEXT1: G06; TEXT2: window frame; ANC1: ack
+400,9a4fc9ecbdc0535d,acoustooptic modulator,acoustic effect,H01,0.5,TEXT1: H01; TEXT2: acoustic effect; ANC1: acoustooptic modulator
+401,7552fd7261730ad9,acoustooptic modulator,acoustic modulator,H01,0.5,TEXT1: H01; TEXT2: acoustic modulator; ANC1: acoustooptic modulator
+402,21b8bd37a4309944,acoustooptic modulator,acoustic optical modulator,H01,0.5,TEXT1: H01; TEXT2: acoustic optical modulator; ANC1: acoustooptic modulator
+403,e3b133c8d4890fc3,acoustooptic modulator,acousto optic element,H01,0.5,TEXT1: H01; TEXT2: acousto optic element; ANC1: acoustooptic modulator
+404,ee1bb20a59a4e071,acoustooptic modulator,acousto optic modulating element,H01,0.5,TEXT1: H01; TEXT2: acousto optic modulating element; ANC1: acoustooptic modulator
+405,2ab8eae9735c147a,acoustooptic modulator,acousto optical element,H01,0.5,TEXT1: H01; TEXT2: acousto optical element; ANC1: acoustooptic modulator
+406,0914fba7eef5d574,acoustooptic modulator,acoustooptic,H01,0.5,TEXT1: H01; TEXT2: acoustooptic; ANC1: acoustooptic modulator
+407,d8b63e379c8936ed,acoustooptic modulator,acoustooptic deflector,H01,0.5,TEXT1: H01; TEXT2: acoustooptic deflector; ANC1: acoustooptic modulator
+408,25fb59765ebf794e,acoustooptic modulator,amplifier,H01,0.25,TEXT1: H01; TEXT2: amplifier; ANC1: acoustooptic modulator
+409,6f0ed411c84152ef,acoustooptic modulator,analog signal,H01,0.25,TEXT1: H01; TEXT2: analog signal; ANC1: acoustooptic modulator
+410,98820ff9e60fe75f,acoustooptic modulator,beam support,H01,0.0,TEXT1: H01; TEXT2: beam support; ANC1: acoustooptic modulator
+411,7ad6f3cefc537a21,acoustooptic modulator,electrical drive signal,H01,0.25,TEXT1: H01; TEXT2: electrical drive signal; ANC1: acoustooptic modulator
+412,e851e021451aad8b,acoustooptic modulator,electrooptical,H01,0.5,TEXT1: H01; TEXT2: electrooptical; ANC1: acoustooptic modulator
+413,d3150b216813544d,acoustooptic modulator,electrooptical effect,H01,0.5,TEXT1: H01; TEXT2: electrooptical effect; ANC1: acoustooptic modulator
+414,717a132db3aa625b,acoustooptic modulator,electrooptical modulator,H01,0.5,TEXT1: H01; TEXT2: electrooptical modulator; ANC1: acoustooptic modulator
+415,c34ad64ef5f57ecd,acoustooptic modulator,isolator,H01,0.25,TEXT1: H01; TEXT2: isolator; ANC1: acoustooptic modulator
+416,3ad65d80cf4f9f50,acoustooptic modulator,laser beam,H01,0.25,TEXT1: H01; TEXT2: laser beam; ANC1: acoustooptic modulator
+417,06e72066f62b2f27,acoustooptic modulator,light wave,H01,0.25,TEXT1: H01; TEXT2: light wave; ANC1: acoustooptic modulator
+418,0f3d75a789ae5086,acoustooptic modulator,moderator reactor,H01,0.0,TEXT1: H01; TEXT2: moderator reactor; ANC1: acoustooptic modulator
+419,e25105510083783d,acoustooptic modulator,modulator chemistry,H01,0.0,TEXT1: H01; TEXT2: modulator chemistry; ANC1: acoustooptic modulator
+420,ab8e9779f2705913,acoustooptic modulator,modulator enzyme,H01,0.0,TEXT1: H01; TEXT2: modulator enzyme; ANC1: acoustooptic modulator
+421,06dbe2adc6346c87,acoustooptic modulator,modulator medicine,H01,0.0,TEXT1: H01; TEXT2: modulator medicine; ANC1: acoustooptic modulator
+422,c219fadbccb53638,acoustooptic modulator,optic nerve,H01,0.0,TEXT1: H01; TEXT2: optic nerve; ANC1: acoustooptic modulator
+423,baec5ff06bc4d279,acoustooptic modulator,optical coupler,H01,0.5,TEXT1: H01; TEXT2: optical coupler; ANC1: acoustooptic modulator
+424,796ab2f0e53f9d12,acoustooptic modulator,optical frequency shifter,H01,0.5,TEXT1: H01; TEXT2: optical frequency shifter; ANC1: acoustooptic modulator
+425,7e46aa3decd316a9,acoustooptic modulator,optical modulator,H01,0.5,TEXT1: H01; TEXT2: optical modulator; ANC1: acoustooptic modulator
+426,0a9ae3bc8cb2b90e,acoustooptic modulator,optical splitter,H01,0.5,TEXT1: H01; TEXT2: optical splitter; ANC1: acoustooptic modulator
+427,7d41d9cdd8801336,acoustooptic modulator,optical splitting coupler,H01,0.5,TEXT1: H01; TEXT2: optical splitting coupler; ANC1: acoustooptic modulator
+428,2c9b5986178c8ce1,acoustooptic modulator,optical splitting splitter,H01,0.25,TEXT1: H01; TEXT2: optical splitting splitter; ANC1: acoustooptic modulator
+429,825cf79d5e2029c5,acoustooptic modulator,output coupler,H01,0.5,TEXT1: H01; TEXT2: output coupler; ANC1: acoustooptic modulator
+430,8cafdc143580f931,acoustooptic modulator,output modulator,H01,0.25,TEXT1: H01; TEXT2: output modulator; ANC1: acoustooptic modulator
+431,bb9dc49be3f12f1f,acoustooptic modulator,piezoelectric,H01,0.25,TEXT1: H01; TEXT2: piezoelectric; ANC1: acoustooptic modulator
+432,146c3bf3b51d1dfa,acoustooptic modulator,piezoelectric modulator,H01,0.5,TEXT1: H01; TEXT2: piezoelectric modulator; ANC1: acoustooptic modulator
+433,e04cd658df7318d2,acoustooptic modulator,sound signal,H01,0.25,TEXT1: H01; TEXT2: sound signal; ANC1: acoustooptic modulator
+434,2b8b7c03835b7d6a,acoustooptic modulator,sound waves,H01,0.25,TEXT1: H01; TEXT2: sound waves; ANC1: acoustooptic modulator
+435,571c41e5f6360258,acrylate groups,acid groups,D21,0.5,TEXT1: D21; TEXT2: acid groups; ANC1: acrylate groups
+436,dc2ad0418edf02f5,acrylate groups,acid units,D21,0.25,TEXT1: D21; TEXT2: acid units; ANC1: acrylate groups
+437,609fe13f9be00897,acrylate groups,acrylate,D21,0.5,TEXT1: D21; TEXT2: acrylate; ANC1: acrylate groups
+438,47b2ef2867d0c5d6,acrylate groups,acrylate functional groups,D21,0.5,TEXT1: D21; TEXT2: acrylate functional groups; ANC1: acrylate groups
+439,29e57b412eaefc27,acrylate groups,acrylate ion,D21,0.5,TEXT1: D21; TEXT2: acrylate ion; ANC1: acrylate groups
+440,75320ab4da05f063,acrylate groups,acrylate monomers,D21,0.5,TEXT1: D21; TEXT2: acrylate monomers; ANC1: acrylate groups
+441,44838ca1408d4062,acrylate groups,acrylate units,D21,0.75,TEXT1: D21; TEXT2: acrylate units; ANC1: acrylate groups
+442,6a302272df355a02,acrylate groups,acrylic acid,D21,0.5,TEXT1: D21; TEXT2: acrylic acid; ANC1: acrylate groups
+443,2aca7772d60e9b85,acrylate groups,aryl halide,D21,0.0,TEXT1: D21; TEXT2: aryl halide; ANC1: acrylate groups
+444,04645ab8f8440ef2,acrylate groups,carbonyl carbon,D21,0.25,TEXT1: D21; TEXT2: carbonyl carbon; ANC1: acrylate groups
+445,412c0283782baf17,acrylate groups,carboxylic acid groups,D21,0.5,TEXT1: D21; TEXT2: carboxylic acid groups; ANC1: acrylate groups
+446,f3d5fb05051f8780,acrylate groups,coametic,D21,0.25,TEXT1: D21; TEXT2: coametic; ANC1: acrylate groups
+447,75f672cfb24c971a,acrylate groups,comonomer,D21,0.25,TEXT1: D21; TEXT2: comonomer; ANC1: acrylate groups
+448,2aca7f3b8f850a30,acrylate groups,contained acrylate groups,D21,0.75,TEXT1: D21; TEXT2: contained acrylate groups; ANC1: acrylate groups
+449,30bec6163fc66c8a,acrylate groups,contained acrylate units,D21,0.5,TEXT1: D21; TEXT2: contained acrylate units; ANC1: acrylate groups
+450,87cc8a2e91de1b35,acrylate groups,contained functional groups,D21,0.5,TEXT1: D21; TEXT2: contained functional groups; ANC1: acrylate groups
+451,4cc46a4c911221aa,acrylate groups,contained functional units,D21,0.25,TEXT1: D21; TEXT2: contained functional units; ANC1: acrylate groups
+452,cf4841539c8bb76c,acrylate groups,copolymerized acrylate groups,D21,0.5,TEXT1: D21; TEXT2: copolymerized acrylate groups; ANC1: acrylate groups
+453,61749d6da627c2d7,acrylate groups,copolymerized acrylate units,D21,0.5,TEXT1: D21; TEXT2: copolymerized acrylate units; ANC1: acrylate groups
+454,fa22460c39ab9d9b,acrylate groups,copolymerized functional groups,D21,0.5,TEXT1: D21; TEXT2: copolymerized functional groups; ANC1: acrylate groups
+455,cf81da4d957e3801,acrylate groups,copolymerized functional units,D21,0.25,TEXT1: D21; TEXT2: copolymerized functional units; ANC1: acrylate groups
+456,58c50ffeacb6cc7c,acrylate groups,copolymers,D21,0.25,TEXT1: D21; TEXT2: copolymers; ANC1: acrylate groups
+457,bcd313b2f1261690,acrylate groups,ester group,D21,0.25,TEXT1: D21; TEXT2: ester group; ANC1: acrylate groups
+458,59a893900410eb32,acrylate groups,functional acrylate,D21,0.5,TEXT1: D21; TEXT2: functional acrylate; ANC1: acrylate groups
+459,58b641e50fb6cafa,acrylate groups,functional groups,D21,0.5,TEXT1: D21; TEXT2: functional groups; ANC1: acrylate groups
+460,678664cac07e41bb,acrylate groups,group discussion,D21,0.0,TEXT1: D21; TEXT2: group discussion; ANC1: acrylate groups
+461,8484abb7e90369b4,acrylate groups,group of students,D21,0.0,TEXT1: D21; TEXT2: group of students; ANC1: acrylate groups
+462,a5805aecd31c8a3d,acrylate groups,groups,D21,0.5,TEXT1: D21; TEXT2: groups; ANC1: acrylate groups
+463,f030009ac7858e1b,acrylate groups,interpolymer invention,D21,0.25,TEXT1: D21; TEXT2: interpolymer invention; ANC1: acrylate groups
+464,7e926d0b5d058211,acrylate groups,maleic acid groups,D21,0.0,TEXT1: D21; TEXT2: maleic acid groups; ANC1: acrylate groups
+465,3471eb2b93cfa2e6,acrylate groups,medical group,D21,0.0,TEXT1: D21; TEXT2: medical group; ANC1: acrylate groups
+466,d48694a8ad555700,acrylate groups,methacrylate,D21,0.5,TEXT1: D21; TEXT2: methacrylate; ANC1: acrylate groups
+467,9969c776a7fb414c,acrylate groups,methacrylate groups,D21,0.5,TEXT1: D21; TEXT2: methacrylate groups; ANC1: acrylate groups
+468,e75fc86dbafdb7c7,acrylate groups,methacrylate units,D21,0.5,TEXT1: D21; TEXT2: methacrylate units; ANC1: acrylate groups
+469,09a1f41e2b865a47,acrylate groups,methyl acrylate,D21,0.5,TEXT1: D21; TEXT2: methyl acrylate; ANC1: acrylate groups
+470,7914306bc48a0838,acrylate groups,methyl methacrylate,D21,0.5,TEXT1: D21; TEXT2: methyl methacrylate; ANC1: acrylate groups
+471,319b7c6945947a74,acrylate groups,modified acrylates,D21,0.5,TEXT1: D21; TEXT2: modified acrylates; ANC1: acrylate groups
+472,957a269530fc9821,acrylate groups,monomers,D21,0.25,TEXT1: D21; TEXT2: monomers; ANC1: acrylate groups
+473,07f1cfe84cd4ebdc,acrylate groups,nitro group,D21,0.0,TEXT1: D21; TEXT2: nitro group; ANC1: acrylate groups
+474,a503b483ac9afb67,acrylate groups,paper,D21,0.25,TEXT1: D21; TEXT2: paper; ANC1: acrylate groups
+475,f35229a01aa432ce,acrylate groups,pendant group,D21,0.0,TEXT1: D21; TEXT2: pendant group; ANC1: acrylate groups
+476,35d87b342327bd33,acrylate groups,polymers,D21,0.5,TEXT1: D21; TEXT2: polymers; ANC1: acrylate groups
+477,0ac200fd42197ed4,acrylate groups,prop 2 enoates,D21,0.75,TEXT1: D21; TEXT2: prop 2 enoates; ANC1: acrylate groups
+478,9b7d39be21417b42,acrylate groups,salts and esters,D21,0.25,TEXT1: D21; TEXT2: salts and esters; ANC1: acrylate groups
+479,f0afee8d14f18797,acrylate groups,sheet,D21,0.25,TEXT1: D21; TEXT2: sheet; ANC1: acrylate groups
+480,be14b93b6752a57e,acrylate groups,unsaturated groups,D21,0.25,TEXT1: D21; TEXT2: unsaturated groups; ANC1: acrylate groups
+481,d334a04b6909c5f6,acrylate groups,unsaturated units,D21,0.25,TEXT1: D21; TEXT2: unsaturated units; ANC1: acrylate groups
+482,b4cacc7dd03a25fe,acrylate groups,vinyl group,D21,0.5,TEXT1: D21; TEXT2: vinyl group; ANC1: acrylate groups
+483,6105b52e4bcf0abb,activating position,absence,A61,0.0,TEXT1: A61; TEXT2: absence; ANC1: activating position
+484,c7fbcaa0df74f102,activating position,activator,A61,0.5,TEXT1: A61; TEXT2: activator; ANC1: activating position
+485,94ce7cb98d619bba,activating position,activator position,A61,0.5,TEXT1: A61; TEXT2: activator position; ANC1: activating position
+486,a523f84ada6c4d21,activating position,activator site,A61,0.5,TEXT1: A61; TEXT2: activator site; ANC1: activating position
+487,47684a747ad281e7,activating position,aperture,A61,0.25,TEXT1: A61; TEXT2: aperture; ANC1: activating position
+488,1af618acd3e19f2f,activating position,aperture position,A61,0.25,TEXT1: A61; TEXT2: aperture position; ANC1: activating position
+489,eb35f588d63f43be,activating position,aperture site,A61,0.25,TEXT1: A61; TEXT2: aperture site; ANC1: activating position
+490,8a118a1fb708fe82,activating position,distal extended position,A61,0.5,TEXT1: A61; TEXT2: distal extended position; ANC1: activating position
+491,8e4ce9e5e4c3d307,activating position,distal extended state,A61,0.5,TEXT1: A61; TEXT2: distal extended state; ANC1: activating position
+492,c028e7aebb74463a,activating position,distal position,A61,0.5,TEXT1: A61; TEXT2: distal position; ANC1: activating position
+493,6e29a7d9311fffe0,activating position,distal state,A61,0.5,TEXT1: A61; TEXT2: distal state; ANC1: activating position
+494,79b666bec1fa8478,activating position,initial position,A61,0.5,TEXT1: A61; TEXT2: initial position; ANC1: activating position
+495,ac62e311f00a1bb8,activating position,intermediate position,A61,0.5,TEXT1: A61; TEXT2: intermediate position; ANC1: activating position
+496,e2451db8769b1a79,activating position,lancing,A61,0.0,TEXT1: A61; TEXT2: lancing; ANC1: activating position
+497,c6de1b1fa20e48e2,activating position,lancing configuration,A61,0.0,TEXT1: A61; TEXT2: lancing configuration; ANC1: activating position
+498,11028de506fe1d8a,activating position,lancing position,A61,0.25,TEXT1: A61; TEXT2: lancing position; ANC1: activating position
+499,f0cd0109ece17b16,activating position,opening,A61,0.25,TEXT1: A61; TEXT2: opening; ANC1: activating position
+500,942aaebb8a21b885,activating position,opening position,A61,0.5,TEXT1: A61; TEXT2: opening position; ANC1: activating position
+501,7aa290aad3395c15,activating position,proximal distal position,A61,0.5,TEXT1: A61; TEXT2: proximal distal position; ANC1: activating position
+502,3a2bf536577be7cc,activating position,proximal extended position,A61,0.5,TEXT1: A61; TEXT2: proximal extended position; ANC1: activating position
+503,eebc7703505b77d1,activating position,proximal extended state,A61,0.5,TEXT1: A61; TEXT2: proximal extended state; ANC1: activating position
+504,6efac55f99e207be,activating position,retracted position,A61,0.25,TEXT1: A61; TEXT2: retracted position; ANC1: activating position
+505,b860ef436f6927c9,activating position,retracted state,A61,0.25,TEXT1: A61; TEXT2: retracted state; ANC1: activating position
+506,cac0e7e304e8c739,activating position,use configuration,A61,0.25,TEXT1: A61; TEXT2: use configuration; ANC1: activating position
+507,7971eb7713bc423e,activating position,use position,A61,0.5,TEXT1: A61; TEXT2: use position; ANC1: activating position
+508,a19cb161e2ec972b,activating position,activated grid position,B65,0.5,TEXT1: B65; TEXT2: activated grid position; ANC1: activating position
+509,4f24e6d79cc0c22b,activating position,activated position,B65,1.0,TEXT1: B65; TEXT2: activated position; ANC1: activating position
+510,b68de1ed513f26ed,activating position,activating area,B65,0.75,TEXT1: B65; TEXT2: activating area; ANC1: activating position
+511,dcbefd3e4809caf6,activating position,activating card,B65,0.0,TEXT1: B65; TEXT2: activating card; ANC1: activating position
+512,764d14d6ced9433d,activating position,activating location,B65,0.75,TEXT1: B65; TEXT2: activating location; ANC1: activating position
+513,85517b32188f19bd,activating position,activating point,B65,0.75,TEXT1: B65; TEXT2: activating point; ANC1: activating position
+514,80f111f091cf8e4d,activating position,activating position,B65,1.0,TEXT1: B65; TEXT2: activating position; ANC1: activating position
+515,5a2d76c624091eb7,activating position,activating powder,B65,0.0,TEXT1: B65; TEXT2: activating powder; ANC1: activating position
+516,d5098392a50e2b48,activating position,activating spot,B65,0.75,TEXT1: B65; TEXT2: activating spot; ANC1: activating position
+517,ce9403320e3959d1,activating position,activation function in neural network,B65,0.0,TEXT1: B65; TEXT2: activation function in neural network; ANC1: activating position
+518,f99a2b6f5aac24bc,activating position,activation position,B65,1.0,TEXT1: B65; TEXT2: activation position; ANC1: activating position
+519,82cf5fa292fe36aa,activating position,cell position,B65,0.0,TEXT1: B65; TEXT2: cell position; ANC1: activating position
+520,996755e2ee778603,activating position,closed configuration,B65,0.25,TEXT1: B65; TEXT2: closed configuration; ANC1: activating position
+521,5620e40ce5c84a8e,activating position,closed position,B65,0.5,TEXT1: B65; TEXT2: closed position; ANC1: activating position
+522,47ae76bb273ee706,activating position,conveyor chain,B65,0.25,TEXT1: B65; TEXT2: conveyor chain; ANC1: activating position
+523,471b36e2ea1b4528,activating position,extended position,B65,0.5,TEXT1: B65; TEXT2: extended position; ANC1: activating position
+524,804d81357f95f18c,activating position,heater tray,B65,0.25,TEXT1: B65; TEXT2: heater tray; ANC1: activating position
+525,f202e9e69d6cb7a9,activating position,housing,B65,0.25,TEXT1: B65; TEXT2: housing; ANC1: activating position
+526,495cefad61f85b00,activating position,knotter operating mechanism,B65,0.25,TEXT1: B65; TEXT2: knotter operating mechanism; ANC1: activating position
+527,45aff1c18db5a3fb,activating position,open configuration,B65,0.25,TEXT1: B65; TEXT2: open configuration; ANC1: activating position
+528,1254b6ae05df9154,activating position,open point,B65,0.25,TEXT1: B65; TEXT2: open point; ANC1: activating position
+529,2b1eedf30b557256,activating position,open position,B65,0.5,TEXT1: B65; TEXT2: open position; ANC1: activating position
+530,7e718fd12fbe93eb,activating position,operating position,B65,0.75,TEXT1: B65; TEXT2: operating position; ANC1: activating position
+531,6a0b5b6317f400f2,activating position,outer container,B65,0.25,TEXT1: B65; TEXT2: outer container; ANC1: activating position
+532,443dcb6d0eb6acf9,activating position,position of thyroid gland,B65,0.0,TEXT1: B65; TEXT2: position of thyroid gland; ANC1: activating position
+533,e0b0245fce4860cd,activating position,producing a coil,B65,0.25,TEXT1: B65; TEXT2: producing a coil; ANC1: activating position
+534,dbc5964437d57393,activating position,protruding position,B65,0.5,TEXT1: B65; TEXT2: protruding position; ANC1: activating position
+535,fe347fa6f0a7b2f5,activating position,sealed package,B65,0.25,TEXT1: B65; TEXT2: sealed package; ANC1: activating position
+536,e32524e50636d475,activating position,spinal cord position,B65,0.0,TEXT1: B65; TEXT2: spinal cord position; ANC1: activating position
+537,b1d635a8ff2e50eb,activating position,activated,G06,0.5,TEXT1: G06; TEXT2: activated; ANC1: activating position
+538,167d7f4323fdf14a,activating position,activated position,G06,1.0,TEXT1: G06; TEXT2: activated position; ANC1: activating position
+539,e4942c2650098e48,activating position,activating,G06,0.5,TEXT1: G06; TEXT2: activating; ANC1: activating position
+540,7c9540ef0369314d,activating position,activating condition,G06,0.5,TEXT1: G06; TEXT2: activating condition; ANC1: activating position
+541,3d63e76d3e204be0,activating position,activating configuration,G06,0.5,TEXT1: G06; TEXT2: activating configuration; ANC1: activating position
+542,b5d1c49fb280b4eb,activating position,activating positions,G06,1.0,TEXT1: G06; TEXT2: activating positions; ANC1: activating position
+543,730575abd11740c1,activating position,activation,G06,0.5,TEXT1: G06; TEXT2: activation; ANC1: activating position
+544,998313afb86d7b3a,activating position,activation condition,G06,0.5,TEXT1: G06; TEXT2: activation condition; ANC1: activating position
+545,8a89de538b046f05,activating position,activation configuration,G06,0.5,TEXT1: G06; TEXT2: activation configuration; ANC1: activating position
+546,11999f823ace67f2,activating position,activation position,G06,1.0,TEXT1: G06; TEXT2: activation position; ANC1: activating position
+547,f2241d48c60194ea,activating position,activation state,G06,0.5,TEXT1: G06; TEXT2: activation state; ANC1: activating position
+548,8ed41bd0deb21205,activating position,active material,G06,0.0,TEXT1: G06; TEXT2: active material; ANC1: activating position
+549,fbf3be656271239a,activating position,active region,G06,0.0,TEXT1: G06; TEXT2: active region; ANC1: activating position
+550,e3e55d87aa888909,activating position,active transport,G06,0.0,TEXT1: G06; TEXT2: active transport; ANC1: activating position
+551,32fb4aee9c38e5f9,activating position,active working location,G06,0.5,TEXT1: G06; TEXT2: active working location; ANC1: activating position
+552,8ccbdea29c0b7798,activating position,deactivating position,G06,0.25,TEXT1: G06; TEXT2: deactivating position; ANC1: activating position
+553,94d3a472eb92a3d0,activating position,designated port,G06,0.25,TEXT1: G06; TEXT2: designated port; ANC1: activating position
+554,294e446cfcd824d8,activating position,functional location,G06,0.5,TEXT1: G06; TEXT2: functional location; ANC1: activating position
+555,4517068e81ef48bf,activating position,geoposition,G06,0.25,TEXT1: G06; TEXT2: geoposition; ANC1: activating position
+556,ccfe9a005c5a7ba5,activating position,initial operative position,G06,0.5,TEXT1: G06; TEXT2: initial operative position; ANC1: activating position
+557,9e99e2d5fcebfa0f,activating position,initial runner,G06,0.0,TEXT1: G06; TEXT2: initial runner; ANC1: activating position
+558,563ea708f556fa8d,activating position,initial symptoms,G06,0.0,TEXT1: G06; TEXT2: initial symptoms; ANC1: activating position
+559,459cfb8535038bd5,activating position,location finder,G06,0.25,TEXT1: G06; TEXT2: location finder; ANC1: activating position
+560,95e983d13827933f,activating position,nodes,G06,0.25,TEXT1: G06; TEXT2: nodes; ANC1: activating position
+561,6928c09ec2834ef6,activating position,operating positions,G06,0.5,TEXT1: G06; TEXT2: operating positions; ANC1: activating position
+562,3e0b9c50e903f63f,activating position,operative person,G06,0.0,TEXT1: G06; TEXT2: operative person; ANC1: activating position
+563,c8a232d8702877ad,activating position,positions,G06,0.5,TEXT1: G06; TEXT2: positions; ANC1: activating position
+564,51da4ca78be17b5a,activating position,protected link,G06,0.25,TEXT1: G06; TEXT2: protected link; ANC1: activating position
+565,a8c0dfe520797e6f,activating position,routing topology,G06,0.5,TEXT1: G06; TEXT2: routing topology; ANC1: activating position
+566,5b325222ada8449b,activating position,working position,G06,0.75,TEXT1: G06; TEXT2: working position; ANC1: activating position
+567,29a99812436cf029,acylate with acids,acetyl chloride,C07,0.5,TEXT1: C07; TEXT2: acetyl chloride; ANC1: acylate with acids
+568,d8ee79dc58f69e4e,acylate with acids,acid functionalized acylate,C07,0.75,TEXT1: C07; TEXT2: acid functionalized acylate; ANC1: acylate with acids
+569,07cc60237b36e09a,acylate with acids,acid with acyl introduction,C07,0.5,TEXT1: C07; TEXT2: acid with acyl introduction; ANC1: acylate with acids
+570,a61fe22304f0c51e,acylate with acids,acidity,C07,0.0,TEXT1: C07; TEXT2: acidity; ANC1: acylate with acids
+571,800670191b5a1ce4,acylate with acids,acyl groups into acid,C07,0.5,TEXT1: C07; TEXT2: acyl groups into acid; ANC1: acylate with acids
+572,a62cd63eb3259492,acylate with acids,acylate,C07,0.5,TEXT1: C07; TEXT2: acylate; ANC1: acylate with acids
+573,d94b01630f8c78c4,acylate with acids,acylate with chloride,C07,0.25,TEXT1: C07; TEXT2: acylate with chloride; ANC1: acylate with acids
+574,3e840f4c3eb385f3,acylate with acids,acylating agent,C07,0.5,TEXT1: C07; TEXT2: acylating agent; ANC1: acylate with acids
+575,6478d08ea6a84bb9,acylate with acids,acylation with acid,C07,0.5,TEXT1: C07; TEXT2: acylation with acid; ANC1: acylate with acids
+576,b81638ff55641a5c,acylate with acids,bouquet,C07,0.0,TEXT1: C07; TEXT2: bouquet; ANC1: acylate with acids
+577,d514f96f94da6a95,acylate with acids,cellulose acylate films,C07,0.5,TEXT1: C07; TEXT2: cellulose acylate films; ANC1: acylate with acids
+578,21d33c84860ae8aa,acylate with acids,electrophile,C07,0.25,TEXT1: C07; TEXT2: electrophile; ANC1: acylate with acids
+579,c9afb9ffb47c1a21,acylate with acids,fatty acids,C07,0.25,TEXT1: C07; TEXT2: fatty acids; ANC1: acylate with acids
+580,1d126a4bfce05502,acylate with acids,gastric acidity,C07,0.0,TEXT1: C07; TEXT2: gastric acidity; ANC1: acylate with acids
+581,3519e572bbb603ea,acylate with acids,introduction session,C07,0.0,TEXT1: C07; TEXT2: introduction session; ANC1: acylate with acids
+582,ae50be9c7071a6b3,acylate with acids,metal catalysts,C07,0.25,TEXT1: C07; TEXT2: metal catalysts; ANC1: acylate with acids
+583,9ec087b284418921,acylate with acids,modification,C07,0.25,TEXT1: C07; TEXT2: modification; ANC1: acylate with acids
+584,79bd33a5956779a3,acylate with acids,produce cellulose acylate film,C07,0.5,TEXT1: C07; TEXT2: produce cellulose acylate film; ANC1: acylate with acids
+585,32bddfe9a9b7b658,acylate with acids,self introduction,C07,0.0,TEXT1: C07; TEXT2: self introduction; ANC1: acylate with acids
+586,af13e0e0b8a96cff,acylate with acids,ulcer,C07,0.0,TEXT1: C07; TEXT2: ulcer; ANC1: acylate with acids
+587,4d968c23f7ac3cb6,adapt for learning,adapt for training,G16,0.75,TEXT1: G16; TEXT2: adapt for training; ANC1: adapt for learning
+588,42517a4fb1db1e0e,adapt for learning,adaptation of polar bear,G16,0.0,TEXT1: G16; TEXT2: adaptation of polar bear; ANC1: adapt for learning
+589,802d7def0880ba06,adapt for learning,adapted mind,G16,0.0,TEXT1: G16; TEXT2: adapted mind; ANC1: adapt for learning
+590,58e422f2900573eb,adapt for learning,adapted vehicle,G16,0.0,TEXT1: G16; TEXT2: adapted vehicle; ANC1: adapt for learning
+591,ea21306ca6b14f9c,adapt for learning,adapter,G16,0.0,TEXT1: G16; TEXT2: adapter; ANC1: adapt for learning
+592,b81ad0cb32432c79,adapt for learning,adaptive learning,G16,0.75,TEXT1: G16; TEXT2: adaptive learning; ANC1: adapt for learning
+593,bda16265afb4334c,adapt for learning,adaptive learning communication,G16,0.75,TEXT1: G16; TEXT2: adaptive learning communication; ANC1: adapt for learning
+594,e6aec60a287feb9f,adapt for learning,channel of communication,G16,0.25,TEXT1: G16; TEXT2: channel of communication; ANC1: adapt for learning
+595,542e79f49cb94d73,adapt for learning,charger,G16,0.0,TEXT1: G16; TEXT2: charger; ANC1: adapt for learning
+596,34ef6d6ccddea99c,adapt for learning,communication channels,G16,0.25,TEXT1: G16; TEXT2: communication channels; ANC1: adapt for learning
+597,a7391a72a76af463,adapt for learning,configured learning,G16,0.75,TEXT1: G16; TEXT2: configured learning; ANC1: adapt for learning
+598,28fae0424e4a31b4,adapt for learning,constructive learning,G16,0.75,TEXT1: G16; TEXT2: constructive learning; ANC1: adapt for learning
+599,3219bd7e9739a369,adapt for learning,food adaptation,G16,0.0,TEXT1: G16; TEXT2: food adaptation; ANC1: adapt for learning
+600,41969efe07f04006,adapt for learning,language education,G16,0.25,TEXT1: G16; TEXT2: language education; ANC1: adapt for learning
+601,133bdf7c31f1a9b9,adapt for learning,language learning,G16,0.25,TEXT1: G16; TEXT2: language learning; ANC1: adapt for learning
+602,0190edb4d1662971,adapt for learning,provided learning,G16,0.75,TEXT1: G16; TEXT2: provided learning; ANC1: adapt for learning
+603,737535b3944a0b8d,adapt for learning,provided learnings,G16,0.75,TEXT1: G16; TEXT2: provided learnings; ANC1: adapt for learning
+604,2d2396d260d129c8,adapt for learning,speech communication,G16,0.25,TEXT1: G16; TEXT2: speech communication; ANC1: adapt for learning
+605,aafbe036f81a4e13,adapt for learning,training,G16,0.5,TEXT1: G16; TEXT2: training; ANC1: adapt for learning
+606,cc7ff5a59c586ef9,adapt for learning,use for learning,G16,0.75,TEXT1: G16; TEXT2: use for learning; ANC1: adapt for learning
+607,cad315fc0098485c,adapt for learning,verbal communication,G16,0.25,TEXT1: G16; TEXT2: verbal communication; ANC1: adapt for learning
+608,c63f1031952022d3,adaptive linear,adaptive,G01,0.5,TEXT1: G01; TEXT2: adaptive; ANC1: adaptive linear
+609,eba413aaa16f34a4,adaptive linear,adaptive behaviour,G01,0.0,TEXT1: G01; TEXT2: adaptive behaviour; ANC1: adaptive linear
+610,3ff92c1378b9759f,adaptive linear,adaptive equalizer,G01,0.25,TEXT1: G01; TEXT2: adaptive equalizer; ANC1: adaptive linear
+611,cac5e4e6fb94d91d,adaptive linear,adaptive immunity,G01,0.0,TEXT1: G01; TEXT2: adaptive immunity; ANC1: adaptive linear
+612,d61bae69a7e7dbba,adaptive linear,adaptive linear structured light,G01,0.75,TEXT1: G01; TEXT2: adaptive linear structured light; ANC1: adaptive linear
+613,025e14bd35fbbf93,adaptive linear,adaptive modular guideway,G01,0.5,TEXT1: G01; TEXT2: adaptive modular guideway; ANC1: adaptive linear
+614,575768cc62935f81,adaptive linear,adaptive radiation,G01,0.0,TEXT1: G01; TEXT2: adaptive radiation; ANC1: adaptive linear
+615,723761ec30701ee5,adaptive linear,adaptive signal,G01,0.5,TEXT1: G01; TEXT2: adaptive signal; ANC1: adaptive linear
+616,52f549ff13247fef,adaptive linear,adaptive skills,G01,0.0,TEXT1: G01; TEXT2: adaptive skills; ANC1: adaptive linear
+617,fd8fadd477385354,adaptive linear,adaptive structure,G01,0.5,TEXT1: G01; TEXT2: adaptive structure; ANC1: adaptive linear
+618,d9517c054159e8a9,adaptive linear,adjustable linear,G01,0.75,TEXT1: G01; TEXT2: adjustable linear; ANC1: adaptive linear
+619,bc0bd0c8e1fe1f36,adaptive linear,array,G01,0.0,TEXT1: G01; TEXT2: array; ANC1: adaptive linear
+620,64c7a6a4845c2ff7,adaptive linear,array signal,G01,0.25,TEXT1: G01; TEXT2: array signal; ANC1: adaptive linear
+621,21ff424351d29680,adaptive linear,artificial neural network,G01,0.25,TEXT1: G01; TEXT2: artificial neural network; ANC1: adaptive linear
+622,c1ff18bb35f951e8,adaptive linear,fixed pattern,G01,0.25,TEXT1: G01; TEXT2: fixed pattern; ANC1: adaptive linear
+623,73ee8f400a56f840,adaptive linear,flexible linear,G01,0.5,TEXT1: G01; TEXT2: flexible linear; ANC1: adaptive linear
+624,69ad5114df9f6cc0,adaptive linear,interpolation method,G01,0.25,TEXT1: G01; TEXT2: interpolation method; ANC1: adaptive linear
+625,401fdb79d3fbcea9,adaptive linear,linear adaptive,G01,0.75,TEXT1: G01; TEXT2: linear adaptive; ANC1: adaptive linear
+626,780098c1cab26b7d,adaptive linear,linear call,G01,0.0,TEXT1: G01; TEXT2: linear call; ANC1: adaptive linear
+627,ca1a5511e6ba7e9c,adaptive linear,linear equation,G01,0.0,TEXT1: G01; TEXT2: linear equation; ANC1: adaptive linear
+628,9d54577a09bd875a,adaptive linear,machine learning,G01,0.25,TEXT1: G01; TEXT2: machine learning; ANC1: adaptive linear
+629,a275e68801420759,adaptive linear,non linear adaptive,G01,0.25,TEXT1: G01; TEXT2: non linear adaptive; ANC1: adaptive linear
+630,7db0ebfad1012d8f,adaptive linear,self adaptive linear,G01,0.75,TEXT1: G01; TEXT2: self adaptive linear; ANC1: adaptive linear
+631,f0be7f47854fea1c,adaptive linear,signal,G01,0.5,TEXT1: G01; TEXT2: signal; ANC1: adaptive linear
+632,1db6ceba314385d2,adaptive linear,three dimensional measurement,G01,0.5,TEXT1: G01; TEXT2: three dimensional measurement; ANC1: adaptive linear
+633,52a7c2fd83aeb183,adaptive linear,time invariant filter,G01,0.5,TEXT1: G01; TEXT2: time invariant filter; ANC1: adaptive linear
+634,e8aa282521dc2bb6,adaptive linear,adapting,H04,0.25,TEXT1: H04; TEXT2: adapting; ANC1: adaptive linear
+635,c7981eb2712b238c,adaptive linear,adapting linear,H04,1.0,TEXT1: H04; TEXT2: adapting linear; ANC1: adaptive linear
+636,1f741731b5547b0d,adaptive linear,adaptive,H04,0.25,TEXT1: H04; TEXT2: adaptive; ANC1: adaptive linear
+637,848eb589b62260ec,adaptive linear,adaptive filter,H04,0.25,TEXT1: H04; TEXT2: adaptive filter; ANC1: adaptive linear
+638,e504ef7f72d131ae,adaptive linear,adaptive immunity,H04,0.0,TEXT1: H04; TEXT2: adaptive immunity; ANC1: adaptive linear
+639,36e747730166a75d,adaptive linear,adaptive linear combiner,H04,0.5,TEXT1: H04; TEXT2: adaptive linear combiner; ANC1: adaptive linear
+640,17888f3cc14fd0a3,adaptive linear,adaptive linear digital model,H04,0.5,TEXT1: H04; TEXT2: adaptive linear digital model; ANC1: adaptive linear
+641,eda3e53cd65e28d5,adaptive linear,adaptive linear equalization,H04,0.5,TEXT1: H04; TEXT2: adaptive linear equalization; ANC1: adaptive linear
+642,6a2f0308f283cc4c,adaptive linear,adaptive linear filter,H04,0.5,TEXT1: H04; TEXT2: adaptive linear filter; ANC1: adaptive linear
+643,39b96c6464d8f4e0,adaptive linear,adaptive nature,H04,0.5,TEXT1: H04; TEXT2: adaptive nature; ANC1: adaptive linear
+644,8923194a407e1d8e,adaptive linear,adaptive radiation,H04,0.0,TEXT1: H04; TEXT2: adaptive radiation; ANC1: adaptive linear
+645,37027c63c5b480b2,adaptive linear,automatic linear,H04,0.75,TEXT1: H04; TEXT2: automatic linear; ANC1: adaptive linear
+646,8718dc337665a636,adaptive linear,dynamic linear,H04,0.75,TEXT1: H04; TEXT2: dynamic linear; ANC1: adaptive linear
+647,b0796c5c5ac33580,adaptive linear,equalizer,H04,0.25,TEXT1: H04; TEXT2: equalizer; ANC1: adaptive linear
+648,bb4fe1d01682b78b,adaptive linear,linear adaptive,H04,0.75,TEXT1: H04; TEXT2: linear adaptive; ANC1: adaptive linear
+649,5f5da774cd33d157,adaptive linear,linear contrast enhancement,H04,0.25,TEXT1: H04; TEXT2: linear contrast enhancement; ANC1: adaptive linear
+650,c1bf58bac605ae4a,adaptive linear,linear graph,H04,0.0,TEXT1: H04; TEXT2: linear graph; ANC1: adaptive linear
+651,ad13855715768d00,adaptive linear,linear model,H04,0.0,TEXT1: H04; TEXT2: linear model; ANC1: adaptive linear
+652,0ea918472a29edd3,adaptive linear,linear pair of angles,H04,0.0,TEXT1: H04; TEXT2: linear pair of angles; ANC1: adaptive linear
+653,a98f4d7e3588b09d,adaptive linear,linearly adaptive,H04,0.75,TEXT1: H04; TEXT2: linearly adaptive; ANC1: adaptive linear
+654,321811ec93942a8d,adaptive linear,mp tc,H04,0.25,TEXT1: H04; TEXT2: mp tc; ANC1: adaptive linear
+655,4ea0d228a94ac406,adaptive linear,network,H04,0.25,TEXT1: H04; TEXT2: network; ANC1: adaptive linear
+656,e2722f3fab6a4d61,adaptive linear,non adaptive speckle filtering,H04,0.25,TEXT1: H04; TEXT2: non adaptive speckle filtering; ANC1: adaptive linear
+657,932587f50163c70d,adaptive linear,non linear model,H04,0.25,TEXT1: H04; TEXT2: non linear model; ANC1: adaptive linear
+658,f28652e82a866499,adaptive linear,recursion estimator,H04,0.25,TEXT1: H04; TEXT2: recursion estimator; ANC1: adaptive linear
+659,4603e13580940257,adhesive mounting,adhering mount,A47,0.75,TEXT1: A47; TEXT2: adhering mount; ANC1: adhesive mounting
+660,604210b7c7ce2f6a,adhesive mounting,adhesive,A47,0.5,TEXT1: A47; TEXT2: adhesive; ANC1: adhesive mounting
+661,44cbf2111c2c64d2,adhesive mounting,adhesive attachment,A47,0.5,TEXT1: A47; TEXT2: adhesive attachment; ANC1: adhesive mounting
+662,6a6a3892e7163781,adhesive mounting,adhesive bases,A47,0.5,TEXT1: A47; TEXT2: adhesive bases; ANC1: adhesive mounting
+663,14040ba79a8eaf1c,adhesive mounting,adhesive forces,A47,0.0,TEXT1: A47; TEXT2: adhesive forces; ANC1: adhesive mounting
+664,c243b889832efd48,adhesive mounting,adhesive layer,A47,0.5,TEXT1: A47; TEXT2: adhesive layer; ANC1: adhesive mounting
+665,7920ba9fb0bf4578,adhesive mounting,adhesive mount,A47,1.0,TEXT1: A47; TEXT2: adhesive mount; ANC1: adhesive mounting
+666,c41067454973a281,adhesive mounting,bracket mount,A47,0.25,TEXT1: A47; TEXT2: bracket mount; ANC1: adhesive mounting
+667,7f028ab59b51e8bc,adhesive mounting,cohesive mount,A47,0.5,TEXT1: A47; TEXT2: cohesive mount; ANC1: adhesive mounting
+668,850aecd06bbf71e0,adhesive mounting,fixation tape,A47,0.25,TEXT1: A47; TEXT2: fixation tape; ANC1: adhesive mounting
+669,29e5c85847547fc6,adhesive mounting,fixed mount,A47,0.25,TEXT1: A47; TEXT2: fixed mount; ANC1: adhesive mounting
+670,866dc5b03c941ba6,adhesive mounting,flange,A47,0.25,TEXT1: A47; TEXT2: flange; ANC1: adhesive mounting
+671,8ecccb4d676ae87b,adhesive mounting,flange comprising including,A47,0.25,TEXT1: A47; TEXT2: flange comprising including; ANC1: adhesive mounting
+672,ed3fd0063cd64996,adhesive mounting,flange comprising mounting,A47,0.5,TEXT1: A47; TEXT2: flange comprising mounting; ANC1: adhesive mounting
+673,f516bb6aa18848f5,adhesive mounting,flange including,A47,0.25,TEXT1: A47; TEXT2: flange including; ANC1: adhesive mounting
+674,f3186d573b97d3a6,adhesive mounting,flange mounting,A47,0.5,TEXT1: A47; TEXT2: flange mounting; ANC1: adhesive mounting
+675,6a820afabde811e6,adhesive mounting,glue mounting,A47,0.5,TEXT1: A47; TEXT2: glue mounting; ANC1: adhesive mounting
+676,e4627697c9dd34b8,adhesive mounting,lens mount,A47,0.0,TEXT1: A47; TEXT2: lens mount; ANC1: adhesive mounting
+677,888812c16263cd82,adhesive mounting,mountain range,A47,0.0,TEXT1: A47; TEXT2: mountain range; ANC1: adhesive mounting
+678,0bc7a00ea5f87607,adhesive mounting,mounting,A47,0.5,TEXT1: A47; TEXT2: mounting; ANC1: adhesive mounting
+679,693e26f85064121f,adhesive mounting,mounting a mountain,A47,0.0,TEXT1: A47; TEXT2: mounting a mountain; ANC1: adhesive mounting
+680,5590ef4bf803f45c,adhesive mounting,mounting bracket,A47,0.25,TEXT1: A47; TEXT2: mounting bracket; ANC1: adhesive mounting
+681,47f88e73e0be6cb7,adhesive mounting,mounting comprising including,A47,0.5,TEXT1: A47; TEXT2: mounting comprising including; ANC1: adhesive mounting
+682,36bed5c2f72a1b8c,adhesive mounting,mounting flange including,A47,0.5,TEXT1: A47; TEXT2: mounting flange including; ANC1: adhesive mounting
+683,b1e983e707491913,adhesive mounting,mounting flange mounting,A47,0.5,TEXT1: A47; TEXT2: mounting flange mounting; ANC1: adhesive mounting
+684,56f6684aa5e40205,adhesive mounting,mounting glues,A47,0.75,TEXT1: A47; TEXT2: mounting glues; ANC1: adhesive mounting
+685,c7106e6bec0a5546,adhesive mounting,mounting needle,A47,0.0,TEXT1: A47; TEXT2: mounting needle; ANC1: adhesive mounting
+686,4c7582b58660a761,adhesive mounting,mounting of file system,A47,0.0,TEXT1: A47; TEXT2: mounting of file system; ANC1: adhesive mounting
+687,342b322ca958f5e4,adhesive mounting,mounting using adhesives,A47,0.75,TEXT1: A47; TEXT2: mounting using adhesives; ANC1: adhesive mounting
+688,e08ebe2fc84bdd2d,adhesive mounting,rapid drying,A47,0.25,TEXT1: A47; TEXT2: rapid drying; ANC1: adhesive mounting
+689,d1130bfa30d4c963,adhesive mounting,releasable mounting,A47,0.5,TEXT1: A47; TEXT2: releasable mounting; ANC1: adhesive mounting
+690,029d41e0bd7c2a2b,adhesive mounting,removable adhesive mounting,A47,0.5,TEXT1: A47; TEXT2: removable adhesive mounting; ANC1: adhesive mounting
+691,d8237672463a6745,adhesive mounting,screw mount,A47,0.25,TEXT1: A47; TEXT2: screw mount; ANC1: adhesive mounting
+692,13e4675ca120a8d7,adhesive mounting,separate adhesive mounting,A47,0.5,TEXT1: A47; TEXT2: separate adhesive mounting; ANC1: adhesive mounting
+693,48c19242424289f2,adhesive mounting,sticking mount,A47,0.75,TEXT1: A47; TEXT2: sticking mount; ANC1: adhesive mounting
+694,a883a1cfd3a7901c,adhesive mounting,temporary mounting,A47,0.5,TEXT1: A47; TEXT2: temporary mounting; ANC1: adhesive mounting
+695,00cfce1343f0f6ca,adjacent laterally,adjacent angles,A41,0.0,TEXT1: A41; TEXT2: adjacent angles; ANC1: adjacent laterally
+696,cef450f21392c146,adjacent laterally,adjacent front,A41,0.25,TEXT1: A41; TEXT2: adjacent front; ANC1: adjacent laterally
+697,68fd6e60bf1f6c55,adjacent laterally,adjacent lateral surface,A41,0.5,TEXT1: A41; TEXT2: adjacent lateral surface; ANC1: adjacent laterally
+698,d56c8fa6ab244f7e,adjacent laterally,adjacent lateral surface area,A41,0.5,TEXT1: A41; TEXT2: adjacent lateral surface area; ANC1: adjacent laterally
+699,c8237822cf69bd9d,adjacent laterally,adjacent sides,A41,0.5,TEXT1: A41; TEXT2: adjacent sides; ANC1: adjacent laterally
+700,e5a6dccf738babe3,adjacent laterally,adjacent to mall,A41,0.0,TEXT1: A41; TEXT2: adjacent to mall; ANC1: adjacent laterally
+701,8dc9f26a935d7067,adjacent laterally,adjacent to office,A41,0.0,TEXT1: A41; TEXT2: adjacent to office; ANC1: adjacent laterally
+702,76035630631d4c11,adjacent laterally,adjacent to side,A41,0.5,TEXT1: A41; TEXT2: adjacent to side; ANC1: adjacent laterally
+703,552eb169665e96cb,adjacent laterally,adjacent to station,A41,0.0,TEXT1: A41; TEXT2: adjacent to station; ANC1: adjacent laterally
+704,6e23e2d4c3900f4a,adjacent laterally,area of the base,A41,0.25,TEXT1: A41; TEXT2: area of the base; ANC1: adjacent laterally
+705,41f31e8760c06dc9,adjacent laterally,arranged laterally,A41,0.75,TEXT1: A41; TEXT2: arranged laterally; ANC1: adjacent laterally
+706,2ff5da7e57ce1918,adjacent laterally,corresponding inwardly,A41,0.25,TEXT1: A41; TEXT2: corresponding inwardly; ANC1: adjacent laterally
+707,38a44a01025c1efc,adjacent laterally,height,A41,0.25,TEXT1: A41; TEXT2: height; ANC1: adjacent laterally
+708,854385d8145c70f1,adjacent laterally,inwardly,A41,0.25,TEXT1: A41; TEXT2: inwardly; ANC1: adjacent laterally
+709,42efdbe3432a80ce,adjacent laterally,lateral communication,A41,0.0,TEXT1: A41; TEXT2: lateral communication; ANC1: adjacent laterally
+710,87bf87c2d46b34cd,adjacent laterally,lateral object,A41,0.25,TEXT1: A41; TEXT2: lateral object; ANC1: adjacent laterally
+711,c054684e5fef6369,adjacent laterally,lateral speech,A41,0.0,TEXT1: A41; TEXT2: lateral speech; ANC1: adjacent laterally
+712,9ef49029420f983e,adjacent laterally,laterally,A41,0.5,TEXT1: A41; TEXT2: laterally; ANC1: adjacent laterally
+713,f3d0de522d259188,adjacent laterally,laterally adjacent,A41,1.0,TEXT1: A41; TEXT2: laterally adjacent; ANC1: adjacent laterally
+714,840a9484e3e0723d,adjacent laterally,laterally on side,A41,0.5,TEXT1: A41; TEXT2: laterally on side; ANC1: adjacent laterally
+715,475d2248f395fa2a,adjacent laterally,laterally positioned,A41,0.5,TEXT1: A41; TEXT2: laterally positioned; ANC1: adjacent laterally
+716,bdff6e47152f552c,adjacent laterally,longitudinally of laterally,A41,0.5,TEXT1: A41; TEXT2: longitudinally of laterally; ANC1: adjacent laterally
+717,55ab7af3335daeb0,adjacent laterally,longitudinally spaced laterally,A41,0.5,TEXT1: A41; TEXT2: longitudinally spaced laterally; ANC1: adjacent laterally
+718,bb9b9f1465e64419,adjacent laterally,opposite sides,A41,0.25,TEXT1: A41; TEXT2: opposite sides; ANC1: adjacent laterally
+719,9658a68dedd1b4cc,adjacent laterally,radius,A41,0.25,TEXT1: A41; TEXT2: radius; ANC1: adjacent laterally
+720,36898d71213534db,adjacent laterally,respective inwardly,A41,0.25,TEXT1: A41; TEXT2: respective inwardly; ANC1: adjacent laterally
+721,f399a07acd4ae85b,adjacent laterally,respective outwardly,A41,0.25,TEXT1: A41; TEXT2: respective outwardly; ANC1: adjacent laterally
+722,17da7fd72ad4b79f,adjacent laterally,spaced lateral sides,A41,0.5,TEXT1: A41; TEXT2: spaced lateral sides; ANC1: adjacent laterally
+723,d05b9732245c2951,adjacent laterally,spaced laterally,A41,0.5,TEXT1: A41; TEXT2: spaced laterally; ANC1: adjacent laterally
+724,29464439005a95a6,adjacent laterally,upwardly,A41,0.25,TEXT1: A41; TEXT2: upwardly; ANC1: adjacent laterally
+725,11e603a4be693d87,adjacent laterally,abutting laterally,B23,0.75,TEXT1: B23; TEXT2: abutting laterally; ANC1: adjacent laterally
+726,36acf803ce0a6284,adjacent laterally,adjacent,B23,0.5,TEXT1: B23; TEXT2: adjacent; ANC1: adjacent laterally
+727,4e6e4905a82a5931,adjacent laterally,adjacent buildings,B23,0.0,TEXT1: B23; TEXT2: adjacent buildings; ANC1: adjacent laterally
+728,198c2694dfa7cc45,adjacent laterally,adjacent channel interference,B23,0.0,TEXT1: B23; TEXT2: adjacent channel interference; ANC1: adjacent laterally
+729,0cbf509f93022096,adjacent laterally,adjacent communications,B23,0.0,TEXT1: B23; TEXT2: adjacent communications; ANC1: adjacent laterally
+730,8e5d59e9cf2f6c24,adjacent laterally,adjacent laterally,B23,1.0,TEXT1: B23; TEXT2: adjacent laterally; ANC1: adjacent laterally
+731,68886c7d177c3d19,adjacent laterally,adjacent nerves,B23,0.0,TEXT1: B23; TEXT2: adjacent nerves; ANC1: adjacent laterally
+732,f44f8e0db16cab2f,adjacent laterally,adjacent sideways,B23,0.75,TEXT1: B23; TEXT2: adjacent sideways; ANC1: adjacent laterally
+733,ed977415cacbea9f,adjacent laterally,adjacent system,B23,0.5,TEXT1: B23; TEXT2: adjacent system; ANC1: adjacent laterally
+734,80791f8599d14965,adjacent laterally,adjoining laterally,B23,0.75,TEXT1: B23; TEXT2: adjoining laterally; ANC1: adjacent laterally
+735,6dec01d737c52358,adjacent laterally,awl tip portion,B23,0.25,TEXT1: B23; TEXT2: awl tip portion; ANC1: adjacent laterally
+736,32fa5c57b33079dd,adjacent laterally,closely,B23,0.25,TEXT1: B23; TEXT2: closely; ANC1: adjacent laterally
+737,2f68b8ef125db3c6,adjacent laterally,contiguous laterally,B23,0.75,TEXT1: B23; TEXT2: contiguous laterally; ANC1: adjacent laterally
+738,1815bcb79094e9b5,adjacent laterally,cup units,B23,0.25,TEXT1: B23; TEXT2: cup units; ANC1: adjacent laterally
+739,5fba3bab343889ff,adjacent laterally,immediately,B23,0.25,TEXT1: B23; TEXT2: immediately; ANC1: adjacent laterally
+740,0de3b94586be7505,adjacent laterally,insulated metal wire,B23,0.25,TEXT1: B23; TEXT2: insulated metal wire; ANC1: adjacent laterally
+741,ed98d34d7264d2a3,adjacent laterally,lateral,B23,0.5,TEXT1: B23; TEXT2: lateral; ANC1: adjacent laterally
+742,e6751ed66a5bae84,adjacent laterally,lateral communication,B23,0.0,TEXT1: B23; TEXT2: lateral communication; ANC1: adjacent laterally
+743,2a6dacc773d33e3d,adjacent laterally,laterally,B23,0.5,TEXT1: B23; TEXT2: laterally; ANC1: adjacent laterally
+744,6eb16b4b2255a4eb,adjacent laterally,laterally adjacent,B23,1.0,TEXT1: B23; TEXT2: laterally adjacent; ANC1: adjacent laterally
+745,ec914c1e4d60c53a,adjacent laterally,laterally restrained beam,B23,0.0,TEXT1: B23; TEXT2: laterally restrained beam; ANC1: adjacent laterally
+746,0b5c6cff01ab6ad5,adjacent laterally,separated laterally,B23,0.25,TEXT1: B23; TEXT2: separated laterally; ANC1: adjacent laterally
+747,e2e3ea9e64465308,adjacent laterally,successive circumferentially,B23,0.25,TEXT1: B23; TEXT2: successive circumferentially; ANC1: adjacent laterally
+748,1b705393a584a73c,adjacent laterally,successive closely,B23,0.25,TEXT1: B23; TEXT2: successive closely; ANC1: adjacent laterally
+749,e2c2611e520767ac,adjacent laterally,successively,B23,0.25,TEXT1: B23; TEXT2: successively; ANC1: adjacent laterally
+750,737fa541fa5969cf,adjacent laterally,threading tool,B23,0.25,TEXT1: B23; TEXT2: threading tool; ANC1: adjacent laterally
+751,74d8d54d2142c647,adjacent laterally,welding coated stamped sections,B23,0.25,TEXT1: B23; TEXT2: welding coated stamped sections; ANC1: adjacent laterally
+752,12a7aab4a7ac0493,adjust gas flow,adjust bike speed,C23,0.0,TEXT1: C23; TEXT2: adjust bike speed; ANC1: adjust gas flow
+753,3dccbc8ae4f2bff8,adjust gas flow,adjust flow,C23,0.25,TEXT1: C23; TEXT2: adjust flow; ANC1: adjust gas flow
+754,acf9f81661491a14,adjust gas flow,adjust in bus,C23,0.0,TEXT1: C23; TEXT2: adjust in bus; ANC1: adjust gas flow
+755,e781814fd9f2d711,adjust gas flow,adjust space in home,C23,0.0,TEXT1: C23; TEXT2: adjust space in home; ANC1: adjust gas flow
+756,a387acb040548f6d,adjust gas flow,adjustment cost,C23,0.0,TEXT1: C23; TEXT2: adjustment cost; ANC1: adjust gas flow
+757,8a1ac639bbd51b17,adjust gas flow,alter gas flow,C23,0.75,TEXT1: C23; TEXT2: alter gas flow; ANC1: adjust gas flow
+758,696f082ee4e0ac53,adjust gas flow,alter the gas flow rate,C23,0.5,TEXT1: C23; TEXT2: alter the gas flow rate; ANC1: adjust gas flow
+759,a1254c01b48ee523,adjust gas flow,block gas flow,C23,0.25,TEXT1: C23; TEXT2: block gas flow; ANC1: adjust gas flow
+760,ce5364743ccc9f0c,adjust gas flow,controlled gas flow,C23,0.5,TEXT1: C23; TEXT2: controlled gas flow; ANC1: adjust gas flow
+761,5381172edb303260,adjust gas flow,external,C23,0.0,TEXT1: C23; TEXT2: external; ANC1: adjust gas flow
+762,ad5029fc47923c9b,adjust gas flow,flower,C23,0.0,TEXT1: C23; TEXT2: flower; ANC1: adjust gas flow
+763,60b080e04c73bb64,adjust gas flow,gas,C23,0.25,TEXT1: C23; TEXT2: gas; ANC1: adjust gas flow
+764,78454ab156b04c3f,adjust gas flow,gas supply,C23,0.25,TEXT1: C23; TEXT2: gas supply; ANC1: adjust gas flow
+765,9fe8b821aeb90155,adjust gas flow,moderate the gas flow rate,C23,0.5,TEXT1: C23; TEXT2: moderate the gas flow rate; ANC1: adjust gas flow
+766,f692c5f1527e9724,adjust gas flow,modify gas flow,C23,0.75,TEXT1: C23; TEXT2: modify gas flow; ANC1: adjust gas flow
+767,2328d43029d49032,adjust gas flow,modify the gas flow rate,C23,0.5,TEXT1: C23; TEXT2: modify the gas flow rate; ANC1: adjust gas flow
+768,087adb88e5a0e2a7,adjust gas flow,pressure,C23,0.25,TEXT1: C23; TEXT2: pressure; ANC1: adjust gas flow
+769,0fb06c093917c51f,adjust gas flow,pressurized supply,C23,0.25,TEXT1: C23; TEXT2: pressurized supply; ANC1: adjust gas flow
+770,310fec512816b6f8,adjust gas flow,psychology,C23,0.0,TEXT1: C23; TEXT2: psychology; ANC1: adjust gas flow
+771,e05e30e150558faa,adjust gas flow,regulate gas flow,C23,0.75,TEXT1: C23; TEXT2: regulate gas flow; ANC1: adjust gas flow
+772,2064579d779cf872,adjust gas flow,regulate the gas flow rate,C23,0.5,TEXT1: C23; TEXT2: regulate the gas flow rate; ANC1: adjust gas flow
+773,b823fce2273453ce,adjust gas flow,supply gas,C23,0.5,TEXT1: C23; TEXT2: supply gas; ANC1: adjust gas flow
+774,0f39bd5547997cd0,adjust gas flow,supply pressure,C23,0.25,TEXT1: C23; TEXT2: supply pressure; ANC1: adjust gas flow
+775,7d7c7ea4051aad08,adjust gas flow,supplying gas,C23,0.5,TEXT1: C23; TEXT2: supplying gas; ANC1: adjust gas flow
+776,93df7a4a6dbf2edc,adjust gas flow,supplying pressure,C23,0.25,TEXT1: C23; TEXT2: supplying pressure; ANC1: adjust gas flow
+777,af340c84fd72c3b5,adjust gas flow,supplying processing gas,C23,0.5,TEXT1: C23; TEXT2: supplying processing gas; ANC1: adjust gas flow
+778,dfa3b6a77b0e79cd,adjust gas flow,supplying processing substrate,C23,0.25,TEXT1: C23; TEXT2: supplying processing substrate; ANC1: adjust gas flow
+779,fd82f0b3c34c7c12,adjust gas flow,supplying the gas,C23,0.5,TEXT1: C23; TEXT2: supplying the gas; ANC1: adjust gas flow
+780,486b251bb9414111,adjust gas flow,supplying the substrate,C23,0.25,TEXT1: C23; TEXT2: supplying the substrate; ANC1: adjust gas flow
+781,0df441f081802da8,adjust gas flow,transfer,C23,0.25,TEXT1: C23; TEXT2: transfer; ANC1: adjust gas flow
+782,d85609c0e24aa26d,adjust gas flow,transferring processing gas,C23,0.5,TEXT1: C23; TEXT2: transferring processing gas; ANC1: adjust gas flow
+783,49c75372d89d8d8d,adjust gas flow,transferring processing substrate,C23,0.25,TEXT1: C23; TEXT2: transferring processing substrate; ANC1: adjust gas flow
+784,83b5bd54ac868005,adjust gas flow,transferring the gas,C23,0.5,TEXT1: C23; TEXT2: transferring the gas; ANC1: adjust gas flow
+785,d42a1874769e46b6,adjust gas flow,transferring the substrate,C23,0.25,TEXT1: C23; TEXT2: transferring the substrate; ANC1: adjust gas flow
+786,80ecee350683b4d5,adjust gas flow,water pressure,C23,0.25,TEXT1: C23; TEXT2: water pressure; ANC1: adjust gas flow
+787,c497e9a6a0aac586,adjust gas flow,adjust fan,F23,0.0,TEXT1: F23; TEXT2: adjust fan; ANC1: adjust gas flow
+788,3daae05173cdaa96,adjust gas flow,adjust gas flow rate,F23,0.5,TEXT1: F23; TEXT2: adjust gas flow rate; ANC1: adjust gas flow
+789,22c8a44e8f22e292,adjust gas flow,adjustable table,F23,0.0,TEXT1: F23; TEXT2: adjustable table; ANC1: adjust gas flow
+790,6d9889f40d29b37b,adjust gas flow,adjusting fluid flow,F23,0.5,TEXT1: F23; TEXT2: adjusting fluid flow; ANC1: adjust gas flow
+791,09e418c93a776564,adjust gas flow,altering gas flow,F23,0.5,TEXT1: F23; TEXT2: altering gas flow; ANC1: adjust gas flow
+792,50762c9c4e6a0bb4,adjust gas flow,calibrating adjustment,F23,0.25,TEXT1: F23; TEXT2: calibrating adjustment; ANC1: adjust gas flow
+793,9e31fe73392ca737,adjust gas flow,changing gas flow,F23,0.5,TEXT1: F23; TEXT2: changing gas flow; ANC1: adjust gas flow
+794,465b0a00b0b4016f,adjust gas flow,control graph,F23,0.0,TEXT1: F23; TEXT2: control graph; ANC1: adjust gas flow
+795,73277fa37dfee1ba,adjust gas flow,control instruments,F23,0.25,TEXT1: F23; TEXT2: control instruments; ANC1: adjust gas flow
+796,c83141eefae68de5,adjust gas flow,control valve,F23,0.25,TEXT1: F23; TEXT2: control valve; ANC1: adjust gas flow
+797,99d2e8c911cc46ab,adjust gas flow,controlling gas flow,F23,0.75,TEXT1: F23; TEXT2: controlling gas flow; ANC1: adjust gas flow
+798,f8557c93ac2b6e14,adjust gas flow,flow chart,F23,0.0,TEXT1: F23; TEXT2: flow chart; ANC1: adjust gas flow
+799,9ee14b052e82b0a9,adjust gas flow,flow meter,F23,0.0,TEXT1: F23; TEXT2: flow meter; ANC1: adjust gas flow
+800,11d76dfe35077344,adjust gas flow,flowing gas,F23,0.5,TEXT1: F23; TEXT2: flowing gas; ANC1: adjust gas flow
+801,9fae191235780a02,adjust gas flow,gas flow,F23,0.5,TEXT1: F23; TEXT2: gas flow; ANC1: adjust gas flow
+802,596852f85d5ef276,adjust gas flow,gas pressure adjustment,F23,0.5,TEXT1: F23; TEXT2: gas pressure adjustment; ANC1: adjust gas flow
+803,0a06edbf127a07c4,adjust gas flow,gas regulator,F23,0.5,TEXT1: F23; TEXT2: gas regulator; ANC1: adjust gas flow
+804,022f94e6ace70f94,adjust gas flow,measuring unit,F23,0.25,TEXT1: F23; TEXT2: measuring unit; ANC1: adjust gas flow
+805,4987bf8db85d9e7c,adjust gas flow,regulating unit,F23,0.25,TEXT1: F23; TEXT2: regulating unit; ANC1: adjust gas flow
+806,e0c78b125d3c8d89,adjust gas flow,regulator,F23,0.25,TEXT1: F23; TEXT2: regulator; ANC1: adjust gas flow
+807,5d1c4da344012d6e,adjustable multiple,adjustable,B23,0.5,TEXT1: B23; TEXT2: adjustable; ANC1: adjustable multiple
+808,8531b22d4813a1c7,adjustable multiple,adjustable multi,B23,0.75,TEXT1: B23; TEXT2: adjustable multi; ANC1: adjustable multiple
+809,b2583d212764e8fe,adjustable multiple,adjustable multiple,B23,1.0,TEXT1: B23; TEXT2: adjustable multiple; ANC1: adjustable multiple
+810,0ef20469fe8f1abc,adjustable multiple,adjustable multiple angles,B23,0.5,TEXT1: B23; TEXT2: adjustable multiple angles; ANC1: adjustable multiple
+811,3af59423418bd92c,adjustable multiple,adjustable multiple blades,B23,0.5,TEXT1: B23; TEXT2: adjustable multiple blades; ANC1: adjustable multiple
+812,3761a8bece29d3f9,adjustable multiple,adjustable screen brightness,B23,0.0,TEXT1: B23; TEXT2: adjustable screen brightness; ANC1: adjustable multiple
+813,5e5a24ca765388e2,adjustable multiple,adjustable shunt regulator,B23,0.0,TEXT1: B23; TEXT2: adjustable shunt regulator; ANC1: adjustable multiple
+814,14ea8f4b68bfa0cb,adjustable multiple,adjustable wifi router,B23,0.0,TEXT1: B23; TEXT2: adjustable wifi router; ANC1: adjustable multiple
+815,3f03d9c5082e3fb7,adjustable multiple,adjusted multiple,B23,1.0,TEXT1: B23; TEXT2: adjusted multiple; ANC1: adjustable multiple
+816,650404605bba5c30,adjustable multiple,aim adjustable multiple,B23,0.5,TEXT1: B23; TEXT2: aim adjustable multiple; ANC1: adjustable multiple
+817,eb24c67604852ecd,adjustable multiple,composite material workpiece,B23,0.25,TEXT1: B23; TEXT2: composite material workpiece; ANC1: adjustable multiple
+818,2aa5d3d9cae9b6d6,adjustable multiple,electronic conductor plates,B23,0.25,TEXT1: B23; TEXT2: electronic conductor plates; ANC1: adjustable multiple
+819,5cdb1b7181e3d27f,adjustable multiple,fixed multiple blades,B23,0.25,TEXT1: B23; TEXT2: fixed multiple blades; ANC1: adjustable multiple
+820,f74a9dfd2eea8ef7,adjustable multiple,flexible multiple,B23,0.75,TEXT1: B23; TEXT2: flexible multiple; ANC1: adjustable multiple
+821,c5d090c860357033,adjustable multiple,grip,B23,0.25,TEXT1: B23; TEXT2: grip; ANC1: adjustable multiple
+822,bd745fa431d6e807,adjustable multiple,improved,B23,0.0,TEXT1: B23; TEXT2: improved; ANC1: adjustable multiple
+823,fcea4b48360e9a86,adjustable multiple,improved boring,B23,0.25,TEXT1: B23; TEXT2: improved boring; ANC1: adjustable multiple
+824,10ecc8819a4317bd,adjustable multiple,improved cutting,B23,0.25,TEXT1: B23; TEXT2: improved cutting; ANC1: adjustable multiple
+825,70663443140dc6c2,adjustable multiple,interchangeable,B23,0.25,TEXT1: B23; TEXT2: interchangeable; ANC1: adjustable multiple
+826,1e59a41f6ea51c98,adjustable multiple,multiple adjustable,B23,1.0,TEXT1: B23; TEXT2: multiple adjustable; ANC1: adjustable multiple
+827,489cf1fec910952e,adjustable multiple,multiple adjustment,B23,0.75,TEXT1: B23; TEXT2: multiple adjustment; ANC1: adjustable multiple
+828,4daa2a4ff5cb1553,adjustable multiple,multiple alterable,B23,0.75,TEXT1: B23; TEXT2: multiple alterable; ANC1: adjustable multiple
+829,7dfcf553d2713a19,adjustable multiple,multiple cancer,B23,0.0,TEXT1: B23; TEXT2: multiple cancer; ANC1: adjustable multiple
+830,4cf4a1d17fd999a7,adjustable multiple,multiple disease of the brain spinal cord,B23,0.0,TEXT1: B23; TEXT2: multiple disease of the brain spinal cord; ANC1: adjustable multiple
+831,ced4dd485417ef30,adjustable multiple,multiple fixed,B23,0.25,TEXT1: B23; TEXT2: multiple fixed; ANC1: adjustable multiple
+832,da3acdf361f4a4f2,adjustable multiple,multiple lanes,B23,0.0,TEXT1: B23; TEXT2: multiple lanes; ANC1: adjustable multiple
+833,2ce9c30be64a2f0f,adjustable multiple,multiple modifiable,B23,0.75,TEXT1: B23; TEXT2: multiple modifiable; ANC1: adjustable multiple
+834,42ef994c6ca36667,adjustable multiple,sliding panel,B23,0.25,TEXT1: B23; TEXT2: sliding panel; ANC1: adjustable multiple
+835,47c14f45c470e192,adjustable multiple,various adjustments,B23,0.75,TEXT1: B23; TEXT2: various adjustments; ANC1: adjustable multiple
+836,bc4d1c7d5ba99d65,adjustable multiple,adaptable multiple,B25,0.75,TEXT1: B25; TEXT2: adaptable multiple; ANC1: adjustable multiple
+837,e1593c763de7d89f,adjustable multiple,adjustable,B25,0.5,TEXT1: B25; TEXT2: adjustable; ANC1: adjustable multiple
+838,e60fa1982d5caa87,adjustable multiple,adjustable eye patch,B25,0.0,TEXT1: B25; TEXT2: adjustable eye patch; ANC1: adjustable multiple
+839,d3cb5c0a187e9895,adjustable multiple,adjustable multiple,B25,1.0,TEXT1: B25; TEXT2: adjustable multiple; ANC1: adjustable multiple
+840,a7a920a2ca09343b,adjustable multiple,adjustable screen brightness,B25,0.0,TEXT1: B25; TEXT2: adjustable screen brightness; ANC1: adjustable multiple
+841,d30c646437cf94c0,adjustable multiple,changeable multiple,B25,0.75,TEXT1: B25; TEXT2: changeable multiple; ANC1: adjustable multiple
+842,54316a3e09c70cf1,adjustable multiple,fixed multiple,B25,0.25,TEXT1: B25; TEXT2: fixed multiple; ANC1: adjustable multiple
+843,080970f59c096352,adjustable multiple,flexible multiple,B25,0.75,TEXT1: B25; TEXT2: flexible multiple; ANC1: adjustable multiple
+844,501f2080bf3c462b,adjustable multiple,grip,B25,0.25,TEXT1: B25; TEXT2: grip; ANC1: adjustable multiple
+845,d077f3a96d7ec5d5,adjustable multiple,hand machine tool,B25,0.25,TEXT1: B25; TEXT2: hand machine tool; ANC1: adjustable multiple
+846,2e8b2710fcc75560,adjustable multiple,impact mechanism device,B25,0.25,TEXT1: B25; TEXT2: impact mechanism device; ANC1: adjustable multiple
+847,9425c6a39b47f1c7,adjustable multiple,improved,B25,0.0,TEXT1: B25; TEXT2: improved; ANC1: adjustable multiple
+848,5899ff49b400e042,adjustable multiple,multiple adjustment,B25,0.75,TEXT1: B25; TEXT2: multiple adjustment; ANC1: adjustable multiple
+849,a99996d921235340,adjustable multiple,multiple alterable,B25,0.75,TEXT1: B25; TEXT2: multiple alterable; ANC1: adjustable multiple
+850,ac5d2dc429c226ab,adjustable multiple,multiple cancer,B25,0.0,TEXT1: B25; TEXT2: multiple cancer; ANC1: adjustable multiple
+851,fbf794a86c4d69c0,adjustable multiple,multiple fixed,B25,0.25,TEXT1: B25; TEXT2: multiple fixed; ANC1: adjustable multiple
+852,6ea21d081924ae31,adjustable multiple,multiple lanes,B25,0.0,TEXT1: B25; TEXT2: multiple lanes; ANC1: adjustable multiple
+853,4a763c8f73747bb7,adjustable multiple,multiple modifiable,B25,0.75,TEXT1: B25; TEXT2: multiple modifiable; ANC1: adjustable multiple
+854,8c505f9eaf1f8508,adjustable multiple,multiple personality disorder,B25,0.0,TEXT1: B25; TEXT2: multiple personality disorder; ANC1: adjustable multiple
+855,add7a5c67a9f2108,adjustable multiple,multiple sclerosis,B25,0.0,TEXT1: B25; TEXT2: multiple sclerosis; ANC1: adjustable multiple
+856,3249352f3c594723,adjustable multiple,sliding panel,B25,0.25,TEXT1: B25; TEXT2: sliding panel; ANC1: adjustable multiple
+857,cab46ee1c94a2cac,adjustable multiple,various adjustments,B25,0.75,TEXT1: B25; TEXT2: various adjustments; ANC1: adjustable multiple
+858,bc036c2cfcf4ef15,aesthetic effects,adding cool effects,A63,0.5,TEXT1: A63; TEXT2: adding cool effects; ANC1: aesthetic effects
+859,ca5c46cf341abf4d,aesthetic effects,aesthetic objects,A63,0.5,TEXT1: A63; TEXT2: aesthetic objects; ANC1: aesthetic effects
+860,66583335020bcf02,aesthetic effects,aesthetic values,A63,0.5,TEXT1: A63; TEXT2: aesthetic values; ANC1: aesthetic effects
+861,6080143b6d553422,aesthetic effects,aesthetically pleasing,A63,0.5,TEXT1: A63; TEXT2: aesthetically pleasing; ANC1: aesthetic effects
+862,0fbd445077dd254f,aesthetic effects,animation software,A63,0.25,TEXT1: A63; TEXT2: animation software; ANC1: aesthetic effects
+863,54339a2852c127be,aesthetic effects,artificial sources of aesthetic,A63,0.5,TEXT1: A63; TEXT2: artificial sources of aesthetic; ANC1: aesthetic effects
+864,377ca51529b6f4ea,aesthetic effects,beautiful design,A63,0.25,TEXT1: A63; TEXT2: beautiful design; ANC1: aesthetic effects
+865,31b2fd697cfe9d06,aesthetic effects,beautiful effect,A63,0.5,TEXT1: A63; TEXT2: beautiful effect; ANC1: aesthetic effects
+866,be7b24c48b60fe11,aesthetic effects,beautiful effects,A63,0.5,TEXT1: A63; TEXT2: beautiful effects; ANC1: aesthetic effects
+867,c2e04a65ab266d6b,aesthetic effects,beauty,A63,0.25,TEXT1: A63; TEXT2: beauty; ANC1: aesthetic effects
+868,a580a16268dc20e0,aesthetic effects,branch of philosophy,A63,0.25,TEXT1: A63; TEXT2: branch of philosophy; ANC1: aesthetic effects
+869,19fdd7fdbc7b2830,aesthetic effects,colorful effect,A63,0.5,TEXT1: A63; TEXT2: colorful effect; ANC1: aesthetic effects
+870,258c9fb326843766,aesthetic effects,colorful effects,A63,0.5,TEXT1: A63; TEXT2: colorful effects; ANC1: aesthetic effects
+871,7aea2f2ababa02fc,aesthetic effects,colorful flash,A63,0.5,TEXT1: A63; TEXT2: colorful flash; ANC1: aesthetic effects
+872,7ae1ae001885248e,aesthetic effects,culture and nature,A63,0.25,TEXT1: A63; TEXT2: culture and nature; ANC1: aesthetic effects
+873,f0f05e79c122624d,aesthetic effects,effective communication,A63,0.0,TEXT1: A63; TEXT2: effective communication; ANC1: aesthetic effects
+874,b64fca77c42b204d,aesthetic effects,effects of air pollution,A63,0.0,TEXT1: A63; TEXT2: effects of air pollution; ANC1: aesthetic effects
+875,8b23365e8db5eb53,aesthetic effects,effects of smoking,A63,0.0,TEXT1: A63; TEXT2: effects of smoking; ANC1: aesthetic effects
+876,c856d067caaf0444,aesthetic effects,effects of soil pollution,A63,0.0,TEXT1: A63; TEXT2: effects of soil pollution; ANC1: aesthetic effects
+877,e243f18ac2bed82c,aesthetic effects,effects of water pollution,A63,0.0,TEXT1: A63; TEXT2: effects of water pollution; ANC1: aesthetic effects
+878,6cd3d55e430d658b,aesthetic effects,esthetics effects,A63,0.75,TEXT1: A63; TEXT2: esthetics effects; ANC1: aesthetic effects
+879,d40354a6a65a4195,aesthetic effects,interesting effects,A63,0.5,TEXT1: A63; TEXT2: interesting effects; ANC1: aesthetic effects
+880,5be3feaf4064da1e,aesthetic effects,interesting flash,A63,0.5,TEXT1: A63; TEXT2: interesting flash; ANC1: aesthetic effects
+881,7f88df79b12e2a61,aesthetic effects,ornamental,A63,0.25,TEXT1: A63; TEXT2: ornamental; ANC1: aesthetic effects
+882,3f63ee423bec0254,aesthetic effects,reflection on art,A63,0.25,TEXT1: A63; TEXT2: reflection on art; ANC1: aesthetic effects
+883,c2fe11ce3f1443bd,aesthetic effects,side effects,A63,0.0,TEXT1: A63; TEXT2: side effects; ANC1: aesthetic effects
