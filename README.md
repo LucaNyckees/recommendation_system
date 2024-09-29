@@ -1,8 +1,16 @@
-# Title
+# Recommendation System for Amazon Products with enhanced BERT classifier
 
 ## Description
+We download Amazon product reviews data from https://amazon-reviews-2023.github.io/ and perform various NLP tasks.
+- perform sentiment analysis using TextBlob, BERT and wrap up with interactive dashboard
+- implement a recommendation system using TF-IDF method
+- train a BERT classifier on user ratings
+- implement a recommendation system using BERT classifier
+- wrap up system as FastAPI application
 
 ## People
+- Luca Nyckees
+- Silvio Innocenti-Malini
 
 ## Virtual environment
 Use the following command lines to create and use venv python package:
