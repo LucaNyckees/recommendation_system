@@ -2,11 +2,11 @@
 
 ## Description
 We download Amazon product reviews data from https://amazon-reviews-2023.github.io/ and perform various NLP tasks.
-- perform sentiment analysis using TextBlob, BERT and wrap up with interactive dashboard
+- perform sentiment analysis using TextBlob
+- train a BERT classifier on user ratings to enhance the sentiment analysis pipeline
+- create interactive dashboard for sentiment analysis
 - implement a recommendation system using TF-IDF method
-- train a BERT classifier on user ratings
-- implement a recommendation system using BERT classifier
-- wrap up system as FastAPI application
+- wrap up recommendation system as FastAPI application
 
 ## People
 - Luca Nyckees
