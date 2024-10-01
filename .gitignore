@@ -109,3 +109,7 @@ figures/*
 # Data
 data/*
 /data/
+
+# Results
+results/*
+/results/
