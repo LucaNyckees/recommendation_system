@@ -36,12 +36,13 @@ class BERTClassifier:
     def __init__(self, df: pd.DataFrame):
         for k, v in classifier_params.items():
             setattr(self, k, v)
+        self.output_dir = RESULTS_PATH / f"{datetime.today().strftime('%Y-%m-%d')}"
 
         torch.manual_seed(self.seed)
         random.seed(self.seed)
 
         self.training_args = TrainingArguments(
-            output_dir=RESULTS_PATH / f"{datetime.today().strftime('%Y-%m-%d')}",
+            output_dir=self.output_dir,
             eval_strategy="epoch",
             per_device_train_batch_size=self.batch_size,
             per_device_eval_batch_size=self.batch_size,
@@ -127,6 +128,9 @@ class BERTClassifier:
             logger.info(f"True label: {label}")
             logger.info(f"Predicted label: {prediction}")
 
-    def push_to_hub(self):
-        self.model.push_to_hub(self.task, use_temp_dir=True)
-        self.tokenizer.push_to_hub(self.task, use_temp_dir=True)
+    # def push_to_hub(self):
+    #     self.model.push_to_hub(self.hf_model_name, use_temp_dir=True)
+    #     self.tokenizer.push_to_hub(self.task, use_temp_dir=True)
+    def push_to_hub(self) -> None:
+        hf_model_name = "LucaNyckees/amazon-bert-classifier"
+        self.model.push_to_hub(hf_model_name, use_temp_dir=True)
