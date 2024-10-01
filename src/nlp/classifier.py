@@ -11,9 +11,13 @@ from transformers import (
     pipeline,
 )
 import pandas as pd
+import json
 
-from src.paths import RESULTS_PATH
+from src.paths import RESULTS_PATH, RESOURCES_PATH
 from src.log.logger import logger
+
+with open(RESOURCES_PATH / "params.json") as f:
+    classifier_params = json.load(f)["classifier"]
 
 
 device = torch.device(
@@ -28,28 +32,26 @@ id2label = {x: str(x) for x in range(1, 6)}
 label2id = {str(x): x for x in range(1, 6)}
 
 
-class TrainerNLP:
-    def __init__(self, config, df: pd.DataFrame):
-        self.config = config
-
+class BERTClassifier:
+    def __init__(self, df: pd.DataFrame):
         ## Setting the seed
-        torch.manual_seed(config.seed)
-        random.seed(config.seed)
+        torch.manual_seed(classifier_params["seed"])
+        random.seed(classifier_params["seed"])
 
         self.training_args = TrainingArguments(
             output_dir=RESULTS_PATH / f"/{datetime.today().strftime('%Y-%m-%d')}",
             eval_strategy="epoch",
-            per_device_train_batch_size=config.batch_size,
-            per_device_eval_batch_size=config.batch_size,
-            weight_decay=config.weight_decay,
-            num_train_epochs=config.epochs,
-            seed=config.seed,
-            learning_rate=config.lr,
+            per_device_train_batch_size=classifier_params["batch_size"],
+            per_device_eval_batch_size=classifier_params["batch_size"],
+            weight_decay=classifier_params["weight_decay"],
+            num_train_epochs=classifier_params["epochs"],
+            seed=classifier_params["seed"],
+            learning_rate=classifier_params["lr"],
         )
 
         ## Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(
-            config.model_name,
+            classifier_params["model_name"],
             max_length=512,
             truncation=True,
             clean_up_tokenization_spaces=False,
@@ -69,8 +71,8 @@ class TrainerNLP:
         sizes = [int(0.8 * n), int(0.1 * n), n - int(0.8 * n) - int(0.1 * n)]
         logger.info("Dataset size:", n)
 
-        gen = torch.Generator().manual_seed(config.seed_data_split)
-        logger.info(f"Seed for data split: {config.seed_data_split}")
+        gen = torch.Generator().manual_seed(classifier_params["seed_data_split"])
+        logger.info(f"Seed for data split: {classifier_params["seed_data_split"]}")
 
         sets = (
             list(map(lambda x: {"text": x["text"], "label": x["label"]}, x))
