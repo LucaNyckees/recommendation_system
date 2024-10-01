@@ -2,7 +2,7 @@
     "classifier": {
         "device": "cuda",
         "seed": 7,
-        "epochs": 5,
+        "epochs": 2,
         "batch_size": 16,
         "seed_data_split": 6,
         "lr": 0.0001,

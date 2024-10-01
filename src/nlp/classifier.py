@@ -111,7 +111,7 @@ class BERTClassifier:
         self.trainer.train()
 
     def evaluate(self):
-        self.trainer.evaluate()
+        self.metrics = self.trainer.evaluate()
 
     def predict(self):
         classifier = pipeline(
@@ -119,6 +119,7 @@ class BERTClassifier:
             model=self.model,
             tokenizer=self.tokenizer,
             truncation=True,
+            device=device,
         )
         for datapoint in tqdm(self.test_set):
             text = datapoint["text"]
