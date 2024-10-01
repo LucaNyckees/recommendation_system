@@ -34,24 +34,26 @@ label2id = {str(x): x for x in range(1, 6)}
 
 class BERTClassifier:
     def __init__(self, df: pd.DataFrame):
-        ## Setting the seed
-        torch.manual_seed(classifier_params["seed"])
-        random.seed(classifier_params["seed"])
+        for k, v in classifier_params.items():
+            setattr(self, k, v)
+
+        torch.manual_seed(self.seed)
+        random.seed(self.seed)
 
         self.training_args = TrainingArguments(
-            output_dir=RESULTS_PATH / f"/{datetime.today().strftime('%Y-%m-%d')}",
+            output_dir=RESULTS_PATH / f"{datetime.today().strftime('%Y-%m-%d')}",
             eval_strategy="epoch",
-            per_device_train_batch_size=classifier_params["batch_size"],
-            per_device_eval_batch_size=classifier_params["batch_size"],
-            weight_decay=classifier_params["weight_decay"],
-            num_train_epochs=classifier_params["epochs"],
-            seed=classifier_params["seed"],
-            learning_rate=classifier_params["lr"],
+            per_device_train_batch_size=self.batch_size,
+            per_device_eval_batch_size=self.batch_size,
+            weight_decay=self.weight_decay,
+            num_train_epochs=self.epochs,
+            seed=self.seed,
+            learning_rate=self.lr,
         )
 
         ## Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(
-            classifier_params["model_name"],
+            self.model_name,
             max_length=512,
             truncation=True,
             clean_up_tokenization_spaces=False,
@@ -69,10 +71,8 @@ class BERTClassifier:
         dataset = Dataset.from_pandas(df)
         n = len(dataset)
         sizes = [int(0.8 * n), int(0.1 * n), n - int(0.8 * n) - int(0.1 * n)]
-        logger.info("Dataset size:", n)
 
-        gen = torch.Generator().manual_seed(classifier_params["seed_data_split"])
-        logger.info(f"Seed for data split: {classifier_params["seed_data_split"]}")
+        gen = torch.Generator().manual_seed(self.seed_data_split)
 
         sets = (
             list(map(lambda x: {"text": x["text"], "label": x["label"]}, x))
@@ -92,7 +92,7 @@ class BERTClassifier:
 
         ## Model
         self.model = AutoModelForSequenceClassification.from_pretrained(
-            "distilbert/distilbert-base-multilingual-cased",
+            self.model_name,
             num_labels=len(id2label),
             id2label=id2label,
             label2id=label2id,
@@ -114,7 +114,7 @@ class BERTClassifier:
 
     def predict(self):
         classifier = pipeline(
-            task="text-classification",
+            task=self.task,
             model=self.model,
             tokenizer=self.tokenizer,
             truncation=True,
@@ -128,5 +128,5 @@ class BERTClassifier:
             logger.info(f"Predicted label: {prediction}")
 
     def push_to_hub(self):
-        self.model.push_to_hub("text-classification", use_temp_dir=True)
-        self.tokenizer.push_to_hub("text-classification", use_temp_dir=True)
+        self.model.push_to_hub(self.task, use_temp_dir=True)
+        self.tokenizer.push_to_hub(self.task, use_temp_dir=True)
