@@ -111,12 +111,12 @@ class BertRegressorPipeline:
 
     def _prepare_data(self):
         self.df_train, temp = train_test_split(
-            self.df[["text", "label"]],
+            self.df[["text", "target"]],
             test_size=0.4,
             random_state=21,
         )
         self.df_test, self.df_validation = train_test_split(
-            temp[["text", "label"]],
+            temp[["text", "target"]],
             test_size=0.5,
             random_state=21,
         )
