@@ -102,6 +102,13 @@ class BertRegressorPipeline:
         random.seed(self.seed)
         self.df = df
 
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            self.model_name,
+            max_length=512,
+            truncation=True,
+            clean_up_tokenization_spaces=False,
+        )
+
     def _prepare_data(self):
         self.df_train, temp = train_test_split(
             self.df[["text", "label"]],
@@ -121,12 +128,12 @@ class BertRegressorPipeline:
         }
         logger.info(f"split : {split_dict}")
 
-        train_set = ReviewsDataset(
+        self.train_set = ReviewsDataset(
             data=self.df_train,
             maxlen=self.max_len_train,
             tokenizer=self.tokenizer,
         )
-        validation_set = ReviewsDataset(
+        self.validation_set = ReviewsDataset(
             data=self.df_validation,
             maxlen=self.max_len_valid,
             tokenizer=self.tokenizer,
@@ -138,23 +145,17 @@ class BertRegressorPipeline:
         )
 
         self.train_loader = DataLoader(
-            dataset=train_set,
+            dataset=self.train_set,
             batch_size=self.batch_size,
             num_workers=self.num_threads,
         )
         self.valid_loader = DataLoader(
-            dataset=validation_set,
+            dataset=self.validation_set,
             batch_size=self.batch_size,
             num_workers=self.num_threads,
         )
 
     def _setup_model(self):
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_name,
-            max_length=512,
-            truncation=True,
-            clean_up_tokenization_spaces=False,
-        )
         self.model = BertRegressor.from_pretrained(
             self.model_name,
             num_labels=len(id2label),
@@ -171,7 +172,7 @@ class BertRegressorPipeline:
             per_device_train_batch_size=self.batch_size,
             per_device_eval_batch_size=self.batch_size,
             weight_decay=self.weight_decay,
-            num_train_epochs=self.epochs,
+            num_train_epochs=self.num_epochs,
             seed=self.seed,
             learning_rate=self.lr,
         )
@@ -188,7 +189,7 @@ class BertRegressorPipeline:
             model=self.model,
             args=self.training_args,
             train_dataset=self.train_set,
-            eval_dataset=self.eval_set,
+            eval_dataset=self.validation_set,
             tokenizer=self.tokenizer,
         )
 
