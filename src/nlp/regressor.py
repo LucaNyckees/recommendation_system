@@ -16,21 +16,16 @@ from sklearn import metrics
 import pandas as pd
 import json
 from tqdm import trange
-
+import os
 from src.paths import RESULTS_PATH, RESOURCES_PATH
 from src.log.logger import logger
 
 with open(RESOURCES_PATH / "params.json") as f:
     classifier_params = json.load(f)["classifier"]
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
-device = torch.device(
-    "cuda"
-    if torch.cuda.is_available()
-    else "mps"
-    if torch.backends.mps.is_available()
-    else "cpu"
-)
+device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
 id2label = {x: str(x) for x in range(1, 6)}
 label2id = {str(x): x for x in range(1, 6)}
@@ -110,16 +105,8 @@ class BertRegressorPipeline:
         )
 
     def _prepare_data(self):
-        self.df_train, temp = train_test_split(
-            self.df[["text", "target"]],
-            test_size=0.4,
-            random_state=21,
-        )
-        self.df_test, self.df_validation = train_test_split(
-            temp[["text", "target"]],
-            test_size=0.5,
-            random_state=21,
-        )
+        self.df_train, temp = train_test_split(self.df[["text", "target"]], test_size=0.4, random_state=21)
+        self.df_test, self.df_validation = train_test_split(temp[["text", "target"]], test_size=0.5, random_state=21)
 
         split_dict = {
             "train_set": len(self.df_train),
@@ -128,31 +115,15 @@ class BertRegressorPipeline:
         }
         logger.info(f"split : {split_dict}")
 
-        self.train_set = ReviewsDataset(
-            data=self.df_train,
-            maxlen=self.max_len_train,
-            tokenizer=self.tokenizer,
-        )
+        self.train_set = ReviewsDataset(data=self.df_train, maxlen=self.max_len_train, tokenizer=self.tokenizer)
         self.validation_set = ReviewsDataset(
-            data=self.df_validation,
-            maxlen=self.max_len_valid,
-            tokenizer=self.tokenizer,
+            data=self.df_validation, maxlen=self.max_len_valid, tokenizer=self.tokenizer
         )
-        self.test_set = ReviewsDataset(
-            data=self.df_test,
-            maxlen=self.max_len_test,
-            tokenizer=self.tokenizer,
-        )
+        self.test_set = ReviewsDataset(data=self.df_test, maxlen=self.max_len_test, tokenizer=self.tokenizer)
 
-        self.train_loader = DataLoader(
-            dataset=self.train_set,
-            batch_size=self.batch_size,
-            num_workers=self.num_threads,
-        )
+        self.train_loader = DataLoader(dataset=self.train_set, batch_size=self.batch_size, num_workers=self.num_threads)
         self.validation_loader = DataLoader(
-            dataset=self.validation_set,
-            batch_size=self.batch_size,
-            num_workers=self.num_threads,
+            dataset=self.validation_set, batch_size=self.batch_size, num_workers=self.num_threads
         )
 
     def _setup_model(self):
@@ -179,10 +150,7 @@ class BertRegressorPipeline:
 
         ## Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_name,
-            max_length=512,
-            truncation=True,
-            clean_up_tokenization_spaces=False,
+            self.model_name, max_length=512, truncation=True, clean_up_tokenization_spaces=False
         )
 
         self.trainer = Trainer(
@@ -217,20 +185,12 @@ class BertRegressorPipeline:
         for epoch in trange(self.num_epochs, desc="Epoch"):
             self.model.train()
             train_loss = 0
-            for _, (input_ids, attention_mask, target) in enumerate(
-                iterable=self.train_loader
-            ):
+            for _, (input_ids, attention_mask, target) in enumerate(iterable=self.train_loader):
                 self.optimizer.zero_grad()
 
-                input_ids, attention_mask, target = (
-                    input_ids.to(device),
-                    attention_mask.to(device),
-                    target.to(device),
-                )
+                output = self.model(input_ids=input_ids.to(device), attention_mask=attention_mask.to(device))
 
-                output = self.model(input_ids=input_ids, attention_mask=attention_mask)
-
-                loss = self.criterion(output, target.type_as(output))
+                loss = self.criterion(output, target.to(device).type_as(output))
                 loss.backward()
                 self.optimizer.step()
 
@@ -238,30 +198,22 @@ class BertRegressorPipeline:
 
             logger.info(f"Training loss is {train_loss/len(self.train_loader)}")
             val_loss = self.evaluate()
-            logger.info(
-                "Epoch {} complete! Validation Loss : {}".format(epoch, val_loss)
-            )
+            logger.info("Epoch {} complete! Validation Loss : {}".format(epoch, val_loss))
 
     def get_rmse(self, output, target):
         err = torch.sqrt(metrics.mean_squared_error(target, output))
         return err
 
     def predict(self):
-        predicted_label = []
-        actual_label = []
+        predictions = []
+        targets = []
         with torch.no_grad():
-            for input_ids, attention_mask, target in self.dataloader:
-                input_ids, attention_mask, target = (
-                    input_ids.to(device),
-                    attention_mask.to(device),
-                    target.to(device),
-                )
-                output = self.model(input_ids, attention_mask)
+            for input_ids, attention_mask, target in self.validation_loader:
+                output = self.model(input_ids.to(device), attention_mask.to(device))
+                predictions += output
+                targets += target.to(device)
 
-                predicted_label += output
-                actual_label += target
-
-        return predicted_label
+        return targets
 
     def push_to_hub(self) -> None:
         hf_model_name = "LucaNyckees/amazon-bert-classifier"
