@@ -198,7 +198,7 @@ class BertRegressorPipeline:
         mean_loss, count = 0, 0
 
         with torch.no_grad():
-            for input_ids, attention_mask, target in self.dataloader:
+            for input_ids, attention_mask, target in self.validation_loader:
                 input_ids, attention_mask, target = (
                     input_ids.to(device),
                     attention_mask.to(device),
@@ -237,12 +237,7 @@ class BertRegressorPipeline:
                 train_loss += loss.item()
 
             logger.info(f"Training loss is {train_loss/len(self.train_loader)}")
-            val_loss = self.evaluate(
-                model=self.model,
-                criterion=self.criterion,
-                dataloader=self.validation_loader,
-                device=device,
-            )
+            val_loss = self.evaluate()
             logger.info(
                 "Epoch {} complete! Validation Loss : {}".format(epoch, val_loss)
             )
