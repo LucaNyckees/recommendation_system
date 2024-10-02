@@ -149,7 +149,7 @@ class BertRegressorPipeline:
             batch_size=self.batch_size,
             num_workers=self.num_threads,
         )
-        self.valid_loader = DataLoader(
+        self.validation_loader = DataLoader(
             dataset=self.validation_set,
             batch_size=self.batch_size,
             num_workers=self.num_threads,
@@ -240,7 +240,7 @@ class BertRegressorPipeline:
             val_loss = self.evaluate(
                 model=self.model,
                 criterion=self.criterion,
-                dataloader=self.val_loader,
+                dataloader=self.validation_loader,
                 device=device,
             )
             logger.info(
