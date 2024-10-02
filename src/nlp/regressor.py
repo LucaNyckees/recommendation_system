@@ -92,7 +92,7 @@ class BertRegressor(BertPreTrainedModel):
         return output
 
 
-class BERTClassifier:
+class BertRegressorPipeline:
     def __init__(self, df: pd.DataFrame):
         for k, v in classifier_params.items():
             setattr(self, k, v)
