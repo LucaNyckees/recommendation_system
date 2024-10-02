@@ -9,9 +9,9 @@
         "weight_decay": 0.01,
         "model_name": "distilbert/distilbert-base-uncased",
         "task": "text-classification",
-        "max_len_train": 205,
-        "max_len_valid": 205,
-        "max_len_test": 205,
+        "max_len_train": 512,
+        "max_len_valid": 512,
+        "max_len_test": 512,
         "num_threads": 1
     }
 }
