@@ -6,7 +6,6 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from transformers import (
     AutoTokenizer,
-    Trainer,
     TrainingArguments,
     BertPreTrainedModel,
     BertModel,
@@ -15,10 +14,12 @@ from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import pandas as pd
 import json
-from tqdm import trange
 import os
+from rich.progress import track
 from src.paths import RESULTS_PATH, RESOURCES_PATH
 from src.log.logger import logger
+from src.data_loader import load_reviews
+from src.processing import reviews_processing
 
 with open(RESOURCES_PATH / "params.json") as f:
     classifier_params = json.load(f)["classifier"]
@@ -104,7 +105,7 @@ class BertRegressorPipeline:
             clean_up_tokenization_spaces=False,
         )
 
-    def _prepare_data(self):
+    def _prepare_data(self, debug: bool = False):
         self.df_train, temp = train_test_split(self.df[["text", "target"]], test_size=0.4, random_state=21)
         self.df_test, self.df_validation = train_test_split(temp[["text", "target"]], test_size=0.5, random_state=21)
 
@@ -113,8 +114,9 @@ class BertRegressorPipeline:
             "eval_set": len(self.df_validation),
             "test_set": len(self.df_test),
         }
-        logger.info(f"split : {split_dict}")
-
+        logger.info(f"{split_dict}")
+        if debug:
+            self.df_train = self.df_train.sample(1)  # train on a single entry in debug mode
         self.train_set = ReviewsDataset(data=self.df_train, maxlen=self.max_len_train, tokenizer=self.tokenizer)
         self.validation_set = ReviewsDataset(
             data=self.df_validation, maxlen=self.max_len_valid, tokenizer=self.tokenizer
@@ -137,7 +139,7 @@ class BertRegressorPipeline:
         self.criterion = nn.MSELoss()
         self.optimizer = optim.Adam(params=self.model.parameters(), lr=self.lr)
 
-        self.training_args = TrainingArguments(
+        args_dict = dict(
             output_dir=self.output_dir,
             eval_strategy="epoch",
             per_device_train_batch_size=self.batch_size,
@@ -148,17 +150,13 @@ class BertRegressorPipeline:
             learning_rate=self.lr,
         )
 
+        logger.info(args_dict)
+
+        self.training_args = TrainingArguments(**args_dict)
+
         ## Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name, max_length=512, truncation=True, clean_up_tokenization_spaces=False
-        )
-
-        self.trainer = Trainer(
-            model=self.model,
-            args=self.training_args,
-            train_dataset=self.train_set,
-            eval_dataset=self.validation_set,
-            tokenizer=self.tokenizer,
         )
 
     def evaluate(self):
@@ -181,24 +179,23 @@ class BertRegressorPipeline:
         return mean_loss / count
 
     def train(self):
-        # best_acc = 0
-        for epoch in trange(self.num_epochs, desc="Epoch"):
+        for epoch in range(self.num_epochs):
             self.model.train()
             train_loss = 0
-            for _, (input_ids, attention_mask, target) in enumerate(iterable=self.train_loader):
+            for input_ids, attention_mask, target in track(
+                iterable=self.train_loader,
+                description=f"epoch {epoch + 1} / num_epochs",
+            ):
                 self.optimizer.zero_grad()
-
                 output = self.model(input_ids=input_ids.to(device), attention_mask=attention_mask.to(device))
-
                 loss = self.criterion(output, target.to(device).type_as(output))
                 loss.backward()
                 self.optimizer.step()
-
                 train_loss += loss.item()
 
-            logger.info(f"Training loss is {train_loss/len(self.train_loader)}")
+            logger.info(f"training loss : {train_loss/len(self.train_loader)}")
             val_loss = self.evaluate()
-            logger.info("Epoch {} complete! Validation Loss : {}".format(epoch, val_loss))
+            logger.info(f"validation loss : {val_loss}")
 
     def get_rmse(self, output, target):
         err = torch.sqrt(metrics.mean_squared_error(target, output))
@@ -218,3 +215,29 @@ class BertRegressorPipeline:
     def push_to_hub(self) -> None:
         hf_model_name = "LucaNyckees/amazon-bert-classifier"
         self.model.push_to_hub(hf_model_name, use_temp_dir=True)
+
+
+def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug: bool = False) -> None:
+    logger.info("data loading...")
+    df = load_reviews(category=category, frac=frac)
+
+    logger.info("data processing...")
+    df = reviews_processing(df=df, clean_text=False)
+    sub = df.rename(columns={"rating": "target", "review_input": "text"})[["target", "text"]]
+
+    logger.info("initializing model...")
+    bert_pipeline = BertRegressorPipeline(df=sub)
+
+    logger.info("preparing input data...")
+    bert_pipeline._prepare_data(debug=debug)
+
+    logger.info("model setup...")
+    bert_pipeline._setup_model()
+
+    logger.info("model training...")
+    bert_pipeline.train(debug=debug)
+
+    logger.info("model evaluation...")
+    bert_pipeline.evaluate()
+
+    return None
