@@ -63,6 +63,11 @@ class ReviewsDataset(Dataset):
 
         return input_ids, attention_mask, target
 
+    def _getinfo(self, index):
+        review = self.df.loc[index, "text"]
+        target = self.df.loc[index, "target"]
+        return review, target
+
 
 class BertRegressor(BertPreTrainedModel):
     def __init__(self, config):
@@ -187,9 +192,8 @@ class BertRegressorPipeline:
                 self.optimizer.step()
                 train_loss += loss.item()
 
-            logger.info(f"training loss : {train_loss/len(self.train_loader)}")
             val_loss = self.evaluate()
-            logger.info(f"validation loss : {val_loss}")
+            logger.info(f"train_loss:{train_loss/len(self.train_loader)}, val_loss:{val_loss}")
 
     def get_rmse(self, output, target):
         err = torch.sqrt(metrics.mean_squared_error(target, output))
@@ -199,10 +203,13 @@ class BertRegressorPipeline:
         predictions = []
         targets = []
         with torch.no_grad():
-            for input_ids, attention_mask, target in self.validation_loader:
+            for i, (input_ids, attention_mask, target) in enumerate(self.validation_loader):
                 output = self.model(input_ids.to(device), attention_mask.to(device))
                 predictions += output
                 targets += target.to(device)
+                print(target, output)
+                if i > 5:
+                    return targets
 
         return targets
 
@@ -230,5 +237,8 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
 
     logger.info("model training...")
     bert_pipeline.train()
+
+    logger.info("playground...")
+    bert_pipeline.predict()
 
     return None
