@@ -116,7 +116,7 @@ class BertRegressorPipeline:
         }
         logger.info(f"{split_dict}")
         if debug:
-            self.df_train = self.df_train.sample(1)  # train on a single entry in debug mode
+            self.df_train = self.df_train.sample(2)  # train on a single entry in debug mode
         self.train_set = ReviewsDataset(data=self.df_train, maxlen=self.max_len_train, tokenizer=self.tokenizer)
         self.validation_set = ReviewsDataset(
             data=self.df_validation, maxlen=self.max_len_valid, tokenizer=self.tokenizer
@@ -154,7 +154,6 @@ class BertRegressorPipeline:
 
         self.training_args = TrainingArguments(**args_dict)
 
-        ## Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name, max_length=512, truncation=True, clean_up_tokenization_spaces=False
         )
@@ -165,14 +164,10 @@ class BertRegressorPipeline:
 
         with torch.no_grad():
             for input_ids, attention_mask, target in self.validation_loader:
-                input_ids, attention_mask, target = (
-                    input_ids.to(device),
-                    attention_mask.to(device),
-                    target.to(device),
-                )
+                input_ids, attention_mask, target = (input_ids.to(device), attention_mask.to(device), target.to(device))
                 output = self.model(input_ids, attention_mask)
 
-                mean_loss += self.criterion(output, target.type_as(output)).item()
+                mean_loss += self.criterion(torch.reshape(output, (-1,)), target.type_as(output)).item()
                 #             mean_err += get_rmse(output, target)
                 count += 1
 
@@ -183,11 +178,11 @@ class BertRegressorPipeline:
             self.model.train()
             train_loss = 0
             for input_ids, attention_mask, target in track(
-                self.train_loader, description=f"epoch {epoch + 1} / {self.num_epochs}"
+                self.train_loader, description=f"epoch {epoch + 1}/{self.num_epochs}"
             ):
                 self.optimizer.zero_grad()
                 output = self.model(input_ids=input_ids.to(device), attention_mask=attention_mask.to(device))
-                loss = self.criterion(output, target.to(device).type_as(output))
+                loss = self.criterion(torch.reshape(output, (-1,)), target.to(device).type_as(output))
                 loss.backward()
                 self.optimizer.step()
                 train_loss += loss.item()
@@ -235,8 +230,5 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
 
     logger.info("model training...")
     bert_pipeline.train()
-
-    logger.info("model evaluation...")
-    bert_pipeline.evaluate()
 
     return None

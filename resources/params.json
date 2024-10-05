@@ -7,7 +7,7 @@
         "seed_data_split": 6,
         "lr": 0.0001,
         "weight_decay": 0.01,
-        "model_name": "distilbert/distilbert-base-uncased",
+        "model_name": "bert-base-uncased",
         "task": "text-classification",
         "max_len_train": 512,
         "max_len_valid": 512,
