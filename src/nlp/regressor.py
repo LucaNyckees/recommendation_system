@@ -183,8 +183,7 @@ class BertRegressorPipeline:
             self.model.train()
             train_loss = 0
             for input_ids, attention_mask, target in track(
-                iterable=self.train_loader,
-                description=f"epoch {epoch + 1} / num_epochs",
+                self.train_loader, description=f"epoch {epoch + 1} / {self.num_epochs}"
             ):
                 self.optimizer.zero_grad()
                 output = self.model(input_ids=input_ids.to(device), attention_mask=attention_mask.to(device))
@@ -235,7 +234,7 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     bert_pipeline._setup_model()
 
     logger.info("model training...")
-    bert_pipeline.train(debug=debug)
+    bert_pipeline.train()
 
     logger.info("model evaluation...")
     bert_pipeline.evaluate()
