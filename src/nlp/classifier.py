@@ -20,13 +20,7 @@ with open(RESOURCES_PATH / "params.json") as f:
     classifier_params = json.load(f)["classifier"]
 
 
-device = torch.device(
-    "cuda"
-    if torch.cuda.is_available()
-    else "mps"
-    if torch.backends.mps.is_available()
-    else "cpu"
-)
+device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
 id2label = {x: str(x) for x in range(1, 6)}
 label2id = {str(x): x for x in range(1, 6)}
@@ -84,11 +78,7 @@ class BERTClassifier:
             Dataset.from_list(x).map(_preprocess_fn, batched=True) for x in sets
         )
 
-        split_dict = {
-            "train_set": len(self.train_set),
-            "eval_set": len(self.eval_set),
-            "test_set": len(self.test_set),
-        }
+        split_dict = {"train_set": len(self.train_set), "eval_set": len(self.eval_set), "test_set": len(self.test_set)}
         logger.info(f"split : {split_dict}")
 
         ## Model

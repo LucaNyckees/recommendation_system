@@ -4,7 +4,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-import plotly.express as px
 from transformers import (
     AutoTokenizer,
     TrainingArguments,
@@ -21,6 +20,7 @@ from src.paths import RESULTS_PATH, RESOURCES_PATH, IMAGES_PATH
 from src.log.logger import logger
 from src.data_loader import load_reviews
 from src.processing import reviews_processing
+from src.visualization import plotly_comparison, plotly_losses
 
 
 with open(RESOURCES_PATH / "params.json") as f:
@@ -100,15 +100,16 @@ class BertRegressor(BertPreTrainedModel):
 
 
 class BertRegressorPipeline:
-    def __init__(self, df: pd.DataFrame):
+    def __init__(self, df: pd.DataFrame, vis: bool):
         for k, v in classifier_params.items():
             setattr(self, k, v)
+        self.vis = vis
+        self.df = df
         self.output_dir = RESULTS_PATH / "bert-regressor" / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
         self.images_dir = IMAGES_PATH / "bert-regressor" / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
 
         torch.manual_seed(self.seed)
         random.seed(self.seed)
-        self.df = df
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name,
@@ -187,6 +188,8 @@ class BertRegressorPipeline:
         return mean_loss / count
 
     def train(self):
+        train_losses = []
+        val_losses = []
         for epoch in range(self.num_epochs):
             self.model.train()
             train_loss = 0
@@ -202,12 +205,17 @@ class BertRegressorPipeline:
 
             val_loss = self.evaluate()
             logger.info(f"train_loss:{train_loss/len(self.train_loader)}, val_loss:{val_loss}")
+            train_losses.append(train_loss)
+            val_losses.append(val_loss)
+        if self.vis:
+            plotly_losses(train_losses=train_losses, val_losses=val_losses, images_dir=self.images_dir)
+        return train_losses, val_losses
 
     def get_rmse(self, output, target):
         err = torch.sqrt(metrics.mean_squared_error(target, output))
         return err
 
-    def predict(self, vis: bool = False):
+    def predict(self):
         predictions = []
         targets = []
         with torch.no_grad():
@@ -216,11 +224,8 @@ class BertRegressorPipeline:
                 predictions += output
                 targets += target.to(device)
 
-        if vis:
-            fig = px.scatter(x=[t.item() for t in targets], y=[p.item() for p in predictions])
-            fig.update_layout(yaxis_range=[0, 1])
-            os.makedirs(self.images_dir, exist_ok=True)
-            fig.write_image(self.images_dir / "target_v_pred.png")
+        if self.vis:
+            plotly_comparison(targets=targets, predictions=predictions, images_dir=self.images_dir)
 
         return targets, predictions
 
@@ -236,10 +241,12 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     logger.info("data processing...")
     df = reviews_processing(df=df, clean_text=False)
     sub = df.rename(columns={"rating": "target", "review_input": "text"})[["target", "text"]]
-    sub["target"] = sub["target"] / 5  # normalize product ratings to [0,1]
+    # normalize product ratings to [0,1]
+    sub["target"] = sub["target"] - sub["target"].min()
+    sub["target"] = sub["target"] / sub["target"].max()
 
     logger.info("initializing model...")
-    bert_pipeline = BertRegressorPipeline(df=sub)
+    bert_pipeline = BertRegressorPipeline(df=sub, vis=True)
 
     logger.info("preparing input data...")
     bert_pipeline._prepare_data(debug=debug)
@@ -248,9 +255,10 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     bert_pipeline._setup_model()
 
     logger.info("model training...")
-    bert_pipeline.train()
+    train_losses, val_losses = bert_pipeline.train()
 
     logger.info("playground...")
-    targets, predictions = bert_pipeline.predict(vis=True)
+    # an acceptable MSE loss for predictions in [0,1] should be less than 0.04
+    targets, predictions = bert_pipeline.predict()
 
     return None
