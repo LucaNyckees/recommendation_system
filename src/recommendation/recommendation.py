@@ -7,7 +7,13 @@ import numpy as np
 from src.nlp.embedder import EmbedderPipeline
 
 
-def recommendation_system(product_id: str, df: pd.DataFrame, method: Literal["tf-idf", "bert"], top_n: int = 10) -> pd.DataFrame:
+def recommendation_system(
+    product_id: str,
+    df: pd.DataFrame,
+    method: Literal["tf-idf", "bert"],
+    tune: bool = False,
+    top_n: int = 10,
+) -> pd.DataFrame:
     
     if method == "tf-idf":
         vectorizer = TfidfVectorizer(stop_words='english', max_df=0.95, min_df=2, ngram_range=(1, 1))
@@ -15,7 +21,8 @@ def recommendation_system(product_id: str, df: pd.DataFrame, method: Literal["tf
     elif method == "bert":
         pipeline = EmbedderPipeline()
         pipeline._opt_setup()
-        pipeline._train()
+        if tune:
+            pipeline._train()
         df["embeddings"] = df["title"].apply(
             lambda text: pipeline._get_embedding(text=text, max_len=32),
         )
