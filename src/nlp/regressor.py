@@ -54,11 +54,13 @@ class ReviewsDataset(Dataset):
         if len(tokens) < self.maxlen:
             tokens = tokens + ["[PAD]" for _ in range(self.maxlen - len(tokens))]
         else:
+            logger.warning(f"len(tokens): {len(tokens)}, updating tokens")
             tokens = tokens[: self.maxlen - 1] + ["[SEP]"]
-        # Obtain the indices of the tokens in the BERT Vocabulary
+            logger.warning(f">>> len(tokens): {len(tokens)}s")
+        # Indices of the tokens in the BERT Vocabulary
         input_ids = self.tokenizer.convert_tokens_to_ids(tokens)
         input_ids = torch.tensor(input_ids)
-        # Obtain the attention mask i.e a tensor containing 1s for no padded tokens and 0s for padded ones
+        # Attention mask containing 1s for non-padded tokens and 0s for padded ones
         attention_mask = (input_ids != 0).long()
 
         target = torch.tensor(target, dtype=torch.float32)
@@ -101,10 +103,8 @@ class BertRegressorPipeline:
     def __init__(self, df: pd.DataFrame):
         for k, v in classifier_params.items():
             setattr(self, k, v)
-        self.output_dir = RESULTS_PATH / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
+        self.output_dir = RESULTS_PATH / "bert-regressor" / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
         self.images_dir = IMAGES_PATH / "bert-regressor" / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
-        os.makedirs(self.output_dir, exist_ok=True)
-        os.makedirs(self.images_dir, exist_ok=True)
 
         torch.manual_seed(self.seed)
         random.seed(self.seed)
@@ -112,7 +112,7 @@ class BertRegressorPipeline:
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name,
-            max_length=512,
+            max_length=self.max_len,
             truncation=True,
             clean_up_tokenization_spaces=False,
         )
@@ -127,18 +127,19 @@ class BertRegressorPipeline:
             "test_set": len(self.df_test),
         }
         logger.info(f"{split_dict}")
-        if debug:
-            self.df_train = self.df_train.sample(2)  # train on a single entry in debug mode
-        self.train_set = ReviewsDataset(data=self.df_train, maxlen=self.max_len_train, tokenizer=self.tokenizer)
-        self.validation_set = ReviewsDataset(
-            data=self.df_validation, maxlen=self.max_len_valid, tokenizer=self.tokenizer
-        )
-        self.test_set = ReviewsDataset(data=self.df_test, maxlen=self.max_len_test, tokenizer=self.tokenizer)
 
+        # train on a single entry in debug mode
+        if debug:
+            self.df_train = self.df_train.sample(2)
+
+        # Dataset instances
+        self.train_set = ReviewsDataset(data=self.df_train, maxlen=self.max_len, tokenizer=self.tokenizer)
+        self.val_set = ReviewsDataset(data=self.df_validation, maxlen=self.max_len, tokenizer=self.tokenizer)
+        self.test_set = ReviewsDataset(data=self.df_test, maxlen=self.max_len, tokenizer=self.tokenizer)
+
+        # Dataloader instances
         self.train_loader = DataLoader(dataset=self.train_set, batch_size=self.batch_size, num_workers=self.num_threads)
-        self.validation_loader = DataLoader(
-            dataset=self.validation_set, batch_size=self.batch_size, num_workers=self.num_threads
-        )
+        self.val_loader = DataLoader(dataset=self.val_set, batch_size=self.batch_size, num_workers=self.num_threads)
 
     def _setup_model(self):
         self.model = BertRegressor.from_pretrained(
@@ -162,9 +163,9 @@ class BertRegressorPipeline:
             learning_rate=self.lr,
         )
 
-        logger.info(args_dict)
-
         self.training_args = TrainingArguments(**args_dict)
+        args_dict.pop("output_dir")
+        logger.info(args_dict)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name, max_length=512, truncation=True, clean_up_tokenization_spaces=False
@@ -175,7 +176,7 @@ class BertRegressorPipeline:
         mean_loss, count = 0, 0
 
         with torch.no_grad():
-            for input_ids, attention_mask, target in self.validation_loader:
+            for input_ids, attention_mask, target in self.val_loader:
                 input_ids, attention_mask, target = (input_ids.to(device), attention_mask.to(device), target.to(device))
                 output = self.model(input_ids, attention_mask)
 
@@ -206,14 +207,20 @@ class BertRegressorPipeline:
         err = torch.sqrt(metrics.mean_squared_error(target, output))
         return err
 
-    def predict(self):
+    def predict(self, vis: bool = False):
         predictions = []
         targets = []
         with torch.no_grad():
-            for input_ids, attention_mask, target in track(self.validation_loader, description="predicting"):
+            for input_ids, attention_mask, target in track(self.val_loader, description="predicting"):
                 output = self.model(input_ids.to(device), attention_mask.to(device))
                 predictions += output
                 targets += target.to(device)
+
+        if vis:
+            fig = px.scatter(x=[t.item() for t in targets], y=[p.item() for p in predictions])
+            fig.update_layout(yaxis_range=[0, 1])
+            os.makedirs(self.images_dir, exist_ok=True)
+            fig.write_image(self.images_dir / "target_v_pred.png")
 
         return targets, predictions
 
@@ -244,9 +251,6 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     bert_pipeline.train()
 
     logger.info("playground...")
-    targets, predictions = bert_pipeline.predict()
-    fig = px.scatter(x=[t.item() for t in targets], y=[p.item() for p in predictions])
-    fig.update_layout(yaxis_range=[0, 1])
-    fig.write_image(bert_pipeline.images_dir / "target_v_pred.png")
+    targets, predictions = bert_pipeline.predict(vis=True)
 
     return None

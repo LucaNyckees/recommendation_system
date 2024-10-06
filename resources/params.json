@@ -9,9 +9,7 @@
         "weight_decay": 0.01,
         "model_name": "bert-base-uncased",
         "task": "text-classification",
-        "max_len_train": 512,
-        "max_len_valid": 512,
-        "max_len_test": 512,
+        "max_len": 512,
         "num_threads": 1
     }
 }
