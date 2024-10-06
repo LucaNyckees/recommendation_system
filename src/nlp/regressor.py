@@ -101,8 +101,8 @@ class BertRegressorPipeline:
     def __init__(self, df: pd.DataFrame):
         for k, v in classifier_params.items():
             setattr(self, k, v)
-        self.output_dir = RESULTS_PATH / f"{datetime.today().strftime('%Y-%m-%d')}"
-        self.images_dir = IMAGES_PATH / "bert-regressor" / f"{datetime.today().strftime('%Y-%m-%d')}"
+        self.output_dir = RESULTS_PATH / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
+        self.images_dir = IMAGES_PATH / "bert-regressor" / f"{datetime.now().strftime('%m/%d/%Y-%H:%M:%S')}"
         os.makedirs(self.output_dir, exist_ok=True)
         os.makedirs(self.images_dir, exist_ok=True)
 
@@ -246,6 +246,7 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     logger.info("playground...")
     targets, predictions = bert_pipeline.predict()
     fig = px.scatter(x=[t.item() for t in targets], y=[p.item() for p in predictions])
+    fig.update_layout(yaxis_range=[0, 1])
     fig.write_image(bert_pipeline.images_dir / "target_v_pred.png")
 
     return None
