@@ -56,7 +56,7 @@ class ReviewsDataset(Dataset):
         else:
             logger.warning(f"len(tokens): {len(tokens)}, updating tokens")
             tokens = tokens[: self.maxlen - 1] + ["[SEP]"]
-            logger.warning(f">>> len(tokens): {len(tokens)}s")
+            logger.warning(f">>> len(tokens): {len(tokens)}")
         # Indices of the tokens in the BERT Vocabulary
         input_ids = self.tokenizer.convert_tokens_to_ids(tokens)
         input_ids = torch.tensor(input_ids)
@@ -208,7 +208,12 @@ class BertRegressorPipeline:
             train_losses.append(train_loss)
             val_losses.append(val_loss)
         if self.vis:
-            plotly_losses(train_losses=train_losses, val_losses=val_losses, images_dir=self.images_dir)
+            plotly_losses(
+                train_losses=train_losses,
+                val_losses=val_losses,
+                images_dir=self.images_dir,
+                num_epochs=self.num_epochs,
+            )
         return train_losses, val_losses
 
     def get_rmse(self, output, target):

@@ -21,10 +21,11 @@ def plotly_losses(
     train_losses: list[float],
     val_losses: list[float],
     images_dir: Path,
+    num_epochs: int,
 ) -> None:
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=list(range(train_losses)), y=train_losses, mode="lines+markers", name="train"))
-    fig.add_trace(go.Scatter(x=list(range(val_losses)), y=val_losses, mode="lines+markers", name="validation"))
+    fig.add_trace(go.Scatter(x=list(range(num_epochs)), y=train_losses, mode="lines+markers", name="train"))
+    fig.add_trace(go.Scatter(x=list(range(num_epochs)), y=val_losses, mode="lines+markers", name="validation"))
     os.makedirs(images_dir, exist_ok=True)
     fig.write_image(images_dir / "losses.png")
     return None
