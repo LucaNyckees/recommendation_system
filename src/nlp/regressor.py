@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
+import plotly.express as px
 from transformers import (
     AutoTokenizer,
     TrainingArguments,
@@ -16,10 +17,11 @@ import pandas as pd
 import json
 import os
 from rich.progress import track
-from src.paths import RESULTS_PATH, RESOURCES_PATH
+from src.paths import RESULTS_PATH, RESOURCES_PATH, IMAGES_PATH
 from src.log.logger import logger
 from src.data_loader import load_reviews
 from src.processing import reviews_processing
+
 
 with open(RESOURCES_PATH / "params.json") as f:
     classifier_params = json.load(f)["classifier"]
@@ -100,6 +102,9 @@ class BertRegressorPipeline:
         for k, v in classifier_params.items():
             setattr(self, k, v)
         self.output_dir = RESULTS_PATH / f"{datetime.today().strftime('%Y-%m-%d')}"
+        self.images_dir = IMAGES_PATH / "bert-regressor" / f"{datetime.today().strftime('%Y-%m-%d')}"
+        os.makedirs(self.output_dir, exist_ok=True)
+        os.makedirs(self.images_dir, exist_ok=True)
 
         torch.manual_seed(self.seed)
         random.seed(self.seed)
@@ -205,15 +210,12 @@ class BertRegressorPipeline:
         predictions = []
         targets = []
         with torch.no_grad():
-            for i, (input_ids, attention_mask, target) in enumerate(self.validation_loader):
+            for input_ids, attention_mask, target in track(self.validation_loader, description="predicting"):
                 output = self.model(input_ids.to(device), attention_mask.to(device))
                 predictions += output
                 targets += target.to(device)
-                print(target, output)
-                if i > 5:
-                    return targets
 
-        return targets
+        return targets, predictions
 
     def push_to_hub(self) -> None:
         hf_model_name = "LucaNyckees/amazon-bert-classifier"
@@ -242,6 +244,8 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     bert_pipeline.train()
 
     logger.info("playground...")
-    bert_pipeline.predict()
+    targets, predictions = bert_pipeline.predict()
+    fig = px.scatter(x=[t.item() for t in targets], y=[p.item() for p in predictions])
+    fig.write_image(bert_pipeline.images_dir / "target_v_pred.png")
 
     return None
