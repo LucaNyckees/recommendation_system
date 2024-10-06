@@ -79,6 +79,7 @@ class BertRegressor(BertPreTrainedModel):
         self.ff1 = nn.Linear(128, 128)
         self.tanh1 = nn.Tanh()
         self.ff2 = nn.Linear(128, 1)
+        self.sigm = nn.Sigmoid()
 
     def forward(self, input_ids, attention_mask):
         # Feed the input to Bert model to obtain contextualized representations
@@ -90,6 +91,7 @@ class BertRegressor(BertPreTrainedModel):
         output = self.ff1(output)
         output = self.tanh1(output)
         output = self.ff2(output)
+        output = self.sigm(output)
         return output
 
 
@@ -225,6 +227,7 @@ def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug:
     logger.info("data processing...")
     df = reviews_processing(df=df, clean_text=False)
     sub = df.rename(columns={"rating": "target", "review_input": "text"})[["target", "text"]]
+    sub["target"] = sub["target"] / 5  # normalize product ratings to [0,1]
 
     logger.info("initializing model...")
     bert_pipeline = BertRegressorPipeline(df=sub)
