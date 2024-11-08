@@ -18,3 +18,13 @@ def get_sentiment(text: str) -> float:
 def apply_reviews_sentiment(df: pd.DataFrame) -> pd.DataFrame:
     df["sentiment"] = df["review_input"].apply(get_sentiment)
     return df
+
+
+def map_rating_to_sentiment(rating: float, min_rating: float = 1.0, max_rating: float = 5.0) -> str:
+    threshold_rating = (max_rating + min_rating) / 2
+    if rating < threshold_rating:
+        return "negative"
+    elif rating > threshold_rating:
+        return "positive"
+    else:
+        return "neutral"
