@@ -3,8 +3,8 @@ token = ""
 
 
 [dbs.main]
-HOST=
-NAME=
-USER=
-PORT=
-PASSWORD=
+host=""
+name=""
+user=""
+port=""
+password=""

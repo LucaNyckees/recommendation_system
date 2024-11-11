@@ -11,8 +11,8 @@ def format_db_url_postgresql(user: str, password: str, host: str, port: int, nam
 config = load(ROOT / "config.toml")
 
 
-def get_db_url_from_tag(db_tag: str) -> str:
+def get_db_url_from_key(db_key: str) -> str:
 
-    db_config = config["dbs"][db_tag]
+    db_config = config["dbs"][db_key]
 
     return format_db_url_postgresql(**db_config)

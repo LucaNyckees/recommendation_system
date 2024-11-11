@@ -3,7 +3,7 @@ from typing import Any, Literal, overload
 import psycopg
 from psycopg.rows import dict_row
 
-from .config import get_db_url, get_db_url_from_key
+from .config import get_db_url_from_key
 
 try:
     import numpy as np
@@ -118,7 +118,7 @@ def connect(
     """Return Psycopg PostgreSQL connection"""
     match db_url, db_key:
         case None, None:
-            db_url = get_db_url()  # includes suffix
+            raise ValueError("Should get a db tag or a db url.")
         case _, None:
             pass
         case None, _:
