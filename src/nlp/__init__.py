@@ -1,8 +1,6 @@
 import typer
 from typing_extensions import Annotated
 
-from src.nlp.regressor import regressor_pipeline
-
 app = typer.Typer(name="nlp")
 
 
@@ -12,6 +10,9 @@ def run_bert_regressor_pipeline(
     frac: Annotated[float, typer.Option(help="Amazon data category")] = 0.001,
     debug: Annotated[bool, typer.Option(help="Amazon data category")] = False,
 ) -> None:
+    
+    from src.nlp.regressor import regressor_pipeline
+
     regressor_pipeline(
         category=category,
         frac=frac,

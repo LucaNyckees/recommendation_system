@@ -18,8 +18,7 @@ import os
 from rich.progress import track
 from src.paths import RESULTS_PATH, RESOURCES_PATH, IMAGES_PATH
 from src.log.logger import logger
-from src.data_loader import load_reviews
-from src.processing import reviews_processing
+from src.processing import DataProcessor
 from src.visualization import plotly_comparison, plotly_losses
 
 
@@ -240,12 +239,12 @@ class BertRegressorPipeline:
 
 
 def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug: bool = False) -> None:
+    data_processor = DataProcessor()
     logger.info("data loading...")
-    df = load_reviews(category=category, frac=frac)
+    data_processor._load(category=category)
+    data_processor._process_reviews(clean_text=False)
 
-    logger.info("data processing...")
-    df = reviews_processing(df=df, clean_text=False)
-    sub = df.rename(columns={"rating": "target", "review_input": "text"})[["target", "text"]]
+    sub = data_processor.df.rename(columns={"rating": "target", "review_input": "text"})[["target", "text"]]
     # normalize product ratings to [0,1]
     sub["target"] = sub["target"] - sub["target"].min()
     sub["target"] = sub["target"] / sub["target"].max()
