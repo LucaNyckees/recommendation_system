@@ -90,7 +90,6 @@ def connect(
     row_factory: Literal["dict", "realdict", "tuple"] = "dict",
     autocommit: bool = False,
     async_connection: Literal[False],
-    suffix: str = "",
 ) -> psycopg.Connection: ...
 
 
@@ -102,7 +101,6 @@ def connect(
     row_factory: Literal["dict", "realdict", "tuple"] = "dict",
     autocommit: bool = False,
     async_connection: Literal[True],
-    suffix: str = "",
 ) -> psycopg.AsyncConnection: ...
 
 
@@ -113,7 +111,6 @@ def connect(
     row_factory: Literal["dict", "realdict", "tuple"] = "dict",
     autocommit: bool = False,
     async_connection: bool = False,
-    suffix: str = "",
 ) -> psycopg.Connection | psycopg.AsyncConnection:
     """Return Psycopg PostgreSQL connection"""
     match db_url, db_key:
@@ -122,7 +119,7 @@ def connect(
         case _, None:
             pass
         case None, _:
-            db_url = get_db_url_from_key(db_key, suffix=suffix)
+            db_url = get_db_url_from_key(db_key)
         case _, _:
             raise ValueError("Cannot state both db_url & db_key")
 
