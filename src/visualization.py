@@ -41,5 +41,7 @@ def make_confusion_matrix(y_test, y_pred, classes: list, file_path: Path) -> Non
     plt.xlabel("Predicted Labels")
     plt.ylabel("True Labels")
     plt.title("Confusion Matrix of Sentiment Classification")
+    fig_dir = os.path.split(file_path)[0]
+    os.makedirs(fig_dir, exist_ok=True)
     plt.savefig(file_path)
     return None
