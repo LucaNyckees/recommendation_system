@@ -1,2 +1,10 @@
 [hugging_face]
 token = ""
+
+
+[dbs.main]
+host=""
+name=""
+user=""
+port=""
+password=""

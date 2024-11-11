@@ -7,6 +7,7 @@ annotated-types==0.7.0
 appnope==0.1.4
 asttokens==2.4.1
 astunparse==1.6.3
+async-timeout==4.0.3
 attrs==24.2.0
 blis==0.7.11
 catalogue==2.0.10
@@ -24,6 +25,7 @@ debugpy==1.8.6
 decorator==5.1.1
 dill==0.3.8
 en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl#sha256=86cc141f63942d4b2c5fcee06630fd6f904788d2f0ab005cce45aadb8fb73889
+exceptiongroup==1.2.2
 executing==2.1.0
 fastjsonschema==2.20.0
 filelock==3.16.1
@@ -82,6 +84,8 @@ preshed==3.0.9
 prompt_toolkit==3.0.48
 protobuf==4.25.5
 psutil==6.0.0
+psycopg==3.2.3
+psycopg-binary==3.2.3
 ptyprocess==0.7.0
 pure_eval==0.2.3
 py4j==0.10.9.7
@@ -143,5 +147,6 @@ wcwidth==0.2.13
 weasel==0.4.1
 Werkzeug==3.0.4
 wrapt==1.16.0
+xgboost==2.1.2
 xxhash==3.5.0
 yarl==1.13.1
