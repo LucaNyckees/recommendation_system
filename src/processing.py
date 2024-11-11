@@ -48,21 +48,21 @@ class DataProcessor:
     def _embedd_reviews_and_split(self, embedding: str) -> None:
 
         if embedding == "tf-idf":
-            X = self.df[['review_title', 'review']]
-            y = self.df['sentiment']
+            X = self.df["review_input"].to_list()
+            y = self.df["sentiment"]
 
-            label_encoder = LabelEncoder()
-            y_encoded = label_encoder.fit_transform(y)
+            self.label_encoder = LabelEncoder()
+            y_encoded = self.label_encoder.fit_transform(y)
 
-            self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X['review_input'], y_encoded, test_size=0.2, random_state=42)
+            self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
             tfidf = TfidfVectorizer(max_features=5000)
             self.X_train = tfidf.fit_transform(self.X_train)
             self.X_test = tfidf.transform(self.X_test)
 
         elif embedding == "bert":
-            tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-            model = BertModel.from_pretrained('bert-base-uncased')
+            tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+            model = BertModel.from_pretrained("bert-base-uncased")
 
             def get_bert_embedding(text):
                 inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=128)
@@ -74,14 +74,14 @@ class DataProcessor:
 
             embeddings = []
 
-            for text in tqdm(self.df['review_input'], desc="Embedding reviews"):
+            for text in tqdm(self.df["review_input"], desc="Embedding reviews"):
                 embeddings.append(get_bert_embedding(text).numpy())
 
             X = pd.DataFrame(embeddings)
-            y = self.df['sentiment']
+            y = self.df["sentiment"]
 
-            label_encoder = LabelEncoder()
-            y_encoded = label_encoder.fit_transform(y)
+            self.label_encoder = LabelEncoder()
+            y_encoded = self.label_encoder.fit_transform(y)
 
             self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
