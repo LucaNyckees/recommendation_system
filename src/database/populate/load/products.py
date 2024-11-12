@@ -19,7 +19,7 @@ db_cols_to_inserted_cols_mapping = {
     "main_category": "main_category",
     "average_rating": "average_rating",
     "rating_number": "rating_number",
-    "features": "",
+    "features": "features",
     "description": "description",
     "price": "price",
     "image_urls": "images",
