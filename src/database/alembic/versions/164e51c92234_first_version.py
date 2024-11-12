@@ -21,7 +21,7 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     op.create_table(
-        "rs_products",
+        "rs_amazon_products",
         # sa.Column('id', sa.INTEGER(),
         #                       sa.Identity(always=True, start=1, increment=1, minvalue=1, maxvalue=2147483647,
         #                                   cycle=False, cache=1), autoincrement=True, nullable=False),
@@ -34,10 +34,27 @@ def upgrade() -> None:
         sa.Column('image_urls', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
         sa.Column('store', sa.VARCHAR(), autoincrement=False, nullable=True),
         sa.Column('categories', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
-        sa.Column('parent_asin', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
+        sa.Column('parent_asin', sa.BIGINT(), autoincrement=False, nullable=True),
         sa.Column('details', sa.JSON(), autoincrement=False, nullable=True),
+    )
+
+    op.create_table(
+        "rs_amazon_reviews",
+        # sa.Column('id', sa.INTEGER(),
+        #                       sa.Identity(always=True, start=1, increment=1, minvalue=1, maxvalue=2147483647,
+        #                                   cycle=False, cache=1), autoincrement=True, nullable=False),
+        sa.Column('title', sa.VARCHAR(), autoincrement=False, nullable=True),
+        sa.Column('rating', sa.REAL(), autoincrement=False, nullable=True),
+        sa.Column('text', sa.VARCHAR(), autoincrement=False, nullable=True),
+        sa.Column('asin', sa.BIGINT(), autoincrement=False, nullable=True),
+        sa.Column('parent_asin', sa.BIGINT(), autoincrement=False, nullable=True),
+        sa.Column('user_id', sa.BIGINT(), autoincrement=False, nullable=True),
+        sa.Column('timestamp', sa.DATETIME(), autoincrement=False, nullable=True),
+        sa.Column('helpful_vote', sa.INTEGER(), autoincrement=False, nullable=True),
+        sa.Column('verified_purchase', sa.BOOLEAN(), autoincrement=False, nullable=True),
     )
 
 
 def downgrade() -> None:
-    op.drop_table("rs_products")
+    op.drop_table("rs_amazon_reviews")
+    op.drop_table("rs_amazon_products")
