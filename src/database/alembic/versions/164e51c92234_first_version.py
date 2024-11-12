@@ -23,6 +23,8 @@ depends_on: Union[str, Sequence[str], None] = None
 unaccent = PGExtension("public", "unaccent")
 intarray = PGExtension("public", "intarray")
 
+# NOTE: the 'rs' prefix stands for 'recommendation system'.
+
 
 def upgrade() -> None:
 
