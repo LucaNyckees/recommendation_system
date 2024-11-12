@@ -43,7 +43,7 @@ def upgrade() -> None:
         sa.Column('features', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
         sa.Column('description', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
         sa.Column('price', sa.REAL(), autoincrement=False, nullable=True),
-        sa.Column('image_urls', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
+        # sa.Column('image_urls', ARRAY(sa.JSON()), autoincrement=False, nullable=True),
         sa.Column('store', sa.VARCHAR(), autoincrement=False, nullable=True),
         sa.Column('categories', ARRAY(sa.VARCHAR()), autoincrement=False, nullable=True),
         sa.Column('details', sa.JSON(), autoincrement=False, nullable=True),

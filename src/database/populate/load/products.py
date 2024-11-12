@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import os
 from psycopg.sql import SQL, Identifier, Placeholder
+from psycopg.types.json import Jsonb
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
@@ -22,7 +23,7 @@ db_cols_to_inserted_cols_mapping = {
     "features": "features",
     "description": "description",
     "price": "price",
-    "image_urls": "images",
+    # "image_urls": "images",
     "store": "store",
     "categories": "categories",
     "details": "details"
@@ -49,7 +50,9 @@ def load_products() -> None:
             to_append = pd.read_json(file_path, lines=True)
             products_dataframe = products_dataframe.append(to_append, ignore_index=True)
 
-        products_list_of_dicts = products_dataframe.to_dict("records")
+    products_list_of_dicts = products_dataframe.to_dict("records")
+    for p in products_list_of_dicts:
+        p["details"] = Jsonb(p["details"])
 
     logger.info("Inserting values...")
     with connect(db_key="main") as conn:
@@ -59,4 +62,4 @@ def load_products() -> None:
                 inserted_cols=SQL(", ").join(map(Placeholder, db_cols_to_inserted_cols_mapping.values())),
                 )
             cur.executemany(query=insert_query, params_seq=products_list_of_dicts)
-    Console().log("Countries loaded")
+    Console().log("Products loaded")

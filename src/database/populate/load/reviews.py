@@ -46,9 +46,9 @@ def load_reviews() -> None:
             to_append = pd.read_json(file_path, lines=True)
             reviews_dataframe = reviews_dataframe.append(to_append, ignore_index=True)
 
-        reviews_dataframe["date"] = reviews_dataframe["timestamp"].dt.date
+    reviews_dataframe["date"] = reviews_dataframe["timestamp"].dt.date
 
-        reviews_list_of_dicts = reviews_dataframe.to_dict("records")
+    reviews_list_of_dicts = reviews_dataframe.to_dict("records")
 
     logger.info("Inserting values...")
     with connect(db_key="main") as conn:
@@ -58,4 +58,4 @@ def load_reviews() -> None:
                 inserted_cols=SQL(", ").join(map(Placeholder, db_cols_to_inserted_cols_mapping.values())),
                 )
             cur.executemany(query=insert_query, params_seq=reviews_list_of_dicts)
-    Console().log("Countries loaded")
+    Console().log("Reviews loaded")
