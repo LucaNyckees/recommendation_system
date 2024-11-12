@@ -2,12 +2,16 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
+from typing import Any
 from alembic import context
+
+from src.database.config import get_db_url_from_key
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+cmd_kwargs = context.get_x_argument(as_dictionary=True)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -24,6 +28,29 @@ target_metadata = None
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+
+def get_alembic_kwarg(kwarg: str) -> Any:
+    """
+    Retrieve the keyword argument kwarg, either :
+    - from "x" alembic argument
+    - from "tag" alembic argument
+    - from "main_option" of config.
+    """
+    if kwarg in cmd_kwargs:
+        return cmd_kwargs[kwarg]
+    else:
+        return config.get_main_option(kwarg)
+    
+
+if db := get_alembic_kwarg("db"):
+    try:
+        config.set_main_option("sqlalchemy.url", get_db_url_from_key(db))
+    except KeyError:
+        raise ValueError("DB not found in config")
+else:
+    db = "main"
+    config.set_main_option("sqlalchemy.url", get_db_url_from_key("main"))
 
 
 def run_migrations_offline() -> None:
