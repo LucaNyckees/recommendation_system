@@ -55,8 +55,8 @@ def load_products() -> None:
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
             insert_query = SQL("INSERT INTO rs_amazon_products ({db_cols}) VALUES ({inserted_cols})").format(
-                db_cols=", ".join(map(Identifier, db_cols_to_inserted_cols_mapping.keys())),
-                inserted_cols=", ".join(map(Placeholder, db_cols_to_inserted_cols_mapping.values())),
+                db_cols=SQL(", ").join(map(Identifier, db_cols_to_inserted_cols_mapping.keys())),
+                inserted_cols=SQL(", ").join(map(Placeholder, db_cols_to_inserted_cols_mapping.values())),
                 )
             cur.executemany(query=insert_query, params_seq=products_list_of_dicts)
     Console().log("Countries loaded")
