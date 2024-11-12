@@ -88,6 +88,7 @@ protobuf==4.25.5
 psutil==6.0.0
 psycopg==3.2.3
 psycopg-binary==3.2.3
+psycopg2-binary==2.9.10
 ptyprocess==0.7.0
 pure_eval==0.2.3
 py4j==0.10.9.7

@@ -49,7 +49,6 @@ if db := get_alembic_kwarg("db"):
     except KeyError:
         raise ValueError("DB not found in config")
 else:
-    db = "main"
     config.set_main_option("sqlalchemy.url", get_db_url_from_key("main"))
 
 

@@ -9,7 +9,7 @@ config = load(ROOT / "config.toml")
 
 
 def format_db_url_postgresql(user: str, password: str, host: str, port: int, name: str) -> str:
-    password = quote(password, safe="$^)]")
+    password = quote(password, safe="$^)]!")
     return f"postgresql://{user}:{password}@{host}:{port}/{name}"
 
 
