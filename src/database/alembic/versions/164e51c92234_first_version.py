@@ -10,6 +10,7 @@ from typing import Sequence, Union
 from alembic import op
 import sqlalchemy as sa
 from sqlalchemy.dialects.postgresql import ARRAY
+from alembic_utils.pg_extension import PGExtension
 
 
 # revision identifiers, used by Alembic.
@@ -19,7 +20,17 @@ branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 
+unaccent = PGExtension("public", "unaccent")
+intarray = PGExtension("public", "intarray")
+
+
 def upgrade() -> None:
+
+    # creating pg extensions
+    op.create_entity(unaccent)
+    op.create_entity(intarray)
+
+    # creating tables
     op.create_table(
         "rs_amazon_products",
         sa.Column('parent_asin', sa.BIGINT(), autoincrement=False, nullable=True),  # ID of the product
@@ -59,3 +70,5 @@ def upgrade() -> None:
 def downgrade() -> None:
     op.drop_table("rs_amazon_reviews")
     op.drop_table("rs_amazon_products")
+    op.drop_entity(unaccent)
+    op.drop_entity(intarray)
