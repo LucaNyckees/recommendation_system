@@ -1,0 +1,46 @@
+# DB versioning: alembic
+
+The database structure is versioned using [alembic](https://alembic.sqlalchemy.org/en/latest/index.html).
+
+Alembic configuration file is `recommendation_system/alembic.ini`.
+
+
+Versions are stored in `recommendation_system/src/database/alembic/versions`. A version file contains mainly:
+* `revision` version number
+* `down_revision` prior version number
+* `upgrade()` contains instructions to get from the prior version to this version.
+* `downgrade()` contains instructions to get from this version to the prior version.
+
+## Commands
+`alembic` has to be run inside the `recommendation_system` directory.
+
+`alembic --help` will display help.
+
+
+### DB selection
+Alembic is connected either to the default DB specified in `config.toml` 
+or to a given DB if you use the following option: `-x db=db_name`, e.g.
+```
+alembic -x db=db_1 current 
+```
+
+
+### Information
+* `alembic current [--verbose]` prints the current version.
+* `alembic history [--verbose]` prints the history of versions.
+
+### New version
+
+* `alembic revision -m "version_name"` creates a new empty version file.
+* `alembic revision --autogenerate -m "version_name"` autogenerates a new version file. It compares a given MetaData
+  (`target_metadata` in `env.py`) to the current structure of the DB. It then proposes version file, it has to be checked
+  because autodetection is not perfect.
+
+### Merge
+`alembic merge Revision_ID_1 Revision_ID_2 -m "merge Revision_ID_1 Revision_ID_2"`
+
+### Migration
+`alembic upgrade|downgrade version` migrates the db to the specified `version`. It can be:
+* `head` or `base` for `upgrade` or `downgrade`, respectively
+* `+x` or `-x` for `upgrade` or `downgrade`, respectively, `x` being the relative number of versions from current version.
+* absolute version number e.g. `4c90abe1f75f`, it can be shortened to the first few characters as long as it uniquely identifies a version.
