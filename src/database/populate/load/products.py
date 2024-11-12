@@ -6,6 +6,7 @@ from psycopg.sql import SQL, Identifier, Placeholder
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
+from src.log.logger import logger
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -28,13 +29,17 @@ db_cols_to_inserted_cols_mapping = {
 }
 
 
-def load_products():
+def load_products() -> None:
+
+    logger.info("Loading products")
 
     products_dataframe = None
 
     for category in categories_dict["categories"]:
 
-        file_path = DATA_PATH / f"{category}.jsonl"
+        logger.info(f"Accessing category {category}")
+
+        file_path = DATA_PATH / f"meta_{category}.jsonl"
         if not os.path.isfile(file_path):
             continue
 
@@ -46,6 +51,7 @@ def load_products():
 
         products_list_of_dicts = products_dataframe.to_dict("records")
 
+    logger.info("Inserting values...")
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
             insert_query = SQL("INSERT INTO rs_amazon_products ({db_cols}) VALUES ({inserted_cols})").format(
