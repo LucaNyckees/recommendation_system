@@ -1,9 +1,5 @@
 import pandas as pd
 import spacy
-
-from src.paths import DATA_PATH
-from src.log.logger import logger
-from src.nlp.sentiment_analysis.helpers import map_rating_to_sentiment
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
@@ -13,23 +9,32 @@ from transformers import BertTokenizer, BertModel
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from tqdm import tqdm
+from psycopg.sql import SQL
+
+from src.log.logger import logger
+from src.nlp.sentiment_analysis.helpers import map_rating_to_sentiment
+from src.database.connection import connect
+from src.database.db_functions import load_dataframe_from_query
+
 
 class DataProcessor:
 
     def __init__(self) -> None:
-        pass
+        self.conn = connect()
+        self.cur = self.conn.cursor()
 
     def _load(self, category: str, frac: float = 0.01) -> None:
         """
         :param category: amazon product category, e.g. "All_Beauty"
         :param frac: fraction with wich data sampling is done
         """
-        file_path1 = DATA_PATH / f"{category}.jsonl"
-        file_path2 = DATA_PATH / f"meta_{category}.jsonl"
-        df_reviews = pd.read_json(file_path1, lines=True)
-        df_meta = pd.read_json(file_path2, lines=True)
-        df = pd.merge(df_reviews, df_meta, on=["parent_asin"], how="inner")
-        self.df = df.sample(frac=frac).reset_index(drop=True)
+        query = SQL("""
+            SELECT *
+            FROM rs_amazon_products p
+            INNER JOIN rs_amazon_reviews r ON p.parent_asin = r.parent_asin
+            WHERE main_category = %(main_category)s
+            TABLESAMPLE BERNOULLI(%(proportion)s)""").format()
+        df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "proportion": frac * 100})
         logger.info(f"loaded {len(df)} rows")
 
     def _clean_text(text: str) -> str:

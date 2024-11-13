@@ -2,12 +2,12 @@ from rich.console import Console
 import pandas as pd
 import json
 import os
-from psycopg.sql import SQL, Identifier, Placeholder
 from psycopg.types.json import Jsonb
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
 from src.log.logger import logger
+from src.database.db_functions import insert_values
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -40,7 +40,7 @@ def load_products() -> None:
 
         logger.info(f"Accessing category {category}")
 
-        file_path = DATA_PATH / f"meta_{category}.jsonl"
+        file_path = DATA_PATH / "amazon" / f"meta_{category}.jsonl"
         if not os.path.isfile(file_path):
             continue
 
@@ -57,9 +57,5 @@ def load_products() -> None:
     logger.info("Inserting values...")
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
-            insert_query = SQL("INSERT INTO rs_amazon_products ({db_cols}) VALUES ({inserted_cols})").format(
-                db_cols=SQL(", ").join(map(Identifier, db_cols_to_inserted_cols_mapping.keys())),
-                inserted_cols=SQL(", ").join(map(Placeholder, db_cols_to_inserted_cols_mapping.values())),
-                )
-            cur.executemany(query=insert_query, params_seq=products_list_of_dicts)
+            insert_values(cur=cur, table="rs_amazon_reviews", values=products_list_of_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
     Console().log("Products loaded")
