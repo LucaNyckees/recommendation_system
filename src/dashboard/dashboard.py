@@ -1,11 +1,8 @@
 """
 Ideas:
 Section 1 : basic data visualization about the Amazon datasets
-- histograms for
-    * price
-    * average rating
-    * number of ratings
-    * piechart of sentiment
+OK
+- sentiments piechart (extract sentiments first)
 - dataframe description (e.g. nb of unique users, and unique products)
 Section 2 : models performance
 - user-item matrix and a pyvis graph where nodes are users maybe, and edges...?
