@@ -16,7 +16,7 @@ with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
 
 def download_amazon_datasets() -> None:
     """
-    Download amazone data for products and reviews.
+    Download amazon data for products and reviews.
     """
     DATA_PATH.mkdir(parents=True, exist_ok=True)
     asyncio.run(download_datasets_coro())

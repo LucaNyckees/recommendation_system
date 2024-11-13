@@ -11,7 +11,6 @@ from sklearn.preprocessing import LabelEncoder
 from tqdm import tqdm
 from psycopg.sql import SQL
 
-from src.paths import DATA_PATH
 from src.log.logger import logger
 from src.nlp.sentiment_analysis.helpers import map_rating_to_sentiment
 from src.database.connection import connect

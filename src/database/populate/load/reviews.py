@@ -37,7 +37,7 @@ def load_reviews() -> None:
 
         logger.info(f"Accessing category {category}")
 
-        file_path = DATA_PATH / f"{category}.jsonl"
+        file_path = DATA_PATH / "amazon" / f"{category}.jsonl"
         if not os.path.isfile(file_path):
             continue
 

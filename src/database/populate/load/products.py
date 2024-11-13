@@ -2,7 +2,6 @@ from rich.console import Console
 import pandas as pd
 import json
 import os
-from psycopg.sql import SQL, Identifier, Placeholder
 from psycopg.types.json import Jsonb
 
 from src.paths import DATA_PATH, RESOURCES_PATH
@@ -41,7 +40,7 @@ def load_products() -> None:
 
         logger.info(f"Accessing category {category}")
 
-        file_path = DATA_PATH / f"meta_{category}.jsonl"
+        file_path = DATA_PATH / "amazon" / f"meta_{category}.jsonl"
         if not os.path.isfile(file_path):
             continue
 
