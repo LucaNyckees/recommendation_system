@@ -49,3 +49,57 @@ hr {
 .dash-radioitems {
     padding: 10px 0;
 }
+
+#section-radio {
+    display: flex;
+    gap: 15px;                     /* Space between buttons */
+    justify-content: center;       /* Center alignment */
+    margin-bottom: 20px;           /* Space below buttons */
+}
+
+#section-radio label {
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;                   /* Text color */
+}
+
+#section-radio input[type="radio"] {
+    margin-right: 5px;             /* Space between button and label */
+    cursor: pointer;
+}
+
+#section-radio input[type="radio"]:checked + label {
+    color: #007bff;                /* Active color */
+}
+
+/* Hide the default radio buttons */
+.radio-buttons input[type="radio"] {
+    display: none;
+}
+
+/* Style the labels to look like buttons */
+.radio-buttons label {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 2px solid #007bff;    /* Button border color */
+    border-radius: 5px;           /* Rounded corners */
+    background-color: #ffffff;    /* Default background */
+    color: #007bff;               /* Default text color */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+.radio-buttons label:hover {
+    background-color: #007bff;    /* Hover background */
+    color: #ffffff;               /* Hover text color */
+}
+
+/* Active/selected button styling */
+.radio-buttons input[type="radio"]:checked + label {
+    background-color: #0056b3;    /* Active background color */
+    color: #ffffff;               /* Active text color */
+    border-color: #0056b3;        /* Active border color */
+}

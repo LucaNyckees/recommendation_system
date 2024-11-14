@@ -48,6 +48,7 @@ app.layout = html.Div([
         ],
         value='DataViz',
         id='section-radio',
+        className="radio-buttons",
     ),
     html.Div(id='section-content')
 ])
@@ -160,7 +161,7 @@ def update_graphs(selected_section):
             title="Average TextBlob vs. Average User Ratings",
             labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
             opacity=0.7,
-            color_discrete_sequence=[color_palette["accent_pink"]]
+            color_discrete_sequence=[color_palette["dark_blue"]]
         )
 
         return price_histogram, rating_histogram, num_ratings_histogram, tb_sentiment_piechart, sentiment_scatterplot, sentiment_piechart
