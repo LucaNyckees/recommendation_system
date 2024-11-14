@@ -14,45 +14,18 @@ from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
 
 # Define a color map to match the specified palette
 color_palette = {
-    "primary_blue": "#5AA9E6",
-    "light_blue": "#7FC8F8",
-    "background_gray": "#F9F9F9",
-    "accent_yellow": "#FFE45E",
-    "accent_pink": "#FF6392"
+    "light_blue": "#4cc9f0",
+    "dark_blue": "#4361ee",
+    "violet": "#3a0ca3",
+    "light_violet": "#7209b7",
+    "accent_pink": "#f72585"
 }
 
 color_map = {
-    "positive": color_palette["primary_blue"],
-    "neutral": color_palette["accent_yellow"],
+    "positive": color_palette["light_blue"],
+    "neutral": color_palette["light_violet"],
     "negative": color_palette["accent_pink"]
 }
-
-# h1 Style
-html.H1("Data and Models Visualization Dashboard", style={
-    "color": color_palette["primary_blue"],
-    "font-family": '"Open Sans", Arial, sans-serif',
-    "font-weight": "bold",
-    "font-size": "2.5em",
-    "margin-bottom": "10px"
-}),
-
-# h2 Style
-html.H2("Section Title", style={
-    "color": color_palette["primary_blue"],
-    "font-family": '"Open Sans", Arial, sans-serif',
-    "font-weight": "600",
-    "font-size": "2em",
-    "margin-bottom": "8px"
-}),
-
-# h3 Style
-html.H3("Data Visualizations", style={
-    "color": color_palette["primary_blue"],
-    "font-family": '"Open Sans", Arial, sans-serif',
-    "font-weight": "500",
-    "font-size": "1.75em",
-    "margin-bottom": "6px"
-}),
 
 # Load the data from the database
 with connect(db_key="main") as conn:
@@ -66,7 +39,7 @@ app = Dash(__name__)
 # App layout with updated styles for color coherence
 app.layout = html.Div([
     html.H1("Data and Models Visualization Dashboard"),
-    html.Hr(style={"border-color": "black"}),
+    html.Hr(),
     dcc.RadioItems(
         options=[
             {'label': 'Data Visualization', 'value': 'DataViz'},
@@ -75,9 +48,8 @@ app.layout = html.Div([
         ],
         value='DataViz',
         id='section-radio',
-        style={'color': "black"}
     ),
-    html.Div(id='section-content', style={"backgroundColor": "white", "padding": "20px"})
+    html.Div(id='section-content')
 ])
 
 # Callback to dynamically update the display section based on the selection
@@ -88,7 +60,7 @@ app.layout = html.Div([
 def display_section(selected_section):
     if selected_section == 'DataViz':
         return html.Div([
-            html.H3("Data Visualizations", style={"color": "black"}),
+            html.H3("Data Visualization"),
             # Flexbox container for horizontal layout for the first line of plots
             html.Div([
                 dcc.Graph(id='rating-histogram', style={'flex': '1'}),
@@ -118,7 +90,7 @@ def update_graphs(selected_section):
     if selected_section == 'DataViz':
         # Histogram for price
         price_histogram = px.histogram(df, x='price', nbins=30, title="Price Distribution",
-                                       color_discrete_sequence=[color_palette["primary_blue"]])
+                                       color_discrete_sequence=[color_palette["dark_blue"]])
 
         # Overlayed Histogram for average rating and average TextBlob sentiment rating
         rating_histogram = go.Figure()
@@ -129,7 +101,7 @@ def update_graphs(selected_section):
                 nbinsx=20,
                 name='User',
                 opacity=0.75,
-                marker_color=color_palette["primary_blue"]
+                marker_color=color_palette["light_blue"]
             )
         )
         
@@ -139,7 +111,7 @@ def update_graphs(selected_section):
                 nbinsx=20,
                 name='TextBlob',
                 opacity=0.75,
-                marker_color=color_palette["accent_yellow"]
+                marker_color=color_palette["light_violet"]
             )
         )
         
@@ -148,12 +120,12 @@ def update_graphs(selected_section):
             xaxis_title="Rating",
             yaxis_title="Count",
             barmode='overlay',
-            # paper_bgcolor=color_palette["background_gray"]
+            # paper_bgcolor=color_palette["violet"]
         )
 
         # Histogram for number of ratings
         num_ratings_histogram = px.histogram(df, x='rating_number', nbins=20, title="Number of Ratings Distribution",
-                                             color_discrete_sequence=[color_palette["light_blue"]])
+                                             color_discrete_sequence=[color_palette["dark_blue"]])
 
         # Pie charts for sentiment
         tb_sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()

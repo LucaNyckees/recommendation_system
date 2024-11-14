@@ -1,0 +1,51 @@
+/* assets/styles.css */
+
+h1 {
+    color: #02024d;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #02024d;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+
+h3 {
+    color: #02024d;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.75em;
+    margin-bottom: 6px;
+}
+
+/* Style for horizontal rule (hr) */
+hr {
+    border: 1px solid black;
+    margin: 15px 0;
+    /* width: 100%; */
+    color: #02024d;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+/* Style for dcc.RadioItems */
+.dash-radioitems label {
+    font-family: "Open Sans", Arial, sans-serif;
+    color: #5AA9E6;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.dash-radioitems input[type="radio"] {
+    accent-color: #FF6392;
+}
+
+/* Additional spacing and layout for radio items container */
+.dash-radioitems {
+    padding: 10px 0;
+}
