@@ -61,7 +61,7 @@ app.layout = html.Div([
 def display_section(selected_section):
     if selected_section == 'DataViz':
         return html.Div([
-            html.H3("Data Visualization"),
+            # html.H3("Data Visualization"),
             # Flexbox container for horizontal layout for the first line of plots
             html.Div([
                 dcc.Graph(id='rating-histogram', style={'flex': '1'}),
