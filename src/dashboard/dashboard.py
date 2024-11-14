@@ -13,6 +13,7 @@ Section 2 : models performance
 from dash import Dash, html, dcc, Input, Output, dash_table
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import os
 
 ROOT_DIR = ("/").join(os.getcwd().split("/"))
@@ -59,13 +60,17 @@ def display_section(selected_section):
     if selected_section == 'DataViz':
         return html.Div([
             html.H3("Data Visualizations"),
-            # Flexbox container for horizontal layout
+            # Flexbox container for horizontal layout for the first line of plots
             html.Div([
                 dcc.Graph(id='price-histogram', style={'flex': '1'}),
                 dcc.Graph(id='rating-histogram', style={'flex': '1'}),
                 dcc.Graph(id='num-ratings-histogram', style={'flex': '1'}),
                 dcc.Graph(id='sentiment-piechart', style={'flex': '1'}),
-            ], style={'display': 'flex', 'flex-direction': 'row'})
+            ], style={'display': 'flex', 'flex-direction': 'row'}),
+            html.Div([
+                # Scatter plot on the second line
+                dcc.Graph(id='sentiment-scatterplot', style={'width': '100%'})
+            ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'})
         ])
     else:
         return html.Div("Selected section: " + selected_section)
@@ -76,6 +81,7 @@ def display_section(selected_section):
     Output('rating-histogram', 'figure'),
     Output('num-ratings-histogram', 'figure'),
     Output('sentiment-piechart', 'figure'),
+    Output('sentiment-scatterplot', 'figure'),
     Input('section-radio', 'value')
 )
 def update_graphs(selected_section):
@@ -83,8 +89,38 @@ def update_graphs(selected_section):
         # Histogram for price
         price_histogram = px.histogram(df, x='price', nbins=30, title="Price Distribution")
 
-        # Histogram for average rating
-        rating_histogram = px.histogram(df, x='average_rating', nbins=20, title="Average Rating Distribution")
+        # Overlayed Histogram for average rating and average TextBlob sentiment rating
+        rating_histogram = go.Figure()
+        
+        # First histogram trace for 'average_rating'
+        rating_histogram.add_trace(
+            go.Histogram(
+                x=df['average_rating'],
+                nbinsx=20,
+                name='Average Rating',
+                opacity=0.6,
+                marker_color='blue'
+            )
+        )
+        
+        # Second histogram trace for 'average_tb_sentiment_rating'
+        rating_histogram.add_trace(
+            go.Histogram(
+                x=df['average_tb_sentiment_rating'],
+                nbinsx=20,
+                name='Average TextBlob Sentiment Rating',
+                opacity=0.6,
+                marker_color='orange'
+            )
+        )
+        
+        # Update layout for the overlay
+        rating_histogram.update_layout(
+            title="Average Rating Distribution",
+            xaxis_title="Rating",
+            yaxis_title="Count",
+            barmode='overlay'
+        )
 
         # Histogram for number of ratings
         num_ratings_histogram = px.histogram(df, x='rating_number', nbins=20, title="Number of Ratings Distribution")
@@ -92,13 +128,21 @@ def update_graphs(selected_section):
         # Pie chart for sentiment
         sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
         sentiment_counts.columns = ['tb_sentiment_category', 'count']
-        print(sentiment_counts)
         sentiment_piechart = px.pie(sentiment_counts, names='tb_sentiment_category', values='count', title="TextBlob Sentiment Distribution")
 
-        return price_histogram, rating_histogram, num_ratings_histogram, sentiment_piechart
+        # Scatter plot for average_tb_sentiment_rating vs tb_sentiment_rating
+        sentiment_scatterplot = px.scatter(
+            df,
+            x='average_tb_sentiment_rating',
+            y='tb_sentiment_rating',
+            title="Scatter Plot of Average vs. Individual TextBlob Sentiment Ratings",
+            labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
+            opacity=0.7
+        )
 
-    return {}, {}, {}, {}
+        return price_histogram, rating_histogram, num_ratings_histogram, sentiment_piechart, sentiment_scatterplot
+
+    return {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
     app.run_server(debug=True)
-
