@@ -33,7 +33,7 @@ class DataProcessor:
             FROM rs_amazon_products p
             INNER JOIN rs_amazon_reviews r ON p.parent_asin = r.parent_asin
             WHERE main_category = %(main_category)s
-            TABLESAMPLE BERNOULLI(%(proportion)s)""").format()
+            TABLESAMPLE BERNOULLI(%(proportion)s)""")
         df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "proportion": frac * 100})
         logger.info(f"loaded {len(df)} rows")
 
