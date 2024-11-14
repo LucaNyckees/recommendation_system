@@ -2,12 +2,10 @@
 Ideas:
 Section 1 : basic data visualization about the Amazon datasets
 OK
-- sentiments piechart (extract sentiments first)
 - dataframe description (e.g. nb of unique users, and unique products)
 Section 2 : models performance
 - user-item matrix and a pyvis graph where nodes are users maybe, and edges...?
 - reports for classifiers targetting sentiments
-- comparing textblob sentiments with labeled sentiments (extracted from ratings)
 """
 
 from dash import Dash, html, dcc, Input, Output, dash_table
@@ -62,14 +60,14 @@ def display_section(selected_section):
             html.H3("Data Visualizations"),
             # Flexbox container for horizontal layout for the first line of plots
             html.Div([
-                dcc.Graph(id='price-histogram', style={'flex': '1'}),
                 dcc.Graph(id='rating-histogram', style={'flex': '1'}),
-                dcc.Graph(id='num-ratings-histogram', style={'flex': '1'}),
-                dcc.Graph(id='sentiment-piechart', style={'flex': '1'}),
+                dcc.Graph(id='sentiment-scatterplot', style={'flex': '1'}),
+                dcc.Graph(id='tb-sentiment-piechart', style={'flex': '1'}),
             ], style={'display': 'flex', 'flex-direction': 'row'}),
             html.Div([
-                # Scatter plot on the second line
-                dcc.Graph(id='sentiment-scatterplot', style={'width': '100%'})
+                dcc.Graph(id='price-histogram', style={'flex': '1'}),
+                dcc.Graph(id='num-ratings-histogram', style={'flex': '1'}),
+                dcc.Graph(id='sentiment-piechart', style={'flex': '1'}),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'})
         ])
     else:
@@ -80,8 +78,9 @@ def display_section(selected_section):
     Output('price-histogram', 'figure'),
     Output('rating-histogram', 'figure'),
     Output('num-ratings-histogram', 'figure'),
-    Output('sentiment-piechart', 'figure'),
+    Output('tb-sentiment-piechart', 'figure'),
     Output('sentiment-scatterplot', 'figure'),
+    Output('sentiment-piechart', 'figure'),
     Input('section-radio', 'value')
 )
 def update_graphs(selected_section):
@@ -97,7 +96,7 @@ def update_graphs(selected_section):
             go.Histogram(
                 x=df['average_rating'],
                 nbinsx=20,
-                name='Average Rating',
+                name='user',
                 opacity=0.6,
                 marker_color='blue'
             )
@@ -108,7 +107,7 @@ def update_graphs(selected_section):
             go.Histogram(
                 x=df['average_tb_sentiment_rating'],
                 nbinsx=20,
-                name='Average TextBlob Sentiment Rating',
+                name='textblob',
                 opacity=0.6,
                 marker_color='orange'
             )
@@ -116,7 +115,7 @@ def update_graphs(selected_section):
         
         # Update layout for the overlay
         rating_histogram.update_layout(
-            title="Average Rating Distribution",
+            title="avg rating distribution",
             xaxis_title="Rating",
             yaxis_title="Count",
             barmode='overlay'
@@ -125,24 +124,28 @@ def update_graphs(selected_section):
         # Histogram for number of ratings
         num_ratings_histogram = px.histogram(df, x='rating_number', nbins=20, title="Number of Ratings Distribution")
 
-        # Pie chart for sentiment
-        sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
-        sentiment_counts.columns = ['tb_sentiment_category', 'count']
-        sentiment_piechart = px.pie(sentiment_counts, names='tb_sentiment_category', values='count', title="TextBlob Sentiment Distribution")
+        # Pie charts for sentiment
+        tb_sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
+        tb_sentiment_counts.columns = ['tb_sentiment_category', 'count']
+        tb_sentiment_piechart = px.pie(tb_sentiment_counts, names='tb_sentiment_category', values='count', title="textblob sentiments")
+
+        sentiment_counts = df['sentiment_category'].value_counts().reset_index()
+        sentiment_counts.columns = ['sentiment_category', 'count']
+        sentiment_piechart = px.pie(sentiment_counts, names='sentiment_category', values='count', title="user sentiments")
 
         # Scatter plot for average_tb_sentiment_rating vs tb_sentiment_rating
         sentiment_scatterplot = px.scatter(
             df,
             x='average_tb_sentiment_rating',
             y='tb_sentiment_rating',
-            title="Scatter Plot of Average vs. Individual TextBlob Sentiment Ratings",
+            title="avg textblob vs. avg user ratings",
             labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
             opacity=0.7
         )
 
-        return price_histogram, rating_histogram, num_ratings_histogram, sentiment_piechart, sentiment_scatterplot
+        return price_histogram, rating_histogram, num_ratings_histogram, tb_sentiment_piechart, sentiment_scatterplot, sentiment_piechart
 
-    return {}, {}, {}, {}, {}
+    return {}, {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
     app.run_server(debug=True)

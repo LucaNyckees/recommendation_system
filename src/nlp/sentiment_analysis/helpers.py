@@ -55,7 +55,7 @@ def apply_sentiment_analysis(df: pd.DataFrame) -> pd.DataFrame:
     df["rating"] = df["rating"].apply(homeomorphic_interval_map, interval_in=(1, 5), interval_out=(0, 100))
     df["average_rating"] = df["average_rating"].apply(homeomorphic_interval_map, interval_in=(1, 5), interval_out=(0, 100))
     # extrac user sentiment category
-    df["sentiment"] = df["rating"].apply(map_rating_to_sentiment, min_rating=0, max_rating=100)
+    df["sentiment_category"] = df["rating"].apply(map_rating_to_sentiment, min_rating=0, max_rating=100)
     # extract textblob sentiment ratings
     df["tb_sentiment_rating"] = df["review_input"].apply(get_textblob_sentiment_rating)
     # normalize textblob sentiment ratings to interval (0, 100)
