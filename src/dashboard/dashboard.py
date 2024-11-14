@@ -89,7 +89,7 @@ def display_section(selected_section):
 def update_graphs(selected_section):
     if selected_section == 'DataViz':
         # Histogram for price
-        price_histogram = px.histogram(df, x='price', nbins=30, title="Price Distribution",
+        price_histogram = px.histogram(df, x='price', nbins=100, title="Price Distribution",
                                        color_discrete_sequence=[color_palette["dark_blue"]])
 
         # Overlayed Histogram for average rating and average TextBlob sentiment rating
@@ -98,7 +98,7 @@ def update_graphs(selected_section):
         rating_histogram.add_trace(
             go.Histogram(
                 x=df['average_rating'],
-                nbinsx=20,
+                nbinsx=60,
                 name='User',
                 opacity=0.75,
                 marker_color=color_palette["light_blue"]
@@ -108,7 +108,7 @@ def update_graphs(selected_section):
         rating_histogram.add_trace(
             go.Histogram(
                 x=df['average_tb_sentiment_rating'],
-                nbinsx=20,
+                nbinsx=60,
                 name='TextBlob',
                 opacity=0.75,
                 marker_color=color_palette["light_violet"]
@@ -124,7 +124,7 @@ def update_graphs(selected_section):
         )
 
         # Histogram for number of ratings
-        num_ratings_histogram = px.histogram(df, x='rating_number', nbins=20, title="Number of Ratings Distribution",
+        num_ratings_histogram = px.histogram(df, x='rating_number', nbins=100, title="Number of Ratings Distribution",
                                              color_discrete_sequence=[color_palette["dark_blue"]])
 
         # Pie charts for sentiment
