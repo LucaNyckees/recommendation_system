@@ -22,17 +22,21 @@ sys.path.append(ROOT_DIR)
 
 from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
+from src.nlp.sentiment_analysis.helpers import apply_reviews_sentiment
+
 
 # Load the data from the database
 with connect(db_key="main") as conn:
     with conn.cursor() as cur:
         df = get_amazon_dataframe(cur=cur, categories=None, limit=10000)
+        df["review_input"] = df["title"] + df["text"]
+        df = apply_reviews_sentiment(df=df)
 
 app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.H1("DATA AND MODELS VISUALIZATION DASHBOARD"),
+    html.H1("Data and Models Visualization Dashboard"),
     html.Hr(),
     dcc.RadioItems(
         options=[
@@ -85,12 +89,13 @@ def update_graphs(selected_section):
         # Histogram for number of ratings
         num_ratings_histogram = px.histogram(df, x='rating_number', nbins=20, title="Number of Ratings Distribution")
 
-        # # Pie chart for sentiment
-        # sentiment_counts = df['sentiment'].value_counts().reset_index()
-        # sentiment_counts.columns = ['sentiment', 'count']
-        # sentiment_piechart = px.pie(sentiment_counts, names='sentiment', values='count', title="Sentiment Distribution")
+        # Pie chart for sentiment
+        sentiment_counts = df['sentiment'].value_counts().reset_index()
+        sentiment_counts.columns = ['sentiment', 'count']
+        print(sentiment_counts)
+        sentiment_piechart = px.pie(sentiment_counts, names='sentiment', values='count', title="Sentiment Distribution")
 
-        return price_histogram, rating_histogram, num_ratings_histogram, {}
+        return price_histogram, rating_histogram, num_ratings_histogram, sentiment_piechart
 
     return {}, {}, {}, {}
 
