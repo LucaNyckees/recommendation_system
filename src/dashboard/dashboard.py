@@ -22,7 +22,7 @@ sys.path.append(ROOT_DIR)
 
 from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
-from src.nlp.sentiment_analysis.helpers import apply_textblob_analysis
+from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
 
 
 # Load the data from the database
@@ -30,7 +30,7 @@ with connect(db_key="main") as conn:
     with conn.cursor() as cur:
         df = get_amazon_dataframe(cur=cur, categories=None, limit=10000)
         df["review_input"] = df["title"] + df["text"]
-        df = apply_textblob_analysis(df=df)
+        df = apply_sentiment_analysis(df=df)
 
 app = Dash(__name__)
 
