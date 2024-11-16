@@ -174,7 +174,8 @@ def update_graphs(selected_section):
             title="Average TextBlob vs. Average User Ratings",
             labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
             opacity=0.7,
-            color_discrete_sequence=[color_palette["dark_blue"]]
+            color_discrete_sequence=[color_palette["dark_blue"]],
+            trendline="ols",
         )
         sentiment_scatterplot = darkmode_layout(fig=sentiment_scatterplot, sublib="px")
 
