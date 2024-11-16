@@ -94,6 +94,7 @@ packaging==24.1
 pandas==2.2.3
 parse==1.20.2
 parso==0.8.4
+patsy==1.0.1
 pexpect==4.9.0
 pillow==10.4.0
 platformdirs==4.3.6
@@ -141,6 +142,7 @@ spark==0.2.1
 SQLAlchemy==2.0.36
 srsly==2.4.8
 stack-data==0.6.3
+statsmodels==0.14.4
 stopwords==1.0.1
 sympy==1.13.3
 tenacity==9.0.0
