@@ -34,7 +34,7 @@ h3 {
 
 /* Style for horizontal rule (hr) */
 hr {
-    border: 1px solid black;
+    border: 1px solid white;
     margin: 15px 0;
     /* width: 100%; */
     color: var(--darkmode_writing);
