@@ -8,6 +8,21 @@ body {
     background-color: var(--darkmode_bg); /* Change this to any color you prefer */
 }
 
+/* Flex container for the title and radio buttons */
+.header-container {
+    display: flex;                  /* Enable flexbox layout */
+    justify-content: space-between; /* Space between the two elements */
+    align-items: center;            /* Align items vertically at the center */
+    margin-bottom: 20px;            /* Space below the header */
+    padding: 0 10px;                /* Optional: Add padding for spacing */
+}
+
+/* Existing styles for the radio buttons */
+.radio-buttons {
+    display: flex;                  /* Keep buttons in a horizontal row */
+    gap: 15px;                      /* Space between buttons */
+}
+
 h1 {
     color: var(--darkmode_writing);
     font-family: "Open Sans", Arial, sans-serif;

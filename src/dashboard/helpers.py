@@ -12,11 +12,11 @@ def darkmode_layout(fig: go.Figure, sublib: str) -> go.Figure:
             title=dict(font=dict(size=18, color=light_writing_color), x=0.5),
             legend=dict(font=dict(size=14, color=light_writing_color)),
             xaxis=dict(
-                title=dict(font=dict(size=16, color=light_writing_color)),
+                title=dict(font=dict(size=14, color=light_writing_color)),
                 tickfont=dict(color=light_writing_color)
             ),
             yaxis=dict(
-                title=dict(font=dict(size=16, color=light_writing_color)),
+                title=dict(font=dict(size=14, color=light_writing_color)),
                 tickfont=dict(color=light_writing_color)
             ),
             paper_bgcolor=dark_paper_bg_color,
@@ -26,8 +26,8 @@ def darkmode_layout(fig: go.Figure, sublib: str) -> go.Figure:
         fig.update_layout(
             title=dict(font=dict(size=18, color=light_writing_color), x=0.5),
             legend=dict(font=dict(size=14, color=light_writing_color)),
-            xaxis=dict(title=dict(font=dict(size=16, color=light_writing_color))),
-            yaxis=dict(title=dict(font=dict(size=16, color=light_writing_color))),
+            xaxis=dict(title=dict(font=dict(size=14, color=light_writing_color))),
+            yaxis=dict(title=dict(font=dict(size=14, color=light_writing_color))),
             xaxis_tickfont=dict(color=light_writing_color),
             yaxis_tickfont=dict(color=light_writing_color),
             paper_bgcolor=dark_paper_bg_color,

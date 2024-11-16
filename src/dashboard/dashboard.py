@@ -40,18 +40,25 @@ app = Dash(__name__)
 
 # App layout with updated styles for color coherence
 app.layout = html.Div([
-    html.H1("Data and Models Visualization Dashboard"),
+    # Header container
+    html.Div([
+        html.H1("Data and Models Visualization Dashboard"),
+        dcc.RadioItems(
+            options=[
+                {'label': 'Data Visualization', 'value': 'DataViz'},
+                {'label': 'Model Performances', 'value': 'ModelPerf'},
+                {'label': 'Recommendation Demo', 'value': 'RecomDemo'}
+            ],
+            value='DataViz',
+            id='section-radio',
+            className="radio-buttons",
+        )
+    ], className="header-container"),
+
+    # Horizontal rule
     html.Hr(),
-    dcc.RadioItems(
-        options=[
-            {'label': 'Data Visualization', 'value': 'DataViz'},
-            {'label': 'Model Performances', 'value': 'ModelPerf'},
-            {'label': 'Recommendation Demo', 'value': 'RecomDemo'}
-        ],
-        value='DataViz',
-        id='section-radio',
-        className="radio-buttons",
-    ),
+
+    # Section content
     html.Div(id='section-content')
 ])
 
