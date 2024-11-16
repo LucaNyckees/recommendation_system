@@ -20,6 +20,7 @@ def darkmode_layout(fig: go.Figure, sublib: str) -> go.Figure:
                 tickfont=dict(color=light_writing_color)
             ),
             paper_bgcolor=dark_paper_bg_color,
+            plot_bgcolor='rgba(0, 0, 0, 0)',
         )
     elif sublib == "px":
         fig.update_layout(
@@ -30,6 +31,7 @@ def darkmode_layout(fig: go.Figure, sublib: str) -> go.Figure:
             xaxis_tickfont=dict(color=light_writing_color),
             yaxis_tickfont=dict(color=light_writing_color),
             paper_bgcolor=dark_paper_bg_color,
+            plot_bgcolor='rgba(0, 0, 0, 0)',
         )
     else:
         raise ValueError(f"Sublib must be one of 'go', 'px'. Received: {sublib}")

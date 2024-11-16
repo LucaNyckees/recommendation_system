@@ -142,7 +142,7 @@ def update_graphs(selected_section):
             title="TextBlob Sentiments",
             color="tb_sentiment_category",
             color_discrete_map=color_map,
-            hole=0.3
+            hole=0.63
         )
         tb_sentiment_piechart = darkmode_layout(fig=tb_sentiment_piechart, sublib="px")
 
@@ -155,7 +155,7 @@ def update_graphs(selected_section):
             title="User Sentiments",
             color="sentiment_category",
             color_discrete_map=color_map,
-            hole=0.3
+            hole=0.63
         )
         sentiment_piechart = darkmode_layout(fig=sentiment_piechart, sublib="px")
 
