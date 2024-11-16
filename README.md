@@ -1,12 +1,12 @@
 # Recommendation System for Amazon Products with enhanced BERT classifier
 
 ## Description
-We download Amazon product reviews data from https://amazon-reviews-2023.github.io/ and perform various NLP tasks.
-- perform sentiment analysis using TextBlob
-- train a BERT classifier on user ratings to enhance the sentiment analysis pipeline
-- create interactive dashboard for sentiment analysis
-- implement a recommendation system using TF-IDF method
-- wrap up recommendation system as FastAPI application
+We download Amazon product reviews data from https://amazon-reviews-2023.github.io/, load them to a postgres database and develop a recommender system.
+- embed reviews using a pre-trained embedding BERT or TF-IDF method
+- build a sentiment classifier (compare various models amongst random forests, gradient boosting and BERT)
+- create an interactive dashboard for data visualization and model performance analysis
+- implement the recommendation system
+- wrap up the app using FastAPI routes and dockerinzing it
 
 ## People
 - Luca Nyckees
@@ -52,3 +52,13 @@ deactivate
 |
 └── tests/
 ```
+
+### Dash App
+Go to the root directory `PATH_TO_YOUR_PROJECT` and run the following to launch an interactive dashboard built with Dash.
+```
+python src/dashboard/dashboard.py
+```
+There are three sections, namely
+- data visualization
+- models performance
+- recommender demo
