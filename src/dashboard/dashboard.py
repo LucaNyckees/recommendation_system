@@ -11,6 +11,8 @@ sys.path.append(ROOT_DIR)
 from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
 from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
+from src.dashboard.helpers import darkmode_layout
+
 
 # Define a color map to match the specified palette
 color_palette = {
@@ -92,6 +94,7 @@ def update_graphs(selected_section):
         # Histogram for price
         price_histogram = px.histogram(df, x='price', nbins=100, title="Price Distribution",
                                        color_discrete_sequence=[color_palette["dark_blue"]])
+        price_histogram = darkmode_layout(fig=price_histogram, sublib="px")
 
         # Overlayed Histogram for average rating and average TextBlob sentiment rating
         rating_histogram = go.Figure()
@@ -112,7 +115,7 @@ def update_graphs(selected_section):
                 nbinsx=60,
                 name='TextBlob',
                 opacity=0.75,
-                marker_color=color_palette["light_violet"]
+                marker_color=color_palette["light_violet"],
             )
         )
         
@@ -121,12 +124,13 @@ def update_graphs(selected_section):
             xaxis_title="Rating",
             yaxis_title="Count",
             barmode='overlay',
-            # paper_bgcolor=color_palette["violet"]
         )
+        rating_histogram = darkmode_layout(fig=rating_histogram, sublib="go")
 
         # Histogram for number of ratings
         num_ratings_histogram = px.histogram(df, x='rating_number', nbins=100, title="Number of Ratings Distribution",
                                              color_discrete_sequence=[color_palette["dark_blue"]])
+        num_ratings_histogram = darkmode_layout(fig=num_ratings_histogram, sublib="px")
 
         # Pie charts for sentiment
         tb_sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
@@ -140,6 +144,7 @@ def update_graphs(selected_section):
             color_discrete_map=color_map,
             hole=0.3
         )
+        tb_sentiment_piechart = darkmode_layout(fig=tb_sentiment_piechart, sublib="px")
 
         sentiment_counts = df['sentiment_category'].value_counts().reset_index()
         sentiment_counts.columns = ['sentiment_category', 'count']
@@ -152,6 +157,7 @@ def update_graphs(selected_section):
             color_discrete_map=color_map,
             hole=0.3
         )
+        sentiment_piechart = darkmode_layout(fig=sentiment_piechart, sublib="px")
 
         # Scatter plot for average_tb_sentiment_rating vs tb_sentiment_rating
         sentiment_scatterplot = px.scatter(
@@ -163,6 +169,7 @@ def update_graphs(selected_section):
             opacity=0.7,
             color_discrete_sequence=[color_palette["dark_blue"]]
         )
+        sentiment_scatterplot = darkmode_layout(fig=sentiment_scatterplot, sublib="px")
 
         return price_histogram, rating_histogram, num_ratings_histogram, tb_sentiment_piechart, sentiment_scatterplot, sentiment_piechart
 
