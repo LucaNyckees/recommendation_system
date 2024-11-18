@@ -38,7 +38,7 @@ with connect(db_key="main") as conn:
         df = apply_sentiment_analysis(df=df)
 
 
-url = "http://127.0.0.1:8000/dashboard/table_summary_all_categories"
+url = "http://127.0.0.1:8000/dashboard/all_categories/table_summary"
 try:
     response = requests.post(url)
     response.raise_for_status()

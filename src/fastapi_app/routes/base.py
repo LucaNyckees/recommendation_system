@@ -15,7 +15,7 @@ from src.database.connection import connect
 
 base_router = APIRouter()
 
-@base_router.post("/dashboard/table_summary_all_categories")
+@base_router.post("/dashboard/all_categories/table_summary")
 async def get_summary() -> list[dict[str, Any]]:
     """
     A route to produce a table summary over all categories in the dashboard.
@@ -30,3 +30,25 @@ async def get_summary() -> list[dict[str, Any]]:
                 GROUP BY main_category;""")
             summary = load_dicts_from_query(cur=cur, query=query, params=None)
     return summary
+
+
+@base_router.post("/dashboard/all_categories/marimekko_price_volume")
+async def get_summary() -> list[dict[str, Any]]:
+    """
+    A route to produce a marimekko chart for price volume per category in the dashboard.
+    """
+    with connect(db_key="main") as conn:
+        with conn.cursor() as cur:
+            query = SQL("""        
+                SELECT
+                main_category,
+                SUM(price) AS total_price,
+                SUM(rating_number) AS total_rating_number,
+                SUM(price * rating_number) AS total_volume
+                FROM rs_amazon_products p
+                INNER JOIN rs_amazon_reviews r
+                ON p.parent_asin = r.parent_asin
+                WHERE price != 'NaN'
+                GROUP BY main_category;""")
+            marimekko_data = load_dicts_from_query(cur=cur, query=query, params=None)
+    return marimekko_data
