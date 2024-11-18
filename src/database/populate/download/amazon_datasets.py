@@ -43,13 +43,13 @@ async def download_dataset(client: AsyncClient, url: str, path: Path) -> None:
 
 async def download_reviews(client: AsyncClient) -> None:
     for category in categories:
+        logger.info("Downloading reviews for category {category}")
         url = f"https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/{category}.jsonl.gz"
         dir = DATA_PATH / "amazon"
         dir.mkdir(exist_ok=True, parents=True)
         zip_path = dir / f"{category}.jsonl.gz"
         final_dir = dir
         await download_dataset(client, url, zip_path)
-        logger.info("Amazon reviews downloaded.")
         with gzip.open(zip_path, 'rb') as f_in:
             with open(final_dir / f"{category}.jsonl", 'wb') as f_out:
                 shutil.copyfileobj(f_in, f_out)
@@ -58,13 +58,13 @@ async def download_reviews(client: AsyncClient) -> None:
 
 async def download_products(client: AsyncClient) -> None:
     for category in categories:
+        logger.info("Downloading products for category {category}")
         url = f"https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_{category}.jsonl.gz"
         dir = DATA_PATH / "amazon"
         dir.mkdir(exist_ok=True, parents=True)
         zip_path = dir / f"meta_{category}.jsonl.gz"
         final_dir = dir
         await download_dataset(client, url, zip_path)
-        logger.info("Amazon products downloaded.")
         with gzip.open(zip_path, 'rb') as f_in:
             with open(final_dir / f"meta_{category}.jsonl", 'wb') as f_out:
                 shutil.copyfileobj(f_in, f_out)
