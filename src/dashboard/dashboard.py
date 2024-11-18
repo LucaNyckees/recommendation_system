@@ -133,10 +133,10 @@ def update_graphs(selected_section):
         sentiment_scatterplot = px.scatter(
             df,
             x="average_tb_sentiment_rating",
-            y="tb_sentiment_rating",
+            y="average_rating",
             marginal_x="box",
             marginal_y="box",
-            title="Average TextBlob vs. Average User Ratings",
+            title="TextBlob vs. User Ratings",
             labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
             opacity=0.7,
             color_discrete_sequence=[color_palette["dark_blue"]],
