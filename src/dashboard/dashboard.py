@@ -14,6 +14,7 @@ from src.database.db_functions import get_amazon_dataframe
 from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
 from src.dashboard.helpers import apply_layout, get_route_result
 
+suppress_callback_exceptions=True
 
 # Define a color map to match the specified palette
 color_palette = {
@@ -29,6 +30,8 @@ color_map = {
     "neutral": color_palette["light_violet"],
     "negative": color_palette["accent_pink"]
 }
+
+components_style = {"flex": "1", "border": "1px solid gray", "margin-left": "20px", "margin-right": "20px"}
 
 # Load the data from the database
 with connect(db_key="main") as conn:
@@ -47,26 +50,20 @@ app = Dash(__name__)
 
 # App layout with updated styles for color coherence
 app.layout = html.Div([
-    # Header container
-    html.Div([
-        html.H1("Data and Models Visualization Dashboard"),
-        dcc.RadioItems(
-            options=[
-                {'label': 'Data Visualization', 'value': 'DataViz'},
-                {'label': 'Model Performances', 'value': 'ModelPerf'},
-                {'label': 'Recommendation Demo', 'value': 'RecomDemo'}
-            ],
-            value='DataViz',
-            id='section-radio',
-            className="radio-buttons",
-        )
-    ], className="header-container"),
-
-    # Horizontal rule
+    html.H1("RecSys Results Dashboard"),
     html.Hr(),
-
-    # Section content
-    html.Div(id='section-content')
+    dcc.RadioItems(
+        options=[
+            {'label': 'Data Visualization', 'value': 'DataViz'},
+            {'label': 'Model Performances', 'value': 'ModelPerf'},
+            {'label': 'Recommendation Demo', 'value': 'RecomDemo'}
+        ],
+        value='DataViz',
+        id='section-radio',
+        className="radio-buttons",
+    ),
+    html.Hr(),
+    html.Div(id='section-content'),
 ])
 
 # Callback to dynamically update the display section based on the selection
@@ -82,22 +79,22 @@ def display_section(selected_section):
             html.Div(
                 dash_table.DataTable(
                     id='data-table',  # Assign an ID for later updates
-                    style_table={'overflowX': 'auto', 'margin-bottom': '20px'},
+                    style_table={**{'overflowX': 'auto', 'margin-bottom': '20px'}, **components_style},
                     style_cell={'textAlign': 'left'},
                     data=data_summary,
                 ),
                 style={'margin-bottom': '20px'}
             ),
             html.Div([
-                dcc.Graph(id='rating-histogram', style={'flex': '1'}),
-                dcc.Graph(id='sentiment-scatterplot', style={'flex': '1'}),
-                dcc.Graph(id='tb-sentiment-piechart', style={'flex': '1'}),
+                dcc.Graph(id='rating-histogram', style=components_style),
+                dcc.Graph(id='sentiment-scatterplot', style=components_style),
+                dcc.Graph(id='tb-sentiment-piechart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row'}),
             html.Div([
-                dcc.Graph(id='marimekko-chart', style={'flex': '1'}),
+                dcc.Graph(id='transactions-ts-chart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
             html.Div([
-                dcc.Graph(id='transactions-ts-chart', style={'flex': '1'}),
+                dcc.Graph(id='marimekko-chart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
         ])
     else:
@@ -198,8 +195,7 @@ def update_graphs(selected_section):
                     "Total Ratings: %{customdata[1]:,.0f}<br>"
                 ),
                 marker=dict(
-                    colors=df_marimekko['total_rating_number'],  # Color by total_rating_number
-                    colorscale='Blues',
+                    colors=list(color_palette.values())[:len(df_marimekko['main_category'].unique())]
                 )
             )
         )

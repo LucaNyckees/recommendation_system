@@ -4,19 +4,11 @@
     --white: #ffffff;
     --darkmode_writing: #ffffff;
     --lightmode_writing: #02024d;
+    --light_grey: #6f6f6f;
   }
 
 body {
     background-color: var(--lightmode_bg); /* Change this to any color you prefer */
-}
-
-/* Flex container for the title and radio buttons */
-.header-container {
-    display: flex;                  /* Enable flexbox layout */
-    justify-content: space-between; /* Space between the two elements */
-    align-items: center;            /* Align items vertically at the center */
-    margin-bottom: 20px;            /* Space below the header */
-    padding: 0 10px;                /* Optional: Add padding for spacing */
 }
 
 /* Existing styles for the radio buttons */
@@ -51,10 +43,10 @@ h3 {
 
 /* Style for horizontal rule (hr) */
 hr {
-    border: 1px solid white;
+    border: 0.5px solid var(--light_grey);
     margin: 15px 0;
     /* width: 100%; */
-    color: var(--lightmode_writing);
+    color: var(--light_grey);
     font-family: "Open Sans", Arial, sans-serif;
 }
 
@@ -63,7 +55,6 @@ hr {
     font-family: "Open Sans", Arial, sans-serif;
     color: #5AA9E6;
     font-weight: 500;
-    margin-right: 15px;
 }
 
 .dash-radioitems input[type="radio"] {
@@ -77,19 +68,16 @@ hr {
 
 #section-radio {
     display: flex;
-    gap: 15px;                     /* Space between buttons */
-    justify-content: center;       /* Center alignment */
+    gap: 6px;                     /* Space between buttons */
     margin-bottom: 20px;           /* Space below buttons */
     font-family: "Open Sans", Arial, sans-serif;
 }
 
 #section-radio label {
-    margin-right: 10px;
     cursor: pointer;
 }
 
 #section-radio input[type="radio"] {
-    margin-right: 5px;             /* Space between button and label */
     cursor: pointer;
 }
 
@@ -105,8 +93,8 @@ hr {
 /* Style the labels to look like buttons */
 .radio-buttons label {
     padding: 10px 20px;
-    margin: 0 5px;
-    border: 2px solid var(--lightmode_writing);    /* Button border color */
+    margin: 0 0px;
+    border: 1px solid var(--light_grey);    /* Button border color */
     border-radius: 5px;           /* Rounded corners */
     background-color: var(--lightmode_bg);    /* Default background */
     color: var(--lightmode_writing);               /* Default text color */
