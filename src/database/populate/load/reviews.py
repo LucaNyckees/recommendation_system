@@ -65,7 +65,7 @@ def load_reviews() -> None:
             reviews_dataframe = pd.read_json(file_path, lines=True)
         else:
             to_append = pd.read_json(file_path, lines=True)
-            reviews_dataframe = reviews_dataframe.append(to_append, ignore_index=True)
+            reviews_dataframe = reviews_dataframe._append(to_append, ignore_index=True)
 
     reviews_dataframe["date"] = reviews_dataframe["timestamp"].dt.date
 

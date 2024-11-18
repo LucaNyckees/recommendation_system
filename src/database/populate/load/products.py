@@ -69,7 +69,7 @@ def load_products() -> None:
             products_dataframe = pd.read_json(file_path, lines=True)
         else:
             to_append = pd.read_json(file_path, lines=True)
-            products_dataframe = products_dataframe.append(to_append, ignore_index=True)
+            products_dataframe = products_dataframe._append(to_append, ignore_index=True)
 
     products_list_of_dicts = products_dataframe.to_dict("records")
     for p in products_list_of_dicts:
