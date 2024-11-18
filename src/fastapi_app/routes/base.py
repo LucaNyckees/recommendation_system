@@ -88,6 +88,7 @@ async def get_summary() -> list[dict[str, Any]]:
                 FROM rs_amazon_products p
                 INNER JOIN rs_amazon_reviews r
                 ON p.parent_asin = r.parent_asin
-                GROUP BY main_category;""")
+                GROUP BY main_category
+                ORDER BY average_rating DESC;""")
             avg_ratings = load_dicts_from_query(cur=cur, query=query, params=None)
     return avg_ratings

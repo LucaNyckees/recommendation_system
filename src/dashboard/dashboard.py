@@ -31,7 +31,7 @@ color_map = {
     "negative": color_palette["accent_pink"]
 }
 
-components_style = {"flex": "1", "border": "1px solid gray", "margin-left": "20px", "margin-right": "20px"}
+components_style = {"flex": "1", "border": "1px solid gray", "margin-left": "10px", "margin-right": "10px", "border-radius": "10px"}
 
 # Load the data from the database
 with connect(db_key="main") as conn:
@@ -75,8 +75,6 @@ app.layout = html.Div([
 def display_section(selected_section):
     if selected_section == 'DataViz':
         return html.Div([
-            # html.H3("Data Visualization"),
-            # Flexbox container for horizontal layout for the first line of plots
             html.Div(
                 dash_table.DataTable(
                     id='data-table',  # Assign an ID for later updates
@@ -84,7 +82,7 @@ def display_section(selected_section):
                     style_cell={'textAlign': 'left'},
                     data=data_summary,
                 ),
-                style={'margin-bottom': '20px'}
+                style={'margin-bottom': '20px', 'margin-right': '20px'}
             ),
             html.Div([
                 dcc.Graph(id='avg-rating-barplot', style=components_style),
@@ -116,35 +114,7 @@ def update_graphs(selected_section):
     if selected_section == 'DataViz':
 
         avg_ratings_fig = px.bar(avg_ratings_data, x="main_category", y="average_rating")
-
-        rating_histogram = go.Figure()
-        
-        rating_histogram.add_trace(
-            go.Histogram(
-                x=df['average_rating'],
-                nbinsx=60,
-                name='User',
-                opacity=0.75,
-                marker_color=color_palette["light_blue"]
-            )
-        )
-        
-        rating_histogram.add_trace(
-            go.Histogram(
-                x=df['average_tb_sentiment_rating'],
-                nbinsx=60,
-                name='TextBlob',
-                opacity=0.75,
-                marker_color=color_palette["light_violet"],
-            )
-        )
-        rating_histogram.update_layout(
-            title="Average Rating Distribution",
-            xaxis_title="Rating",
-            yaxis_title="Count",
-            barmode='overlay',
-        )
-        rating_histogram = apply_layout(fig=rating_histogram, sublib="go")
+        avg_ratings_fig = apply_layout(fig=avg_ratings_fig, sublib="px")
 
         # Pie charts for sentiment
         tb_sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
@@ -160,11 +130,12 @@ def update_graphs(selected_section):
         )
         tb_sentiment_piechart = apply_layout(fig=tb_sentiment_piechart, sublib="px")
 
-        # Scatter plot for average_tb_sentiment_rating vs tb_sentiment_rating
         sentiment_scatterplot = px.scatter(
             df,
-            x='average_tb_sentiment_rating',
-            y='tb_sentiment_rating',
+            x="average_tb_sentiment_rating",
+            y="tb_sentiment_rating",
+            marginal_x="box",
+            marginal_y="box",
             title="Average TextBlob vs. Average User Ratings",
             labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
             opacity=0.7,
@@ -206,6 +177,7 @@ def update_graphs(selected_section):
             title="Transaction Volume Marimekko Chart",
             margin=dict(t=50, l=25, r=25, b=25)
         )
+        marimekko_fig = apply_layout(fig=marimekko_fig, sublib="go")
 
         df_transaction_time_series = pd.DataFrame(transaction_time_series)
 
@@ -228,6 +200,7 @@ def update_graphs(selected_section):
             yaxis_title="Total Volume",
             margin=dict(t=50, l=25, r=25, b=25)
         )
+        fig_transaction_time_series = apply_layout(fig=fig_transaction_time_series, sublib="px")
 
         return (
             data_summary,

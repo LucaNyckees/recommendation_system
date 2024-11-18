@@ -27,7 +27,7 @@ def apply_layout(fig: go.Figure, sublib: str, mode: str = "light") -> go.Figure:
                 title=dict(font=dict(size=14, color=writing_color)),
                 tickfont=dict(color=writing_color)
             ),
-            paper_bgcolor=bg_color,
+            paper_bgcolor='rgba(0, 0, 0, 0)',
             plot_bgcolor='rgba(0, 0, 0, 0)',
         )
     elif sublib == "px":
@@ -38,7 +38,7 @@ def apply_layout(fig: go.Figure, sublib: str, mode: str = "light") -> go.Figure:
             yaxis=dict(title=dict(font=dict(size=14, color=writing_color))),
             xaxis_tickfont=dict(color=writing_color),
             yaxis_tickfont=dict(color=writing_color),
-            paper_bgcolor=bg_color,
+            paper_bgcolor='rgba(0, 0, 0, 0)',
             plot_bgcolor='rgba(0, 0, 0, 0)',
         )
     else:
