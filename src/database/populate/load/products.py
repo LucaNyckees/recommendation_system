@@ -9,6 +9,7 @@ from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
 from src.log.logger import logger
 from src.database.db_functions import insert_values, load_dicts_from_query
+from src.database.populate.helpers import get_amazon_categories_in_db
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -37,17 +38,7 @@ def load_products() -> None:
 
     products_dataframe = None
 
-    with connect(db_key="main") as conn:
-        with conn.cursor() as cur:
-
-            query = SQL("""
-                        SELECT DISTINCT(main_category)
-                        FROM rs_amazon_products p
-                        INNER JOIN rs_amazon_reviews r
-                        ON p.parent_asin = r.parent_asin;
-                        """)
-            fetched = load_dicts_from_query(cur=cur, query=query, params=None)
-            categories_in_db = [d["main_category"].replace(" ", "_") for d in fetched]
+    categories_in_db = get_amazon_categories_in_db()
     
     logger.info(f"Categories already present in db : {categories_in_db}")
 
