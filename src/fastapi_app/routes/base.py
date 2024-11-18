@@ -16,7 +16,7 @@ from src.database.connection import connect
 base_router = APIRouter()
 
 @base_router.post("/dashboard/table_summary_all_categories")
-async def get_summary() -> list[dict[str, Any]] | pd.DataFrame:
+async def get_summary() -> list[dict[str, Any]]:
     """
     A route to produce a table summary over all categories in the dashboard.
     """
