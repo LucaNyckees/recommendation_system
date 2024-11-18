@@ -62,6 +62,7 @@ def load_products() -> None:
 
         file_path = DATA_PATH / "amazon" / f"meta_{category}.jsonl"
         if not os.path.isfile(file_path):
+            logger.warning(f"No dataset found at {file_path}.")
             continue
 
         if products_dataframe is None:

@@ -58,6 +58,7 @@ def load_reviews() -> None:
 
         file_path = DATA_PATH / "amazon" / f"{category}.jsonl"
         if not os.path.isfile(file_path):
+            logger.warning(f"No dataset found at {file_path}.")
             continue
 
         if reviews_dataframe is None:
