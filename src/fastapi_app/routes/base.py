@@ -9,7 +9,7 @@ import pandas as pd
 from src.fastapi_app.schemas.schemas import CategorySummary
 from src.log.logger import logger
 from src.fastapi_app.utils.config import config
-from src.database.db_functions import load_dataframe_from_query
+from src.database.db_functions import load_dicts_from_query
 from src.database.connection import connect
 
 
@@ -28,5 +28,5 @@ async def get_summary() -> list[dict[str, Any]]:
                 INNER JOIN rs_amazon_reviews r
                 ON p.parent_asin = r.parent_asin
                 GROUP BY main_category;""")
-            summary = load_dataframe_from_query(cur=cur, query=query, params=None)
+            summary = load_dicts_from_query(cur=cur, query=query, params=None)
     return summary
