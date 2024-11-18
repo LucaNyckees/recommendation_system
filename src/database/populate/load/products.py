@@ -51,7 +51,12 @@ def load_products() -> None:
     
     logger.info(f"Categories already present in db : {categories_in_db}")
 
-    for category in set(categories_dict["categories"]) & set(categories_in_db):
+    categories_to_insert = set(categories_dict["categories"]) & set(categories_in_db)
+    if categories_to_insert == set():
+        logger.info("No categories to insert.")
+        return None
+
+    for category in categories_to_insert:
 
         logger.info(f"Accessing new category {category}")
 
