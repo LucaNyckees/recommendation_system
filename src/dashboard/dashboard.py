@@ -94,11 +94,6 @@ def display_section(selected_section):
                 dcc.Graph(id='tb-sentiment-piechart', style={'flex': '1'}),
             ], style={'display': 'flex', 'flex-direction': 'row'}),
             html.Div([
-                dcc.Graph(id='price-histogram', style={'flex': '1'}),
-                dcc.Graph(id='num-ratings-histogram', style={'flex': '1'}),
-                dcc.Graph(id='sentiment-piechart', style={'flex': '1'}),
-            ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
-            html.Div([
                 dcc.Graph(id='marimekko-chart', style={'flex': '1'}),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
             html.Div([
@@ -112,22 +107,15 @@ def display_section(selected_section):
 # Callback to update graphs in the Data Visualization section
 @app.callback(
     Output("data-table", "table"),
-    Output('price-histogram', 'figure'),
     Output('rating-histogram', 'figure'),
-    Output('num-ratings-histogram', 'figure'),
     Output('tb-sentiment-piechart', 'figure'),
     Output('sentiment-scatterplot', 'figure'),
-    Output('sentiment-piechart', 'figure'),
     Output("marimekko-chart", "figure"),
     Output("transactions-ts-chart", "figure"),
     Input('section-radio', 'value')
 )
 def update_graphs(selected_section):
     if selected_section == 'DataViz':
-        # Histogram for price
-        price_histogram = px.histogram(df, x='price', nbins=100, title="Price Distribution",
-                                       color_discrete_sequence=[color_palette["dark_blue"]])
-        price_histogram = darkmode_layout(fig=price_histogram, sublib="px")
 
         # Overlayed Histogram for average rating and average TextBlob sentiment rating
         rating_histogram = go.Figure()
@@ -151,7 +139,6 @@ def update_graphs(selected_section):
                 marker_color=color_palette["light_violet"],
             )
         )
-        
         rating_histogram.update_layout(
             title="Average Rating Distribution",
             xaxis_title="Rating",
@@ -159,11 +146,6 @@ def update_graphs(selected_section):
             barmode='overlay',
         )
         rating_histogram = darkmode_layout(fig=rating_histogram, sublib="go")
-
-        # Histogram for number of ratings
-        num_ratings_histogram = px.histogram(df, x='rating_number', nbins=100, title="Number of Ratings Distribution",
-                                             color_discrete_sequence=[color_palette["dark_blue"]])
-        num_ratings_histogram = darkmode_layout(fig=num_ratings_histogram, sublib="px")
 
         # Pie charts for sentiment
         tb_sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
@@ -178,19 +160,6 @@ def update_graphs(selected_section):
             hole=0.63
         )
         tb_sentiment_piechart = darkmode_layout(fig=tb_sentiment_piechart, sublib="px")
-
-        sentiment_counts = df['sentiment_category'].value_counts().reset_index()
-        sentiment_counts.columns = ['sentiment_category', 'count']
-        sentiment_piechart = px.pie(
-            sentiment_counts,
-            names='sentiment_category',
-            values='count',
-            title="User Sentiments",
-            color="sentiment_category",
-            color_discrete_map=color_map,
-            hole=0.63
-        )
-        sentiment_piechart = darkmode_layout(fig=sentiment_piechart, sublib="px")
 
         # Scatter plot for average_tb_sentiment_rating vs tb_sentiment_rating
         sentiment_scatterplot = px.scatter(
@@ -264,16 +233,13 @@ def update_graphs(selected_section):
 
         return (
             data_summary,
-            price_histogram,
             rating_histogram,
-            num_ratings_histogram,
             tb_sentiment_piechart,
             sentiment_scatterplot,
-            sentiment_piechart,
             marimekko_fig,
             fig_transaction_time_series,
         )
-    return {}, {}, {}, {}, {}, {}, {}, {}, {}
+    return {}, {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
     app.run_server(debug=True)
