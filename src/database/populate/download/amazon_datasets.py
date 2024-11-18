@@ -43,7 +43,7 @@ async def download_dataset(client: AsyncClient, url: str, path: Path) -> None:
 
 async def download_reviews(client: AsyncClient) -> None:
     for category in categories:
-        logger.info("Downloading reviews for category {category}")
+        logger.info(f"Downloading reviews for category {category}")
         url = f"https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/{category}.jsonl.gz"
         dir = DATA_PATH / "amazon"
         dir.mkdir(exist_ok=True, parents=True)
@@ -58,7 +58,7 @@ async def download_reviews(client: AsyncClient) -> None:
 
 async def download_products(client: AsyncClient) -> None:
     for category in categories:
-        logger.info("Downloading products for category {category}")
+        logger.info(f"Downloading products for category {category}")
         url = f"https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_{category}.jsonl.gz"
         dir = DATA_PATH / "amazon"
         dir.mkdir(exist_ok=True, parents=True)
