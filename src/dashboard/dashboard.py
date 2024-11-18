@@ -12,7 +12,7 @@ sys.path.append(ROOT_DIR)
 from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
 from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
-from src.dashboard.helpers import darkmode_layout, get_route_result
+from src.dashboard.helpers import apply_layout, get_route_result
 
 
 # Define a color map to match the specified palette
@@ -145,7 +145,7 @@ def update_graphs(selected_section):
             yaxis_title="Count",
             barmode='overlay',
         )
-        rating_histogram = darkmode_layout(fig=rating_histogram, sublib="go")
+        rating_histogram = apply_layout(fig=rating_histogram, sublib="go")
 
         # Pie charts for sentiment
         tb_sentiment_counts = df['tb_sentiment_category'].value_counts().reset_index()
@@ -159,7 +159,7 @@ def update_graphs(selected_section):
             color_discrete_map=color_map,
             hole=0.63
         )
-        tb_sentiment_piechart = darkmode_layout(fig=tb_sentiment_piechart, sublib="px")
+        tb_sentiment_piechart = apply_layout(fig=tb_sentiment_piechart, sublib="px")
 
         # Scatter plot for average_tb_sentiment_rating vs tb_sentiment_rating
         sentiment_scatterplot = px.scatter(
@@ -172,7 +172,7 @@ def update_graphs(selected_section):
             color_discrete_sequence=[color_palette["dark_blue"]],
             trendline="ols",
         )
-        sentiment_scatterplot = darkmode_layout(fig=sentiment_scatterplot, sublib="px")
+        sentiment_scatterplot = apply_layout(fig=sentiment_scatterplot, sublib="px")
 
         df_marimekko = pd.DataFrame(marimekko_data)
 

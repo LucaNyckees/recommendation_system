@@ -1,11 +1,13 @@
 :root {
     --darkmode_bg: #02024d;
+    --lightmode_bg: #ffffff;
     --white: #ffffff;
     --darkmode_writing: #ffffff;
+    --lightmode_writing: #02024d;
   }
 
 body {
-    background-color: var(--darkmode_bg); /* Change this to any color you prefer */
+    background-color: var(--lightmode_bg); /* Change this to any color you prefer */
 }
 
 /* Flex container for the title and radio buttons */
@@ -24,7 +26,7 @@ body {
 }
 
 h1 {
-    color: var(--darkmode_writing);
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
     font-weight: bold;
     font-size: 2.5em;
@@ -32,7 +34,7 @@ h1 {
 }
 
 h2 {
-    color: var(--darkmode_writing);
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
     font-weight: 600;
     font-size: 2em;
@@ -40,7 +42,7 @@ h2 {
 }
 
 h3 {
-    color: var(--darkmode_writing);
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
     font-weight: 500;
     font-size: 1.75em;
@@ -52,7 +54,7 @@ hr {
     border: 1px solid white;
     margin: 15px 0;
     /* width: 100%; */
-    color: var(--darkmode_writing);
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
 }
 
@@ -92,7 +94,7 @@ hr {
 }
 
 #section-radio input[type="radio"]:checked + label {
-    color: var(--darkmode_writing);                /* Active color */
+    color: var(--lightmode_writing);                /* Active color */
 }
 
 /* Hide the default radio buttons */
@@ -104,10 +106,10 @@ hr {
 .radio-buttons label {
     padding: 10px 20px;
     margin: 0 5px;
-    border: 2px solid var(--darkmode_writing);    /* Button border color */
+    border: 2px solid var(--lightmode_writing);    /* Button border color */
     border-radius: 5px;           /* Rounded corners */
-    background-color: var(--darkmode_bg);    /* Default background */
-    color: var(--darkmode_writing);               /* Default text color */
+    background-color: var(--lightmode_bg);    /* Default background */
+    color: var(--lightmode_writing);               /* Default text color */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -115,13 +117,13 @@ hr {
 
 /* Hover effect */
 .radio-buttons label:hover {
-    background-color: var(--darkmode_writing);    /* Hover background */
-    color: var(--darkmode_bg);               /* Hover text color */
+    background-color: var(--lightmode_writing);    /* Hover background */
+    color: var(--lightmode_bg);               /* Hover text color */
 }
 
 /* Active/selected button styling */
 .radio-buttons input[type="radio"]:checked + label {
     background-color: #0056b3;    /* Active background color */
-    color: var(--darkmode_bg);             /* Active text color */
+    color: var(--lightmode_bg);             /* Active text color */
     border-color: #0056b3;        /* Active border color */
 }
