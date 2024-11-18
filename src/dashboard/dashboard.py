@@ -44,6 +44,7 @@ with connect(db_key="main") as conn:
 data_summary = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/table_summary")
 marimekko_data = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/marimekko_price_volume")
 transaction_time_series = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/transaction_volume_time_series")
+avg_ratings_data = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/avg_rating")
 
 
 app = Dash(__name__)
@@ -86,7 +87,7 @@ def display_section(selected_section):
                 style={'margin-bottom': '20px'}
             ),
             html.Div([
-                dcc.Graph(id='rating-histogram', style=components_style),
+                dcc.Graph(id='avg-rating-barplot', style=components_style),
                 dcc.Graph(id='sentiment-scatterplot', style=components_style),
                 dcc.Graph(id='tb-sentiment-piechart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row'}),
@@ -104,7 +105,7 @@ def display_section(selected_section):
 # Callback to update graphs in the Data Visualization section
 @app.callback(
     Output("data-table", "table"),
-    Output('rating-histogram', 'figure'),
+    Output('avg-rating-barplot', 'figure'),
     Output('tb-sentiment-piechart', 'figure'),
     Output('sentiment-scatterplot', 'figure'),
     Output("marimekko-chart", "figure"),
@@ -114,7 +115,8 @@ def display_section(selected_section):
 def update_graphs(selected_section):
     if selected_section == 'DataViz':
 
-        # Overlayed Histogram for average rating and average TextBlob sentiment rating
+        avg_ratings_fig = px.bar(avg_ratings_data, x="main_category", y="average_rating")
+
         rating_histogram = go.Figure()
         
         rating_histogram.add_trace(
@@ -229,7 +231,7 @@ def update_graphs(selected_section):
 
         return (
             data_summary,
-            rating_histogram,
+            avg_ratings_fig,
             tb_sentiment_piechart,
             sentiment_scatterplot,
             marimekko_fig,

@@ -84,7 +84,7 @@ async def get_summary() -> list[dict[str, Any]]:
         with conn.cursor() as cur:
             query = SQL("""               
                 SELECT
-                    AVG(average_rating)
+                    AVG(average_rating) AS average_rating, main_category
                 FROM rs_amazon_products p
                 INNER JOIN rs_amazon_reviews r
                 ON p.parent_asin = r.parent_asin
