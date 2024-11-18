@@ -1,8 +1,9 @@
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc, Input, Output, dash_table
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
+import requests
 
 ROOT_DIR = ("/").join(os.getcwd().split("/"))
 import sys
@@ -35,6 +36,17 @@ with connect(db_key="main") as conn:
         df = get_amazon_dataframe(cur=cur, categories=None, limit=10000)
         df["review_input"] = df["title"] + df["text"]
         df = apply_sentiment_analysis(df=df)
+
+
+url = "http://127.0.0.1:8000/dashboard/table_summary_all_categories"
+try:
+    response = requests.post(url)
+    response.raise_for_status()
+    
+    data_summary = response.json()
+
+except requests.exceptions.RequestException as e:
+    raise Exception(f"An error occurred: {e}")
 
 app = Dash(__name__)
 
@@ -72,6 +84,15 @@ def display_section(selected_section):
         return html.Div([
             # html.H3("Data Visualization"),
             # Flexbox container for horizontal layout for the first line of plots
+            html.Div(
+                dash_table.DataTable(
+                    id='data-table',  # Assign an ID for later updates
+                    style_table={'overflowX': 'auto', 'margin-bottom': '20px'},
+                    style_cell={'textAlign': 'left'},
+                    data=data_summary,
+                ),
+                style={'margin-bottom': '20px'}
+            ),
             html.Div([
                 dcc.Graph(id='rating-histogram', style={'flex': '1'}),
                 dcc.Graph(id='sentiment-scatterplot', style={'flex': '1'}),
@@ -86,8 +107,10 @@ def display_section(selected_section):
     else:
         return html.Div("Selected section: " + selected_section)
 
+
 # Callback to update graphs in the Data Visualization section
 @app.callback(
+    Output("data-table", "table"), 
     Output('price-histogram', 'figure'),
     Output('rating-histogram', 'figure'),
     Output('num-ratings-histogram', 'figure'),
@@ -179,9 +202,16 @@ def update_graphs(selected_section):
         )
         sentiment_scatterplot = darkmode_layout(fig=sentiment_scatterplot, sublib="px")
 
-        return price_histogram, rating_histogram, num_ratings_histogram, tb_sentiment_piechart, sentiment_scatterplot, sentiment_piechart
-
-    return {}, {}, {}, {}, {}, {}
+        return (
+            data_summary,
+            price_histogram,
+            rating_histogram,
+            num_ratings_histogram,
+            tb_sentiment_piechart,
+            sentiment_scatterplot,
+            sentiment_piechart,
+        )
+    return {}, {}, {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
     app.run_server(debug=True)
