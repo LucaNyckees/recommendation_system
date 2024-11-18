@@ -78,5 +78,5 @@ def load_products() -> None:
     logger.info("Inserting values...")
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
-            insert_values(cur=cur, table="rs_amazon_reviews", values=products_list_of_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
+            insert_values(cur=cur, table="rs_amazon_products", values=products_list_of_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
     Console().log("Products loaded")
