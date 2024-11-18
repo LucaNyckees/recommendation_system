@@ -3,11 +3,12 @@ import pandas as pd
 import json
 import os
 from psycopg.types.json import Jsonb
+from psycopg.sql import SQL
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
 from src.log.logger import logger
-from src.database.db_functions import insert_values
+from src.database.db_functions import insert_values, load_dicts_from_query
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -36,9 +37,23 @@ def load_products() -> None:
 
     products_dataframe = None
 
-    for category in categories_dict["categories"]:
+    with connect(db_key="main") as conn:
+        with conn.cursor() as cur:
 
-        logger.info(f"Accessing category {category}")
+            query = SQL("""
+                        SELECT DISTINCT(main_category)
+                        FROM rs_amazon_products p
+                        INNER JOIN rs_amazon_reviews r
+                        ON p.parent_asin = r.parent_asin;
+                        """)
+            fetched = load_dicts_from_query(cur=cur, query=query, params=None)
+            categories_in_db = [d["main_category"] for d in fetched]
+    
+    logger.info(f"Categories already present in db : {categories_in_db}")
+
+    for category in set(categories_dict["categories"]) & set(categories_in_db):
+
+        logger.info(f"Accessing new category {category}")
 
         file_path = DATA_PATH / "amazon" / f"meta_{category}.jsonl"
         if not os.path.isfile(file_path):
