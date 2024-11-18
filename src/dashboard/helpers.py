@@ -1,5 +1,6 @@
 import plotly.graph_objects as go
 import plotly.express as px
+import requests
 
 
 light_writing_color = "white"
@@ -36,3 +37,15 @@ def darkmode_layout(fig: go.Figure, sublib: str) -> go.Figure:
     else:
         raise ValueError(f"Sublib must be one of 'go', 'px'. Received: {sublib}")
     return fig
+
+
+def get_route_result(url: str) -> list[dict]:
+    try:
+        response = requests.post(url)
+        response.raise_for_status()
+        data = response.json()
+
+    except requests.exceptions.RequestException as e:
+        raise Exception(f"An error occurred: {e}")
+    
+    return data

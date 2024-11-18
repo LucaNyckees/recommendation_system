@@ -12,7 +12,7 @@ sys.path.append(ROOT_DIR)
 from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
 from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
-from src.dashboard.helpers import darkmode_layout
+from src.dashboard.helpers import darkmode_layout, get_route_result
 
 
 # Define a color map to match the specified palette
@@ -38,25 +38,10 @@ with connect(db_key="main") as conn:
         df = apply_sentiment_analysis(df=df)
 
 
-data_summary_url = "http://127.0.0.1:8000/dashboard/all_categories/table_summary"
-try:
-    response = requests.post(data_summary_url)
-    response.raise_for_status()
-    
-    data_summary = response.json()
+data_summary = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/table_summary")
+marimekko_data = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/marimekko_price_volume")
+transaction_time_series = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/transaction_volume_time_series")
 
-except requests.exceptions.RequestException as e:
-    raise Exception(f"An error occurred: {e}")
-
-
-marimekko_data_url = "http://127.0.0.1:8000/dashboard/all_categories/marimekko_price_volume"
-
-try:
-    marimekko_response = requests.post(marimekko_data_url)
-    marimekko_response.raise_for_status()
-    marimekko_data = marimekko_response.json()  # Expecting a JSON array of dicts
-except requests.exceptions.RequestException as e:
-    raise Exception(f"An error occurred fetching Marimekko data: {e}")
 
 app = Dash(__name__)
 
@@ -116,6 +101,9 @@ def display_section(selected_section):
             html.Div([
                 dcc.Graph(id='marimekko-chart', style={'flex': '1'}),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
+            html.Div([
+                dcc.Graph(id='transactions-ts-chart', style={'flex': '1'}),
+            ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
         ])
     else:
         return html.Div("Selected section: " + selected_section)
@@ -131,6 +119,7 @@ def display_section(selected_section):
     Output('sentiment-scatterplot', 'figure'),
     Output('sentiment-piechart', 'figure'),
     Output("marimekko-chart", "figure"),
+    Output("transactions-ts-chart", "figure"),
     Input('section-radio', 'value')
 )
 def update_graphs(selected_section):
@@ -251,6 +240,28 @@ def update_graphs(selected_section):
             margin=dict(t=50, l=25, r=25, b=25)
         )
 
+        df_transaction_time_series = pd.DataFrame(transaction_time_series)
+
+        # Ensure the 'month' column is in datetime format
+        df_transaction_time_series['month'] = pd.to_datetime(df_transaction_time_series['month'])
+
+        # Create the line chart using Plotly Express
+        fig_transaction_time_series = px.line(
+            df_transaction_time_series,
+            x='month',
+            y='total_volume',
+            title="Monthly Total Volume Over Time",
+            labels={'month': 'Month', 'total_volume': 'Total Volume'},
+            markers=True  # Adds markers to the line for better visibility
+        )
+
+        # Update layout for better visualization
+        fig_transaction_time_series.update_layout(
+            xaxis_title="Month",
+            yaxis_title="Total Volume",
+            margin=dict(t=50, l=25, r=25, b=25)
+        )
+
         return (
             data_summary,
             price_histogram,
@@ -260,8 +271,9 @@ def update_graphs(selected_section):
             sentiment_scatterplot,
             sentiment_piechart,
             marimekko_fig,
+            fig_transaction_time_series,
         )
-    return {}, {}, {}, {}, {}, {}, {}
+    return {}, {}, {}, {}, {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
     app.run_server(debug=True)
