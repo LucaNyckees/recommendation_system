@@ -113,7 +113,7 @@ def display_section(selected_section):
 def update_graphs(selected_section):
     if selected_section == 'DataViz':
 
-        avg_ratings_fig = px.bar(avg_ratings_data, x="main_category", y="average_rating")
+        avg_ratings_fig = px.bar(avg_ratings_data, x="main_category", y="average_rating", title="Avg Rating per Category")
         avg_ratings_fig = apply_layout(fig=avg_ratings_fig, sublib="px")
 
         # Pie charts for sentiment
