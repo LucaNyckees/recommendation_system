@@ -53,8 +53,12 @@ deactivate
 └── tests/
 ```
 
+### FastAPI App
+Go to the file `src/fastapi_app/README.md` for instructions.
+
 ### Dash App
-Go to the root directory `PATH_TO_YOUR_PROJECT` and run the following to launch an interactive dashboard built with Dash.
+There is an interative dashboard built with Dash, that calls routes from the FastAPI app.
+Go to the root directory `PATH_TO_YOUR_PROJECT` and run the following to launch the dashboard.
 ```
 python src/dashboard/dashboard.py
 ```
