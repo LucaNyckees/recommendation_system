@@ -1,10 +1,11 @@
 :root {
-    --darkmode_bg: #02024d;
+    --darkmode_bg: #16161a;
     --lightmode_bg: #ffffff;
     --white: #ffffff;
     --darkmode_writing: #ffffff;
-    --lightmode_writing: #02024d;
+    --lightmode_writing: #16161a;
     --light_grey: #6f6f6f;
+    --light_blue: #2e67d3;
   }
 
 body {
@@ -97,7 +98,7 @@ hr {
     border: 1px solid var(--light_grey);    /* Button border color */
     border-radius: 5px;           /* Rounded corners */
     background-color: var(--lightmode_bg);    /* Default background */
-    color: var(--lightmode_writing);               /* Default text color */
+    color: var(--light_blue);               /* Default text color */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -105,7 +106,7 @@ hr {
 
 /* Hover effect */
 .radio-buttons label:hover {
-    background-color: var(--lightmode_writing);    /* Hover background */
+    background-color: var(--light_blue);    /* Hover background */
     color: var(--lightmode_bg);               /* Hover text color */
 }
 
