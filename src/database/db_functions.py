@@ -37,7 +37,7 @@ def get_amazon_dataframe(cur: Cursor, categories: list[str] | None, limit: int |
             INNER JOIN rs_amazon_reviews r ON p.parent_asin = r.parent_asin
             WHERE main_category IN %(categories)s
             {sql_limit}""").format(sql_limit=sql_limit)
-        df = load_dataframe_from_query(cur=cur, query=query, params={"categories": categories})
+        df = load_dataframe_from_query(cur=cur, query=query, params={"categories": tuple(categories)})
     return df
 
 

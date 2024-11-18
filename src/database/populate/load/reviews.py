@@ -7,7 +7,8 @@ from psycopg.sql import SQL, Identifier, Placeholder
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
 from src.log.logger import logger
-from src.database.db_functions import insert_values
+from src.database.db_functions import insert_values, load_dicts_from_query
+from src.database.populate.helpers import get_amazon_categories_in_db
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -33,19 +34,27 @@ def load_reviews() -> None:
 
     reviews_dataframe = None
 
-    for category in categories_dict["categories"]:
+    categories_in_db = get_amazon_categories_in_db()
 
-        logger.info(f"Accessing category {category}")
+    categories_to_insert = set(categories_dict["categories"]) - set(categories_in_db)
+    if categories_to_insert == set():
+        logger.info("No categories to insert.")
+        return None
+
+    for category in categories_to_insert:
+
+        logger.info(f"Accessing new category {category}")
 
         file_path = DATA_PATH / "amazon" / f"{category}.jsonl"
         if not os.path.isfile(file_path):
+            logger.warning(f"No dataset found at {file_path}.")
             continue
 
         if reviews_dataframe is None:
             reviews_dataframe = pd.read_json(file_path, lines=True)
         else:
             to_append = pd.read_json(file_path, lines=True)
-            reviews_dataframe = reviews_dataframe.append(to_append, ignore_index=True)
+            reviews_dataframe = reviews_dataframe._append(to_append, ignore_index=True)
 
     reviews_dataframe["date"] = reviews_dataframe["timestamp"].dt.date
 

@@ -1,7 +1,25 @@
-/* assets/styles.css */
+:root {
+    --darkmode_bg: #16161a;
+    --lightmode_bg: #ffffff;
+    --white: #ffffff;
+    --darkmode_writing: #ffffff;
+    --lightmode_writing: #16161a;
+    --light_grey: #6f6f6f;
+    --light_blue: #2e67d3;
+  }
+
+body {
+    background-color: var(--lightmode_bg); /* Change this to any color you prefer */
+}
+
+/* Existing styles for the radio buttons */
+.radio-buttons {
+    display: flex;                  /* Keep buttons in a horizontal row */
+    gap: 15px;                      /* Space between buttons */
+}
 
 h1 {
-    color: #02024d;
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
     font-weight: bold;
     font-size: 2.5em;
@@ -9,7 +27,7 @@ h1 {
 }
 
 h2 {
-    color: #02024d;
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
     font-weight: 600;
     font-size: 2em;
@@ -17,7 +35,7 @@ h2 {
 }
 
 h3 {
-    color: #02024d;
+    color: var(--lightmode_writing);
     font-family: "Open Sans", Arial, sans-serif;
     font-weight: 500;
     font-size: 1.75em;
@@ -26,10 +44,10 @@ h3 {
 
 /* Style for horizontal rule (hr) */
 hr {
-    border: 1px solid black;
+    border: 0.5px solid var(--light_grey);
     margin: 15px 0;
     /* width: 100%; */
-    color: #02024d;
+    color: var(--light_grey);
     font-family: "Open Sans", Arial, sans-serif;
 }
 
@@ -38,7 +56,6 @@ hr {
     font-family: "Open Sans", Arial, sans-serif;
     color: #5AA9E6;
     font-weight: 500;
-    margin-right: 15px;
 }
 
 .dash-radioitems input[type="radio"] {
@@ -48,4 +65,54 @@ hr {
 /* Additional spacing and layout for radio items container */
 .dash-radioitems {
     padding: 10px 0;
+}
+
+#section-radio {
+    display: flex;
+    gap: 6px;                     /* Space between buttons */
+    margin-bottom: 20px;           /* Space below buttons */
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+#section-radio label {
+    cursor: pointer;
+}
+
+#section-radio input[type="radio"] {
+    cursor: pointer;
+}
+
+#section-radio input[type="radio"]:checked + label {
+    color: var(--lightmode_writing);                /* Active color */
+}
+
+/* Hide the default radio buttons */
+.radio-buttons input[type="radio"] {
+    display: none;
+}
+
+/* Style the labels to look like buttons */
+.radio-buttons label {
+    padding: 10px 20px;
+    margin: 0 0px;
+    border: 1px solid var(--light_grey);    /* Button border color */
+    border-radius: 5px;           /* Rounded corners */
+    background-color: var(--lightmode_bg);    /* Default background */
+    color: var(--light_blue);               /* Default text color */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+.radio-buttons label:hover {
+    background-color: var(--light_blue);    /* Hover background */
+    color: var(--lightmode_bg);               /* Hover text color */
+}
+
+/* Active/selected button styling */
+.radio-buttons input[type="radio"]:checked + label {
+    background-color: #0056b3;    /* Active background color */
+    color: var(--lightmode_bg);             /* Active text color */
+    border-color: #0056b3;        /* Active border color */
 }

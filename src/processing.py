@@ -20,7 +20,7 @@ from src.database.db_functions import load_dataframe_from_query
 class DataProcessor:
 
     def __init__(self) -> None:
-        self.conn = connect()
+        self.conn = connect(db_key="main")
         self.cur = self.conn.cursor()
 
     def _load(self, category: str, frac: float = 0.01) -> None:

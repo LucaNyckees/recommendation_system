@@ -3,11 +3,13 @@ import pandas as pd
 import json
 import os
 from psycopg.types.json import Jsonb
+from psycopg.sql import SQL
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
 from src.log.logger import logger
-from src.database.db_functions import insert_values
+from src.database.db_functions import insert_values, load_dicts_from_query
+from src.database.populate.helpers import get_amazon_categories_in_db
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -36,19 +38,27 @@ def load_products() -> None:
 
     products_dataframe = None
 
-    for category in categories_dict["categories"]:
+    categories_in_db = get_amazon_categories_in_db()
 
-        logger.info(f"Accessing category {category}")
+    categories_to_insert = set(categories_dict["categories"]) - set(categories_in_db)
+    if categories_to_insert == set():
+        logger.info("No categories to insert.")
+        return None
+
+    for category in categories_to_insert:
+
+        logger.info(f"Accessing new category {category}")
 
         file_path = DATA_PATH / "amazon" / f"meta_{category}.jsonl"
         if not os.path.isfile(file_path):
+            logger.warning(f"No dataset found at {file_path}.")
             continue
 
         if products_dataframe is None:
             products_dataframe = pd.read_json(file_path, lines=True)
         else:
             to_append = pd.read_json(file_path, lines=True)
-            products_dataframe = products_dataframe.append(to_append, ignore_index=True)
+            products_dataframe = products_dataframe._append(to_append, ignore_index=True)
 
     products_list_of_dicts = products_dataframe.to_dict("records")
     for p in products_list_of_dicts:
@@ -57,5 +67,5 @@ def load_products() -> None:
     logger.info("Inserting values...")
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
-            insert_values(cur=cur, table="rs_amazon_reviews", values=products_list_of_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
+            insert_values(cur=cur, table="rs_amazon_products", values=products_list_of_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
     Console().log("Products loaded")
