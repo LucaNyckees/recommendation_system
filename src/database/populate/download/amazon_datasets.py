@@ -8,6 +8,7 @@ import json
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.log.logger import logger
+from src.database.populate.helpers import get_amazon_categories_in_db
 
 
 with open(RESOURCES_PATH / "amazon_product_categories.json") as f:
@@ -42,7 +43,8 @@ async def download_dataset(client: AsyncClient, url: str, path: Path) -> None:
 
 
 async def download_reviews(client: AsyncClient) -> None:
-    for category in categories:
+    categories_in_db = get_amazon_categories_in_db()
+    for category in set(categories) - set(categories_in_db):
         logger.info(f"Downloading reviews for category {category}")
         url = f"https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/review_categories/{category}.jsonl.gz"
         dir = DATA_PATH / "amazon"
@@ -57,7 +59,8 @@ async def download_reviews(client: AsyncClient) -> None:
 
 
 async def download_products(client: AsyncClient) -> None:
-    for category in categories:
+    categories_in_db = get_amazon_categories_in_db()
+    for category in set(categories) - set(categories_in_db):
         logger.info(f"Downloading products for category {category}")
         url = f"https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_2023/raw/meta_categories/meta_{category}.jsonl.gz"
         dir = DATA_PATH / "amazon"
