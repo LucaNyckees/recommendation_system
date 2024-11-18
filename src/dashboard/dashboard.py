@@ -38,15 +38,25 @@ with connect(db_key="main") as conn:
         df = apply_sentiment_analysis(df=df)
 
 
-url = "http://127.0.0.1:8000/dashboard/all_categories/table_summary"
+data_summary_url = "http://127.0.0.1:8000/dashboard/all_categories/table_summary"
 try:
-    response = requests.post(url)
+    response = requests.post(data_summary_url)
     response.raise_for_status()
     
     data_summary = response.json()
 
 except requests.exceptions.RequestException as e:
     raise Exception(f"An error occurred: {e}")
+
+
+marimekko_data_url = "http://127.0.0.1:8000/dashboard/all_categories/marimekko_price_volume"
+
+try:
+    marimekko_response = requests.post(marimekko_data_url)
+    marimekko_response.raise_for_status()
+    marimekko_data = marimekko_response.json()  # Expecting a JSON array of dicts
+except requests.exceptions.RequestException as e:
+    raise Exception(f"An error occurred fetching Marimekko data: {e}")
 
 app = Dash(__name__)
 
@@ -102,7 +112,10 @@ def display_section(selected_section):
                 dcc.Graph(id='price-histogram', style={'flex': '1'}),
                 dcc.Graph(id='num-ratings-histogram', style={'flex': '1'}),
                 dcc.Graph(id='sentiment-piechart', style={'flex': '1'}),
-            ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'})
+            ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
+            html.Div([
+                dcc.Graph(id='marimekko-chart', style={'flex': '1'}),
+            ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
         ])
     else:
         return html.Div("Selected section: " + selected_section)
@@ -110,13 +123,14 @@ def display_section(selected_section):
 
 # Callback to update graphs in the Data Visualization section
 @app.callback(
-    Output("data-table", "table"), 
+    Output("data-table", "table"),
     Output('price-histogram', 'figure'),
     Output('rating-histogram', 'figure'),
     Output('num-ratings-histogram', 'figure'),
     Output('tb-sentiment-piechart', 'figure'),
     Output('sentiment-scatterplot', 'figure'),
     Output('sentiment-piechart', 'figure'),
+    Output("marimekko-chart", "figure"),
     Input('section-radio', 'value')
 )
 def update_graphs(selected_section):
@@ -202,6 +216,41 @@ def update_graphs(selected_section):
         )
         sentiment_scatterplot = darkmode_layout(fig=sentiment_scatterplot, sublib="px")
 
+        df_marimekko = pd.DataFrame(marimekko_data)
+
+        # Normalize the data for better visualization
+        df_marimekko['relative_price'] = df_marimekko['total_price'] / df_marimekko['total_price'].sum()
+        df_marimekko['relative_rating'] = df_marimekko['total_rating_number'] / df_marimekko['total_rating_number'].sum()
+
+        # Create the Marimekko chart using Treemap
+        marimekko_fig = go.Figure(
+            go.Treemap(
+                labels=df_marimekko['main_category'],
+                parents=[""] * len(df_marimekko),  # Treemap needs a parent-child relationship
+                values=df_marimekko['total_volume'],  # Define the size of each rectangle
+                customdata=df_marimekko[['total_price', 'total_rating_number']],
+                texttemplate=(
+                    "<b>%{label}</b><br>"
+                    "Total Price: %{customdata[0]:,.2f}<br>"
+                    "Total Ratings: %{customdata[1]:,.0f}<br>"
+                ),
+                hovertemplate=(
+                    "<b>%{label}</b><br>"
+                    "Total Price: %{customdata[0]:,.2f}<br>"
+                    "Total Ratings: %{customdata[1]:,.0f}<br>"
+                ),
+                marker=dict(
+                    colors=df_marimekko['total_rating_number'],  # Color by total_rating_number
+                    colorscale='Blues',
+                )
+            )
+        )
+
+        marimekko_fig.update_layout(
+            title="Transaction Volume Marimekko Chart",
+            margin=dict(t=50, l=25, r=25, b=25)
+        )
+
         return (
             data_summary,
             price_histogram,
@@ -210,6 +259,7 @@ def update_graphs(selected_section):
             tb_sentiment_piechart,
             sentiment_scatterplot,
             sentiment_piechart,
+            marimekko_fig,
         )
     return {}, {}, {}, {}, {}, {}, {}
 
