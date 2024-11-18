@@ -47,7 +47,7 @@ def load_products() -> None:
                         ON p.parent_asin = r.parent_asin;
                         """)
             fetched = load_dicts_from_query(cur=cur, query=query, params=None)
-            categories_in_db = [d["main_category"] for d in fetched]
+            categories_in_db = [d["main_category"].replace(" ", "_") for d in fetched]
     
     logger.info(f"Categories already present in db : {categories_in_db}")
 
