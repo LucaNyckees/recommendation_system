@@ -20,7 +20,7 @@ async def get_summary() -> list[dict[str, Any]]:
     """
     A route to produce a table summary over all categories in the dashboard.
     """
-    with connect() as conn:
+    with connect(db_url="main") as conn:
         with conn.cursor() as cur:
             query = SQL("""
                 SELECT main_category, AVG(average_rating) as avg_average_rating, SUM(rating_number) as total_rating_number
