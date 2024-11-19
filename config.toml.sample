@@ -10,9 +10,9 @@ port="5432"
 password=""
 
 [apps.fastapi_app]
-host="127.0.0.1"
+host="0.0.0.0"
 port="8000"
 
 [apps.dash_app]
-host="127.0.0.1"
+host="0.0.0.0"
 port="8050"

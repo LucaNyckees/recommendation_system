@@ -18,6 +18,7 @@ from src.paths import ROOT
 with open(os.path.join(ROOT, "config.toml"), "r") as f:
     config = toml.load(f)
     fastapi_config = config["apps"]["fastapi_app"]
+    dash_config = config["apps"]["dash_app"]
 
 suppress_callback_exceptions=True
 
@@ -220,4 +221,4 @@ def update_graphs(selected_section):
     return {}, {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(host=dash_config["host"], port=dash_config["port"], debug=True)
