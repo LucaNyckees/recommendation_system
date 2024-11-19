@@ -6,6 +6,7 @@ done
 echo "Database is ready!"
 
 # Run dataset download and load commands
+alembic upgrade head
 make download-data
 make load-data
 uvicorn src.fastapi_app.main:app  --host 0.0.0.0 --port 8000
