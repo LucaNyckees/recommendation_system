@@ -5,6 +5,7 @@ services:
       dockerfile: docker/app/Dockerfile
     ports:
       - "8000:8000"  # Expose FastAPI
+      - "8050:8050"  # Expose Dash
     volumes:
       - ./src/dashboard/dashboard.py:/app/dashboard.py:ro
       - ./config.toml:/app/config.toml:ro
@@ -20,20 +21,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-
-  dashboard:
-    build:
-      context: .
-      dockerfile: docker/app/Dockerfile
-    command: python /app/dashboard.py
-    volumes:
-      - ./src/dashboard/dashboard.py:/app/dashboard.py:ro
-      - ./config.toml:/app/config.toml:ro
-    ports:
-      - "8050:8050"  # Expose Dash dashboard
-    depends_on:
-      app:
-        condition: service_healthy
 
   db:
     image: postgres:16
