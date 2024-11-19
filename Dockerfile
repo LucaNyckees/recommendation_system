@@ -18,7 +18,7 @@ RUN pip install -r requirements.txt
 COPY ./ /app
 
 # Make sure the start.sh script is executable
-# RUN chmod +x scripts/start.sh
+RUN chmod +x scripts/start.sh
 
 # Set the default command to run when the container starts
 CMD ["scripts/start.sh"]
