@@ -3,8 +3,8 @@ token = ""
 
 
 [dbs.main]
-host=""
-name=""
-user=""
-port=""
+host="db"
+name="postgres"
+user="postgres"
+port="5432"
 password=""
