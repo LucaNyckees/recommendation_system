@@ -2,24 +2,32 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/app/Dockerfile
     ports:
       - "8000:8000"  # Expose FastAPI
     volumes:
-      - .:/app       # Optional, allows live code editing
+      - ./config.toml:/app/config.toml:ro
     depends_on:
-      - db
+      migrator:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
     environment:
       - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 
   dashboard:
     build:
       context: .
-    command: python src/dashboard/dashboard.py
+      dockerfile: docker/app/Dockerfile
+    command: python /app/dashboard.py
+    volumes:
+      - ./src/dashboard/dashboard.py:/app/dashboard.py:ro
+      - ./config.toml:/app/config.toml:ro
     ports:
       - "8050:8050"  # Expose Dash dashboard
     depends_on:
-      - app
+      app:
+        condition: service_healthy
 
   db:
     image: postgres:16
@@ -31,6 +39,25 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${DB_USER} -d ${DB_NAME}'"]
+      interval: 1s
+      timeout: 3s
+      retries: 20
+
+  migrator:
+    environment:
+        POSTGRES_USER: ${DB_USER}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+        POSTGRES_DB: ${DB_NAME}
+    build:
+      context: .
+      dockerfile: docker/migrator/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./config.toml:/app/config.toml:ro
 
 volumes:
   postgres_data:

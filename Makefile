@@ -7,7 +7,7 @@ SHELL:=/bin/bash
 python=python3.10
 BIN=venv/bin/
 
-all: requirements
+all: up
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -38,21 +38,21 @@ load-data:
 	python . load datasets
 
 # Build the Docker images
-docker-build:
+build:
 	docker compose build
 
 # Start the services
-docker-up:
+up: build
 	docker compose up -d
 
 # Stop the services
-docker-down:
+down:
 	docker compose down
 
 # Show logs for all services
-docker-logs:
-	docker compose logs -f
+logs:
+	docker compose -f docker-compose.yml logs -f
 
 # Run tests inside the app container (example)
-docker-test:
+test:
 	docker compose run app pytest
