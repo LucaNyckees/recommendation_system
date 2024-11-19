@@ -29,6 +29,14 @@ requirements: venv
 IMAGE_NAME = recommendation_system:latest
 CONTAINER_NAME = recommendation_system_container
 
+# Download amazon datasets
+download-data:
+	python . download datasets
+
+# Load downloaded datasets to postgres database
+load-data:
+	python . load datasets
+
 # Build the Docker images
 docker-build:
 	docker compose build

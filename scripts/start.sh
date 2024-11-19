@@ -6,7 +6,7 @@ done
 echo "Database is ready!"
 
 # Run dataset download and load commands
-python3.10 recommendation_system download datasets
-python3.10 recommendation_system load datasets
+make download-data
+make load-data
 uvicorn src.fastapi_app.main:app  --host 0.0.0.0 --port 8000
 python3.10 . src/dashboard/dashboard.py
