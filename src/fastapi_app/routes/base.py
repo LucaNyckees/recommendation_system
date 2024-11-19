@@ -15,6 +15,12 @@ from src.database.connection import connect
 
 base_router = APIRouter()
 
+
+@base_router.get("/health")
+def health():
+    return {"status": "healthy"}
+
+
 @base_router.post("/dashboard/all_categories/table_summary")
 async def get_summary() -> list[dict[str, Any]]:
     """

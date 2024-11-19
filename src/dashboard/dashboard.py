@@ -51,7 +51,7 @@ fastapi_route_start = f"http://{fastapi_config['host']}:{fastapi_config['port']}
 data_summary = get_route_result(url=f"{fastapi_route_start}/table_summary")
 marimekko_data = get_route_result(url=f"{fastapi_route_start}/marimekko_price_volume")
 transaction_time_series = get_route_result(url=f"{fastapi_route_start}/transaction_volume_time_series")
-avg_ratings_data = get_route_result(url=f"{fastapi_route_start}/all_categories/avg_rating")
+avg_ratings_data = get_route_result(url=f"{fastapi_route_start}/avg_rating")
 
 
 app = Dash(__name__)
