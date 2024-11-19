@@ -75,6 +75,9 @@ target/
 .venv/
 venv/
 
+# config file
+config.toml
+
 # PyCharm
 .idea
 
@@ -87,3 +90,8 @@ venv/
 
 # VS Code
 .vscode/
+
+# data
+data/*
+data/
+data
