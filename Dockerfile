@@ -11,8 +11,8 @@ RUN apt install -y make
 COPY requirements.txt .
 
 # Upgrade pip and install Python dependencies
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 # Copy the rest of the application files
 COPY ./ /app
