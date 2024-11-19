@@ -1,21 +1,12 @@
-# Use Python base image
 FROM python:3.10
-
-# Set working directory in the container
+COPY ./ /app
 WORKDIR /app
 
-# Copy requirements and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update
+RUN apt-get -y install make
 
-# Copy the project files into the container
-COPY . .
+# Install dependencies:
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install -r requirements.txt
 
-# Install the application in editable mode (if using setuptools)
-RUN pip install -e .
-
-# Expose ports for FastAPI and Dash
-EXPOSE 8000 8501
-
-# Set default command to a bash shell
-CMD ["/bin/bash"]
+CMD [ "scripts/start.sh"]

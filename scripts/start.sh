@@ -1,4 +1,12 @@
 #!/bin/bash
-make download
-make load
-python . src/dashboard/dashboard.py
+echo "Waiting for database to be ready..."
+while ! nc -z db 5432; do
+  sleep 0.1
+done
+echo "Database is ready!"
+
+# Run dataset download and load commands
+python3.10 recommendation_system download datasets
+python3.10 recommendation_system load datasets
+uvicorn src.fastapi_app.main:app  --host 0.0.0.0 --port 8000
+python3.10 . src/dashboard/dashboard.py

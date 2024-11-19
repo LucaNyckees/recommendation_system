@@ -29,50 +29,22 @@ requirements: venv
 IMAGE_NAME = recommendation_system:latest
 CONTAINER_NAME = recommendation_system_container
 
-# Build the Docker image
-build:
-	docker build -t $(IMAGE_NAME) .
+# Build the Docker images
+docker-build:
+	docker-compose build
 
-# Run a development container
-run-dev:
-	docker run --rm -it \
-		-e USER=$USER \
-		-v `pwd`:/app \
-		-p 8000:8000 \
-		-p 8501:8501 \
-		--name $(CONTAINER_NAME) \
-		$(IMAGE_NAME) /bin/bash
+# Start the services
+docker-up:
+	docker-compose up -d
 
-# Run the FastAPI app inside a container
-run-fastapi:
-	docker run --rm -it \
-		-p 8000:8000 \
-		--name $(CONTAINER_NAME) \
-		$(IMAGE_NAME) \
-		uvicorn src.fastapi_app.main:app --host 0.0.0.0 --port 8000
+# Stop the services
+docker-down:
+	docker-compose down
 
-# Run the Dashboard inside a container
-run-dashboard:
-	docker run --rm -it \
-		-p 8501:8501 \
-		--name $(CONTAINER_NAME) \
-		$(IMAGE_NAME) \
-		python src/dashboard/dashboard.py
+# Show logs for all services
+docker-logs:
+	docker-compose logs -f
 
-# Run the initial dataset commands in the container
-download-datasets:
-	docker run --rm -it \
-		--name $(CONTAINER_NAME) \
-		$(IMAGE_NAME) \
-		python recommendation_system download datasets
-
-load-datasets:
-	docker run --rm -it \
-		--name $(CONTAINER_NAME) \
-		$(IMAGE_NAME) \
-		python recommendation_system load datasets
-
-# Stop and clean up all running containers
-clean:
-	docker stop $(CONTAINER_NAME) || true
-	docker rm $(CONTAINER_NAME) || true
+# Run tests inside the app container (example)
+docker-test:
+	docker-compose run app pytest
