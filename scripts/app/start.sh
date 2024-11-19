@@ -8,5 +8,5 @@ echo "data loaded to db."
 uvicorn src.fastapi_app.main:app  --host 0.0.0.0 --port 8000 &
 echo "fastapi app launched."
 
-python3.10 . /app/src/dashboard/dashboard.py
+python3.10 /app/dashboard.py
 echo "dash app launched."
