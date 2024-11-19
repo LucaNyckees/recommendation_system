@@ -3,8 +3,16 @@ token = ""
 
 
 [dbs.main]
-host=""
-name=""
-user=""
-port=""
+host="db"
+name="postgres"
+user="postgres"
+port="5432"
 password=""
+
+[apps.fastapi_app]
+host="0.0.0.0"
+port="8000"
+
+[apps.dash_app]
+host="0.0.0.0"
+port="8050"

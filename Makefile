@@ -7,7 +7,7 @@ SHELL:=/bin/bash
 python=python3.10
 BIN=venv/bin/
 
-all: requirements
+all: up
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -19,15 +19,40 @@ venv:
 	$(python) -m venv venv
 	echo ">>> Environment successfully created!"
 
-# Delete the virtual environment.
-clean:
-	rm -rf venv
-
 # Install Python dependencies.
 requirements: venv
 	echo ">>> Installing requirements..."
 	$(BIN)python -m pip install --upgrade pip wheel
 	$(BIN)python -m pip install -r requirements.txt
 
-# Silencing commands
-.SILENT: venv requirements clean
+# Variables
+IMAGE_NAME = recommendation_system:latest
+CONTAINER_NAME = recommendation_system_container
+
+# Download amazon datasets
+download-data:
+	python . download datasets
+
+# Load downloaded datasets to postgres database
+load-data:
+	python . load datasets
+
+# Build the Docker images
+build:
+	docker compose build
+
+# Start the services
+up: build
+	docker compose up -d
+
+# Stop the services
+down:
+	docker compose down
+
+# Show logs for all services
+logs:
+	docker compose -f docker-compose.yml logs -f
+
+# Run tests inside the app container (example)
+test:
+	docker compose run app pytest

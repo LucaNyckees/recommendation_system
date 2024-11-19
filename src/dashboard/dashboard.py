@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
-import requests
+import toml
 
 ROOT_DIR = ("/").join(os.getcwd().split("/"))
 import sys
@@ -13,6 +13,12 @@ from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
 from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
 from src.dashboard.helpers import apply_layout, get_route_result
+from src.paths import ROOT
+
+with open(os.path.join(ROOT, "config.toml"), "r") as f:
+    config = toml.load(f)
+    fastapi_config = config["apps"]["fastapi_app"]
+    dash_config = config["apps"]["dash_app"]
 
 suppress_callback_exceptions=True
 
@@ -41,10 +47,12 @@ with connect(db_key="main") as conn:
         df = apply_sentiment_analysis(df=df)
 
 
-data_summary = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/table_summary")
-marimekko_data = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/marimekko_price_volume")
-transaction_time_series = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/transaction_volume_time_series")
-avg_ratings_data = get_route_result(url="http://127.0.0.1:8000/dashboard/all_categories/avg_rating")
+fastapi_route_start = f"http://{fastapi_config['host']}:{fastapi_config['port']}/dashboard/all_categories"
+
+data_summary = get_route_result(url=f"{fastapi_route_start}/table_summary")
+marimekko_data = get_route_result(url=f"{fastapi_route_start}/marimekko_price_volume")
+transaction_time_series = get_route_result(url=f"{fastapi_route_start}/transaction_volume_time_series")
+avg_ratings_data = get_route_result(url=f"{fastapi_route_start}/avg_rating")
 
 
 app = Dash(__name__)
@@ -113,7 +121,7 @@ def display_section(selected_section):
 def update_graphs(selected_section):
     if selected_section == 'DataViz':
 
-        avg_ratings_fig = px.bar(avg_ratings_data, x="main_category", y="average_rating")
+        avg_ratings_fig = px.bar(avg_ratings_data, x="main_category", y="average_rating", title="Avg. Rating per Category")
         avg_ratings_fig = apply_layout(fig=avg_ratings_fig, sublib="px")
 
         # Pie charts for sentiment
@@ -133,10 +141,10 @@ def update_graphs(selected_section):
         sentiment_scatterplot = px.scatter(
             df,
             x="average_tb_sentiment_rating",
-            y="tb_sentiment_rating",
+            y="average_rating",
             marginal_x="box",
             marginal_y="box",
-            title="Average TextBlob vs. Average User Ratings",
+            title="TextBlob vs. User Ratings",
             labels={'average_tb_sentiment_rating': 'Average TextBlob Sentiment Rating', 'tb_sentiment_rating': 'TextBlob Sentiment Rating'},
             opacity=0.7,
             color_discrete_sequence=[color_palette["dark_blue"]],
@@ -213,4 +221,4 @@ def update_graphs(selected_section):
     return {}, {}, {}, {}, {}, {}
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(host=dash_config["host"], port=dash_config["port"], debug=True)

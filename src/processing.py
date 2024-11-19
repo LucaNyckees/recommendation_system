@@ -1,5 +1,5 @@
 import pandas as pd
-import spacy
+import spacy  # potentially not used, could be removed from requirements.txt
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
