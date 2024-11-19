@@ -14,23 +14,7 @@ We download Amazon product reviews data from https://amazon-reviews-2023.github.
 
 ## Pipeline Snapshot
 <img src="https://github.com/LucaNyckees/recommendation_system/blob/main/images/rs_pipeline.png?raw=true" width="700">
-## Virtual environment
-Use the following command lines to create and use venv python package:
-```
-python3.10 -m venv venv
-```
-Then use the following to activate the environment:
-```
-source venv/bin/activate
-```
-You can now use pip to install any packages you need for the project and run python scripts, usually through a `requirements.txt`:
-```
-python -m pip install -r requirements.txt
-```
-When you are finished, you can stop the environment by running:
-```
-deactivate
-```
+
 
 ## Basic structure
 ```
@@ -53,16 +37,48 @@ deactivate
 └── tests/
 ```
 
-### FastAPI App
-Go to the file `src/fastapi_app/README.md` for instructions.
+### Wrapped up worflow with Docker
+First, make sure you have *Docker* installed on your machine. If you wish to make all the steps yourself, without using Docker, you can go to the next section.
 
-### Dash App
-There is an interative dashboard built with Dash, that calls routes from the FastAPI app.
-Go to the root directory `PATH_TO_YOUR_PROJECT` and run the following to launch the dashboard.
+Run the following command.
+```
+make build
+```
+This will create (~5min) a Docker image named `recommendation_system:latest` with the virtual environment in which the app will run.
+
+Once this is done, run 
+```
+make run
+```
+This will launch a dashboard at the address localhost:8000 : have a look !
+
+### Step-by-step workflow
+
+Let's say your project directory looks like `ROOT_DIR := PRE_ROOT_DIR / recommendation_system`.
+
+0. Setup a Postgres database and specify your associated credentials in the `config.toml` file.
+
+1. Create a virtual environment named `venv` and install dependencies and requirements in it
+```
+make venv
+```
+2. Activate your virtual environment.
+```
+source venv/bin/activate
+```
+3. Download Amazon datasets into your project (run from `PRE_ROOT_DIR`).
+```
+python recommendation_system download datasets
+```
+4. Load downloaded datasets to your Postgres database (run from `PRE_ROOT_DIR`).
+```
+python recommendation_system load datasets
+```
+5. Launch the FastAPI application - it creates routes that will be called by the dashboard (run from `ROOT_DIR`).
+```
+uvicorn src.fastapi_app.main:app
+```
+6. Launch the Dash dashboard have check the result at `localhost:8000` in your favorite browser (run from `ROOT_DIR`).
 ```
 python src/dashboard/dashboard.py
 ```
-There are three sections, namely
-- data visualization
-- models performance
-- recommender demo
