@@ -1,9 +1,9 @@
 from textblob import TextBlob
 import pandas as pd
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 from typing import Tuple
-import nltk
-nltk.download('stopwords')
+# import nltk
+# nltk.download('stopwords')
 
 import nltk
 # import ssl
@@ -16,7 +16,7 @@ import nltk
 #     ssl._create_default_https_context = _create_unverified_https_context
 
 # nltk.download()
-stop_words = set(stopwords.words('english'))
+# stop_words = set(stopwords.words('english'))
 
 
 def homeomorphic_interval_map(value: float, interval_in: Tuple[float, float], interval_out: Tuple[float, float]) -> float:
@@ -27,8 +27,8 @@ def homeomorphic_interval_map(value: float, interval_in: Tuple[float, float], in
     return mapped_value
 
 
-def remove_stopwords(text: str) -> str:
-    return " ".join([word for word in text.split() if word not in stop_words])
+# def remove_stopwords(text: str) -> str:
+#     return " ".join([word for word in text.split() if word not in stop_words])
 
 
 def get_textblob_sentiment_rating(text: str) -> float:
