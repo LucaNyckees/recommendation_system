@@ -1,0 +1,38 @@
+version: "3.10"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Expose FastAPI
+    volumes:
+      - .:/app       # Optional, allows live code editing
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/recommendation
+
+  dashboard:
+    build:
+      context: .
+    command: python src/dashboard/dashboard.py
+    ports:
+      - "8050:8050"  # Expose Dash dashboard
+    depends_on:
+      - app
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: recommendation
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
