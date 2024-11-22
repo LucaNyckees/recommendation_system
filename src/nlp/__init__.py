@@ -18,8 +18,3 @@ def run_bert_regressor_pipeline(
         frac=frac,
         debug=debug,
     )
-
-
-@app.command(name="reviews-classifier")
-def run_bert_classifier_pipeline() -> None:
-    raise NotImplementedError("Not yet implemented, work still in progress.")
