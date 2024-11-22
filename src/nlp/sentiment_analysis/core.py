@@ -1,7 +1,7 @@
 from src.nlp.sentiment_analysis.classifiers import XGBoostSentimentClassifier, RandomForestSentimentClassifier
 
 
-def sentiment_classifier_pipeline(category: str, embedding: str) -> None:
+def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) -> None:
     """
     Trains and stores two models per category.
     TODO : actually store models with MLFlow
@@ -11,7 +11,7 @@ def sentiment_classifier_pipeline(category: str, embedding: str) -> None:
     xgb_sentiment_classifier = XGBoostSentimentClassifier(
         category=category,
         embedding=embedding,
-        frac=0.01
+        frac=frac
     )
     xgb_sentiment_classifier._initialize_data()
     xgb_sentiment_classifier._train()
@@ -21,7 +21,7 @@ def sentiment_classifier_pipeline(category: str, embedding: str) -> None:
     rf_sentiment_classifier = RandomForestSentimentClassifier(
         category=category,
         embedding=embedding,
-        frac=0.01
+        frac=frac
     )
     rf_sentiment_classifier._initialize_data()
     rf_sentiment_classifier._train()
