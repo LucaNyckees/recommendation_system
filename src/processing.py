@@ -41,6 +41,7 @@ class DataProcessor:
         nlp = spacy.load("en_core_web_sm")
         doc = nlp(text)
         cleaned_tokens = [token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct and token.is_alpha]
+        logger.info("Cleaned texts")
         return " ".join(cleaned_tokens)
 
     def _process_reviews(self, clean_text: bool) -> None:
@@ -49,6 +50,7 @@ class DataProcessor:
         if clean_text:
             self.df["cleaned_review_input"] = self.df["review_input"].apply(self._clean_text)
         self.df["sentiment"] = self.df["rating"].apply(lambda x: map_rating_to_sentiment(rating=x))
+        logger.info("Processed reviews")
     
     def _embedd_reviews_and_split(self, embedding: str) -> None:
 
@@ -92,4 +94,5 @@ class DataProcessor:
 
         else:
             raise NotImplementedError(f"Embedding {embedding} not treated, should be 'tf-idf' or 'bert'.")
+        logger.info("Embedded reviews")
 
