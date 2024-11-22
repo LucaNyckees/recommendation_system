@@ -1,20 +1,18 @@
 from xgboost import XGBClassifier
 from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
+import mlflow
+import datetime
+import os
+import toml
 
-from src.paths import FIGURES_PATH
+from src.paths import FIGURES_PATH, ROOT
 from src.processing import DataProcessor
 from src.visualization import make_confusion_matrix
 from src.log.logger import logger
 
-# model_name = f"xgboost-{entity}-{target}"
-# logger.info(f"model : {model_name}")
-# mlflow_run_name = test * "test-" + f"{model_name}-{datetime.datetime.now()}"
-# description = f"XGBoost gradient boosting model for estimating {target} of {entity}."
-# mlflow.set_tracking_uri(f"http://{config['mlflow']['host']}:{config['mlflow']['port']}")
-# tags = {"db_name": get_db_name(), "mode": "test" if test else "prod"}
-# mlflow.end_run()
-# with mlflow.start_run(run_name=mlflow_run_name, description=description, tags=tags):
+with open(os.path.join(ROOT, "config.toml"), "r") as f:
+    config = toml.load(f)
 
 
 class SentimentClassifier:
@@ -70,7 +68,13 @@ class SentimentClassifier:
         )
 
     def _execute(self) -> None:
-        self._initialize_data()
-        self._train()
-        self._analyse()
-        self._make_figures()
+        mlflow_run_name = f"{self.model_name}-{datetime.datetime.now()}"
+        description = f"Sentiment Classification with Model {self.model_class}"
+        mlflow.set_tracking_uri(f"http://{config['mlflow']['host']}:{config['mlflow']['port']}")
+        tags = {"mode": "prod"}
+        mlflow.end_run()
+        with mlflow.start_run(run_name=mlflow_run_name, description=description, tags=tags):
+            self._initialize_data()
+            self._train()
+            self._analyse()
+            self._make_figures()

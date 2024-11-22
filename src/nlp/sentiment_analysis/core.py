@@ -4,8 +4,6 @@ from src.log.logger import logger
 
 def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) -> None:
     """
-    Trains and stores two models per category.
-    TODO : actually store models with MLFlow
     """
     logger.info(f"Running sentiment classifiers pipeline | category={category}, embedding={embedding}, frac={frac}")
     assert embedding in {"tf-idf", "bert"}, "embedding not valid"
