@@ -1,11 +1,16 @@
 from src.nlp.sentiment_analysis.classifiers import XGBoostSentimentClassifier, RandomForestSentimentClassifier
 
 
-def sentiment_classifier_pipeline() -> None:
+def sentiment_classifier_pipeline(category: str, embedding: str) -> None:
+    """
+    Trains and stores two models per category.
+    TODO : actually store models with MLFlow
+    """
+    assert embedding in {"tf-idf", "bert"}, "embedding not valid"
 
     xgb_sentiment_classifier = XGBoostSentimentClassifier(
-        category="All_beauty",
-        embedding="tf-idf",
+        category=category,
+        embedding=embedding,
         frac=0.01
     )
     xgb_sentiment_classifier._initialize_data()
@@ -14,8 +19,8 @@ def sentiment_classifier_pipeline() -> None:
     xgb_sentiment_classifier._make_figures()
 
     rf_sentiment_classifier = RandomForestSentimentClassifier(
-        category="All_beauty",
-        embedding="tf-idf",
+        category=category,
+        embedding=embedding,
         frac=0.01
     )
     rf_sentiment_classifier._initialize_data()
