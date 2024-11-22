@@ -25,6 +25,7 @@ class SentimentClassifier:
 class XGBoostSentimentClassifier(SentimentClassifier):
 
     def __init__(self, *args, **kwargs) -> None:
+        logger.info("Initiating XGBoost sentiment classification")
         super().__init__(*args, **kwargs)
         self.model_name = "xgb-sentiment-classifier"
 
@@ -59,6 +60,7 @@ class XGBoostSentimentClassifier(SentimentClassifier):
 class RandomForestSentimentClassifier(SentimentClassifier):
 
     def __init__(self, *args, **kwargs) -> None:
+        logger.info("Initiating Random Forest sentiment classification")
         super().__init__(*args, **kwargs)
         self.model_name = "randomforest-sentiment-classifier"
 
