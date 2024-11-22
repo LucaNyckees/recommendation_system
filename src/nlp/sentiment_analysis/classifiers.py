@@ -29,10 +29,13 @@ class XGBoostSentimentClassifier(SentimentClassifier):
         self.model_name = "xgb-sentiment-classifier"
 
     def _train(self) -> None:
-        self.xgb = XGBClassifier(objective='multi:softmax', num_class=3, eval_metric='mlogloss', use_label_encoder=False)
+        xgb_classifier_args = dict(objective='multi:softmax', num_class=3, eval_metric='mlogloss', use_label_encoder=False)
+        self.xgb = XGBClassifier(**xgb_classifier_args)
+        logger.info(f"Building model with args {xgb_classifier_args}")
         self.xgb.fit(self.data_processor.X_train, self.data_processor.y_train.tolist())
         self.y_pred = self.xgb.predict(self.data_processor.X_test)
         self.trained = True
+        logger.info("Trained model")
 
     def _analyse(self) -> None:
         if not self.trained:
@@ -60,10 +63,13 @@ class RandomForestSentimentClassifier(SentimentClassifier):
         self.model_name = "randomforest-sentiment-classifier"
 
     def _train(self) -> None:
-        self.rf = RandomForestClassifier(n_estimators=100, random_state=42)
+        rf_classifier_args = dict(n_estimators=100, random_state=42)
+        self.rf = RandomForestClassifier(rf_classifier_args)
+        logger.info(f"Building model with args {rf_classifier_args}")
         self.rf.fit(self.data_processor.X_train, self.data_processor.y_train)
         self.y_pred = self.rf.predict(self.data_processor.X_test)
         self.trained = True
+        logger.info("Trained model")
 
     def _analyse(self) -> None:
         if not self.trained:
