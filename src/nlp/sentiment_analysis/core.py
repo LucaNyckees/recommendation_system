@@ -16,10 +16,7 @@ def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) ->
         model_class="xgb",
         frac=frac
     )
-    xgb_classifier._initialize_data()
-    xgb_classifier._train()
-    xgb_classifier._analyse()
-    xgb_classifier._make_figures()
+    xgb_classifier._execute()
 
     rf_classifier = SentimentClassifier(
         category=category,
@@ -27,9 +24,6 @@ def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) ->
         model_class="rf",
         frac=frac
     )
-    rf_classifier._initialize_data()
-    rf_classifier._train()
-    rf_classifier._analyse()
-    rf_classifier._make_figures()
+    rf_classifier._execute()
 
     return None

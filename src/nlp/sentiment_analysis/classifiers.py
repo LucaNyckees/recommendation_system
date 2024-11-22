@@ -68,3 +68,9 @@ class SentimentClassifier:
             classes=self.data_processor.label_encoder.classes_,
             file_path=FIGURES_PATH / self.model_name / "confusion_matrix.png"
         )
+
+    def _execute(self) -> None:
+        self._initialize_data()
+        self._train()
+        self._analyse()
+        self._make_figures()
