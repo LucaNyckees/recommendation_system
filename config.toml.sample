@@ -16,3 +16,7 @@ port="8000"
 [apps.dash_app]
 host="0.0.0.0"
 port="8050"
+
+[apps.mlflow_app]
+host=""
+port=""
