@@ -27,7 +27,7 @@ class XGBoostSentimentClassifier(SentimentClassifier):
     def __init__(self, *args, **kwargs) -> None:
         logger.info("Initiating XGBoost sentiment classification")
         super().__init__(*args, **kwargs)
-        self.model_name = "xgb-sentiment-classifier"
+        self.model_name = f"xgb-sentiment-classifier-{self.category}"
 
     def _train(self) -> None:
         xgb_classifier_args = dict(objective='multi:softmax', num_class=3, eval_metric='mlogloss', use_label_encoder=False)
@@ -62,7 +62,7 @@ class RandomForestSentimentClassifier(SentimentClassifier):
     def __init__(self, *args, **kwargs) -> None:
         logger.info("Initiating Random Forest sentiment classification")
         super().__init__(*args, **kwargs)
-        self.model_name = "randomforest-sentiment-classifier"
+        self.model_name = f"randomforest-sentiment-{self.category}"
 
     def _train(self) -> None:
         rf_classifier_args = dict(n_estimators=100, random_state=42)
