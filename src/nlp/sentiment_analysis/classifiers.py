@@ -17,6 +17,12 @@ with open(os.path.join(ROOT, "config.toml"), "r") as f:
 
 class SentimentClassifier:
     def __init__(self, category: str, embedding: str, model_class: str, frac: float = 0.01) -> None:
+        """
+        :param category: any of Amazon product categories, e.g. "All_Beauty"
+        :param emebdding: the text to vectors embedding, can be "bert" or "tf-idf"
+        :param model_cass: the classifier choice, can be "rf", "xgb", or "bert"
+        :param frac: proportion of data to sample, e.g. 1% is frac=0.01
+        """
         logger.info(f"Initiating {model_class} sentiment classification")
         self.trained = False
         self.category = category
