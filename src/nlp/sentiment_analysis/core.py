@@ -8,21 +8,29 @@ def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) ->
     logger.info(f"Running sentiment classifiers pipeline | category={category}, embedding={embedding}, frac={frac}")
     assert embedding in {"tf-idf", "bert"}, "embedding not valid"
 
-    xgb_classifier = SentimentClassifier(
+    classifier_xbgo = SentimentClassifier(
         category=category,
         embedding=embedding,
         model_class="xgb",
         frac=frac
     )
-    xgb_classifier._execute()
+    classifier_xbgo._execute()
 
-    rf_classifier = SentimentClassifier(
+    classifier_rfst = SentimentClassifier(
         category=category,
         embedding=embedding,
         model_class="rf",
         frac=frac
     )
-    rf_classifier._execute()
+    classifier_rfst._execute()
+
+    classifier_bert = SentimentClassifier(
+        category=category,
+        embedding=None,
+        model_class="bert",
+        frac=frac
+    )
+    classifier_bert._execute()
 
     return None
 
