@@ -2,11 +2,21 @@ from xgboost import XGBClassifier
 from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
 import mlflow
+import torch
 import datetime
 import os
 import toml
+import json
+import random
+from transformers import (
+    AutoModelForSequenceClassification,
+    AutoTokenizer,
+    Trainer,
+    TrainingArguments,
+    pipeline,
+)
 
-from src.paths import FIGURES_PATH, ROOT
+from src.paths import FIGURES_PATH, ROOT, RESOURCES_PATH
 from src.processing import DataProcessor
 from src.visualization import make_confusion_matrix
 from src.log.logger import logger
@@ -14,12 +24,17 @@ from src.log.logger import logger
 with open(os.path.join(ROOT, "config.toml"), "r") as f:
     config = toml.load(f)
 
+with open(RESOURCES_PATH / "params.json") as f:
+    model_params = json.load(f)["classifier"]
+
+device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
+
 
 class SentimentClassifier:
-    def __init__(self, category: str, embedding: str, model_class: str, frac: float = 0.01) -> None:
+    def __init__(self, category: str, embedding: str | None, model_class: str, frac: float = 0.01) -> None:
         """
         :param category: any of Amazon product categories, e.g. "All_Beauty"
-        :param emebdding: the text to vectors embedding, can be "bert" or "tf-idf"
+        :param emebdding: the text to vectors embedding, can be "bert", "tf-idf" or None
         :param model_cass: the classifier choice, can be "rf", "xgb", or "bert"
         :param frac: proportion of data to sample, e.g. 1% is frac=0.01
         """
@@ -37,33 +52,71 @@ class SentimentClassifier:
         self.data_processor._process_reviews(clean_text=False)
         self.data_processor._embedd_reviews_and_split(embedding=self.embedding)
 
+    def _setup_model(self) -> None:
+        self.training_args = model_params[self.model_class]
+        match self.model_class:
+            case "xbg":
+                self.model = XGBClassifier(**self.training_args)
+            case "rf":
+                self.model = RandomForestClassifier(**self.training_args)
+            case "bert":
+                torch.manual_seed(self.seed)
+                random.seed(self.seed)
+                self.training_args = TrainingArguments(self.training_args)
+                self.tokenizer = AutoTokenizer.from_pretrained(
+                    self.model_name,
+                    max_length=512,
+                    truncation=True,
+                    clean_up_tokenization_spaces=False,
+                )
+                self.model = AutoModelForSequenceClassification.from_pretrained(
+                    self.model_name,
+                    num_labels=3,
+                    id2label={1: "positive", 2: "negative", 3: "neutral"},
+                    label2id={"positive": 1, "negative": 2, "neutral": 3},
+                ).to(device)
+            
+        logger.info(f"Building model with args {self.training_args}")
+
     def _train(self) -> None:
-        if self.model_class == "xgb":
-            xgb_classifier_args = dict(objective='multi:softmax', num_class=3, eval_metric='mlogloss', use_label_encoder=False)
-            self.xgb = XGBClassifier(**xgb_classifier_args)
-            logger.info(f"Building model with args {xgb_classifier_args}")
-            self.xgb.fit(self.data_processor.X_train, self.data_processor.y_train.tolist())
-            self.y_pred = self.xgb.predict(self.data_processor.X_test)
-        elif self.model_class == "rf":
-            rf_classifier_args = dict(n_estimators=100, random_state=42)
-            self.rf = RandomForestClassifier(rf_classifier_args)
-            logger.info(f"Building model with args {rf_classifier_args}")
-            self.rf.fit(self.data_processor.X_train, self.data_processor.y_train)
-            self.y_pred = self.rf.predict(self.data_processor.X_test)
-        else:
-            raise ValueError(f"Invalid argument self.model_class={self.model_class}")
+        match self.model_class:
+            case "xbg" | "rf":
+                self.model.fit(self.data_processor.X_train, self.data_processor.y_train.tolist())
+                self.y_pred = self.model.predict(self.data_processor.X_test)
+            case "bert":
+                torch.manual_seed(self.seed)
+                random.seed(self.seed)
+                self.trainer = Trainer(
+                    model=self.model,
+                    args=self.training_args,
+                    train_dataset=self.train_set,
+                    eval_dataset=self.eval_set,
+                    tokenizer=self.tokenizer,
+                )
+                self.trainer.train()
         self.trained = True
         logger.info("Trained model")
 
+    def _predict(self) -> None:
+        match self.model_class:
+            case "xbg" | "rf":
+                self.y_pred = self.model.predict(self.data_processor.X_test)
+            case "bert":
+                predictions_output = self.trainer.predict(self.test_set)
+                logits = predictions_output.predictions
+                y_pred = logits.argmax(axis=-1)
+                self.y_pred = y_pred.tolist()
+
     def _analyse(self) -> None:
-        if not self.trained:
-            logger.warning("Please train your model first.")
-        report = classification_report(
+        self.report = classification_report(
             y_true=self.data_processor.y_test,
             y_pred=self.y_pred,
             target_names=self.data_processor.label_encoder.classes_,
         )
-        logger.info(report)
+        if self.model_class == "bert":
+            self.metrics = self.trainer.evaluate()
+            logger.ingo(self.metrics)
+        logger.info(self.report)
 
     def _make_figures(self) -> None:
         make_confusion_matrix(
@@ -73,6 +126,11 @@ class SentimentClassifier:
             file_path=FIGURES_PATH / self.model_name / "confusion_matrix.png"
         )
 
+    def _push_to_hub(self) -> None:
+        if self.model_class == "bert":
+            hf_model_name = "LucaNyckees/amazon-bert-classifier"
+            self.model.push_to_hub(hf_model_name, use_temp_dir=True)
+
     def _execute(self) -> None:
         mlflow_run_name = f"{self.model_name}-{datetime.datetime.now()}"
         description = f"Sentiment Classification with Model {self.model_class}"
@@ -81,6 +139,9 @@ class SentimentClassifier:
         mlflow.end_run()
         with mlflow.start_run(run_name=mlflow_run_name, description=description, tags=tags):
             self._initialize_data()
+            self._setup_model()
             self._train()
+            self._predict()
             self._analyse()
             self._make_figures()
+            self._push_to_hub()
