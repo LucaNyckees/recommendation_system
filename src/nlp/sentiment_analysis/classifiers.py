@@ -18,7 +18,7 @@ from transformers import (
 
 from src.paths import FIGURES_PATH, ROOT, RESOURCES_PATH
 from src.processing import DataProcessor
-from src.visualization import make_confusion_matrix
+from src.visualization import make_confusion_matrix_plotly
 from src.log.logger import logger
 
 with open(os.path.join(ROOT, "config.toml"), "r") as f:
@@ -121,12 +121,13 @@ class SentimentClassifier:
         mlflow.log_metrics(self.report)
 
     def _make_figures(self) -> None:
-        make_confusion_matrix(
+        fig = make_confusion_matrix_plotly(
             y_test=self.data_processor.y_test,
             y_pred=self.y_pred,
             classes=self.data_processor.label_encoder.classes_,
             file_path=FIGURES_PATH / self.model_name / "confusion_matrix.png"
         )
+        mlflow.log_figure(figure=fig)
 
     def _push_to_hub(self) -> None:
         if self.model_class == "bert":
