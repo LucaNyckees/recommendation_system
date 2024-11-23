@@ -4,7 +4,7 @@ from typing_extensions import Annotated
 app = typer.Typer(name="sentiment")
 
 
-@app.command(name="classifier")
+@app.command(name="classifiers")
 def run_sentiment_classifier_pipeline(
     category: Annotated[str, typer.Option(help="Amazon data category")] = "All_beauty",
     embedding: Annotated[str, typer.Option(help="Word embedding")] = "tf-idf",
@@ -20,7 +20,7 @@ def run_sentiment_classifier_pipeline(
     )
 
 
-@app.command(name="regressor")
+@app.command(name="regressors")
 def run_bert_regressor_pipeline(
     category: Annotated[str, typer.Option(help="Amazon data category")] = "All_beauty",
     frac: Annotated[float, typer.Option(help="Amazon data category")] = 0.001,
