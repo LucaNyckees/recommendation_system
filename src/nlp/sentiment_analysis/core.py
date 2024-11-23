@@ -25,3 +25,7 @@ def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) ->
     rf_classifier._execute()
 
     return None
+
+
+def sentiment_regressor_pipeline(category: str, embedding: str, frac: float) -> None:
+    pass
