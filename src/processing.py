@@ -92,7 +92,29 @@ class DataProcessor:
 
             self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
-        else:
-            raise NotImplementedError(f"Embedding {embedding} not treated, should be 'tf-idf' or 'bert'.")
+        elif embedding is None:
+            def _preprocess_fn(examples):
+                return self.tokenizer(
+                    examples["text"],
+                    padding="max_length",
+                    truncation=True,
+                    max_length=512,
+                )
+
+            ## Dataset
+            dataset = Dataset.from_pandas(df)
+            n = len(dataset)
+            sizes = [int(0.8 * n), int(0.1 * n), n - int(0.8 * n) - int(0.1 * n)]
+
+            gen = torch.Generator().manual_seed(self.seed_data_split)
+
+            sets = (
+                list(map(lambda x: {"text": x["text"], "label": x["label"]}, x))
+                for x in torch.utils.data.random_split(dataset, sizes, generator=gen)
+            )
+
+            self.train_set, self.eval_set, self.test_set = (
+                Dataset.from_list(x).map(_preprocess_fn, batched=True) for x in sets
+            )
         logger.info("Embedded reviews")
 
