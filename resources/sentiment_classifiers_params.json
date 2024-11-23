@@ -1,0 +1,25 @@
+{
+    "bert": {
+        "device": "cuda",
+        "seed": 7,
+        "num_epochs": 10,
+        "batch_size": 16,
+        "seed_data_split": 6,
+        "lr": 0.0001,
+        "weight_decay": 0.01,
+        "model_name": "bert-base-uncased",
+        "task": "text-classification",
+        "max_len": 512,
+        "num_threads": 1
+    },
+    "xgb": {
+        "objective": "multi:softmax",
+        "num_class": 3,
+        "eval_metric": "mlogloss",
+        "use_label_encoder":false
+    },
+    "rf": {
+        "n_estimators": 100,
+        "random_state": 42
+    }
+}
