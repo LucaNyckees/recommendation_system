@@ -54,6 +54,7 @@ class SentimentClassifier:
 
     def _setup_model(self) -> None:
         self.training_args = model_params[self.model_class]
+        mlflow.log_params(self.training_args)
         match self.model_class:
             case "xbg":
                 self.model = XGBClassifier(**self.training_args)
@@ -75,7 +76,6 @@ class SentimentClassifier:
                     id2label={1: "positive", 2: "negative", 3: "neutral"},
                     label2id={"positive": 1, "negative": 2, "neutral": 3},
                 ).to(device)
-            
         logger.info(f"Building model with args {self.training_args}")
 
     def _train(self) -> None:
@@ -116,7 +116,9 @@ class SentimentClassifier:
         if self.model_class == "bert":
             self.metrics = self.trainer.evaluate()
             logger.ingo(self.metrics)
+            mlflow.log_metrics(self.metrics)
         logger.info(self.report)
+        mlflow.log_metrics(self.report)
 
     def _make_figures(self) -> None:
         make_confusion_matrix(
