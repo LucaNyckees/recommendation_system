@@ -16,21 +16,21 @@ def sentiment_classifier_pipeline(category: str, embedding: str, nb_rows: int) -
     )
     classifier_xbgo._execute()
 
-    classifier_rfst = SentimentClassifier(
-        category=category,
-        embedding=embedding,
-        model_class="rf",
-        nb_rows=nb_rows
-    )
-    classifier_rfst._execute()
+    # classifier_rfst = SentimentClassifier(
+    #     category=category,
+    #     embedding=embedding,
+    #     model_class="rf",
+    #     nb_rows=nb_rows
+    # )
+    # classifier_rfst._execute()
 
-    classifier_bert = SentimentClassifier(
-        category=category,
-        embedding=None,
-        model_class="bert",
-        nb_rows=nb_rows
-    )
-    classifier_bert._execute()
+    # classifier_bert = SentimentClassifier(
+    #     category=category,
+    #     embedding=None,
+    #     model_class="bert",
+    #     nb_rows=nb_rows
+    # )
+    # classifier_bert._execute()
 
     return None
 

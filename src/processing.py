@@ -12,7 +12,7 @@ from tqdm import tqdm
 from psycopg.sql import SQL
 
 from src.log.logger import logger
-from src.nlp.sentiment_analysis.helpers import map_rating_to_sentiment
+from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
 from src.database.connection import connect
 from src.database.db_functions import load_dataframe_from_query
 
@@ -33,9 +33,9 @@ class DataProcessor:
             FROM rs_amazon_products p
             INNER JOIN rs_amazon_reviews r ON p.parent_asin = r.parent_asin
             WHERE main_category = %(main_category)s
-            LIMIT {nb_rows}""")
-        df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "nb_rows": nb_rows})
-        logger.info(f"loaded {len(df)} rows")
+            LIMIT %(nb_rows)s""")
+        self.df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "nb_rows": nb_rows})
+        logger.info(f"loaded {len(self.df)} rows")
 
     # def _clean_text(text: str) -> str:
     #     nlp = spacy.load("en_core_web_sm")
@@ -45,18 +45,17 @@ class DataProcessor:
     #     return " ".join(cleaned_tokens)
 
     def _process_reviews(self, clean_text: bool) -> None:
-        self.df.rename(columns={"title_x": "review_title", "title_y": "title", "text": "review"}, inplace=True)
-        self.df["review_input"] = self.df["review_title"] + self.df["review"]
+        self.df["review_input"] = self.df["title"] + self.df["text"]
         # if clean_text:
         #     self.df["cleaned_review_input"] = self.df["review_input"].apply(self._clean_text)
-        self.df["sentiment"] = self.df["rating"].apply(lambda x: map_rating_to_sentiment(rating=x))
+        self.df = apply_sentiment_analysis(df=self.df)
         logger.info("Processed reviews")
     
     def _embedd_reviews_and_split(self, embedding: str) -> None:
 
         if embedding == "tf-idf":
             X = self.df["review_input"].to_list()
-            y = self.df["sentiment"]
+            y = self.df["sentiment_category"]
 
             self.label_encoder = LabelEncoder()
             y_encoded = self.label_encoder.fit_transform(y)
@@ -85,7 +84,7 @@ class DataProcessor:
                 embeddings.append(get_bert_embedding(text).numpy())
 
             X = pd.DataFrame(embeddings)
-            y = self.df["sentiment"]
+            y = self.df["sentiment_category"]
 
             self.label_encoder = LabelEncoder()
             y_encoded = self.label_encoder.fit_transform(y)

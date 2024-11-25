@@ -56,7 +56,7 @@ class SentimentClassifier:
         self.training_args = model_params[self.model_class]
         mlflow.log_params(self.training_args)
         match self.model_class:
-            case "xbg":
+            case "xgb":
                 self.model = XGBClassifier(**self.training_args)
             case "rf":
                 self.model = RandomForestClassifier(**self.training_args)
@@ -80,7 +80,7 @@ class SentimentClassifier:
 
     def _train(self) -> None:
         match self.model_class:
-            case "xbg" | "rf":
+            case "xgb" | "rf":
                 self.model.fit(self.data_processor.X_train, self.data_processor.y_train.tolist())
                 self.y_pred = self.model.predict(self.data_processor.X_test)
             case "bert":
@@ -99,7 +99,7 @@ class SentimentClassifier:
 
     def _predict(self) -> None:
         match self.model_class:
-            case "xbg" | "rf":
+            case "xgb" | "rf":
                 self.y_pred = self.model.predict(self.data_processor.X_test)
             case "bert":
                 predictions_output = self.trainer.predict(self.test_set)
