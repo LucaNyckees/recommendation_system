@@ -9,14 +9,14 @@ user="postgres"
 port="5432"
 password=""
 
-[apps.fastapi_app]
+[apps.fastapi]
 host="0.0.0.0"
 port="8000"
 
-[apps.dash_app]
+[apps.dash]
 host="0.0.0.0"
 port="8050"
 
-[apps.mlflow_app]
+[apps.mlflow]
 host=""
 port=""

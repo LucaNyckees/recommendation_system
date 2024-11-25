@@ -137,7 +137,7 @@ class SentimentClassifier:
     def _execute(self) -> None:
         mlflow_run_name = f"{self.model_name}-{datetime.datetime.now()}"
         description = f"Sentiment Classification with Model {self.model_class}"
-        mlflow.set_tracking_uri(f"http://{config['mlflow']['host']}:{config['mlflow']['port']}")
+        mlflow.set_tracking_uri(f"http://{config['apps']['mlflow']['host']}:{config['mlflow']['port']}")
         tags = {"mode": "prod"}
         mlflow.end_run()
         with mlflow.start_run(run_name=mlflow_run_name, description=description, tags=tags):
