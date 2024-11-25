@@ -8,6 +8,9 @@ echo "data loaded to db."
 mlflow server --host 0.0.0.0 --port 5000
 echo "mlflow server launched."
 
+make sentiment
+echo "sentiment classifiers deployed."
+
 uvicorn src.fastapi_app.main:app --host 0.0.0.0 --port 8000 &
 echo "fastapi app launched."
 
