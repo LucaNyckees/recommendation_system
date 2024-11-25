@@ -31,24 +31,24 @@ device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.ba
 
 
 class SentimentClassifier:
-    def __init__(self, category: str, embedding: str | None, model_class: str, frac: float = 0.01) -> None:
+    def __init__(self, category: str, embedding: str | None, model_class: str, nb_rows: int = 10_000) -> None:
         """
         :param category: any of Amazon product categories, e.g. "All_Beauty"
         :param emebdding: the text to vectors embedding, can be "bert", "tf-idf" or None
         :param model_cass: the classifier choice, can be "rf", "xgb", or "bert"
-        :param frac: proportion of data to sample, e.g. 1% is frac=0.01
+        :param nb_rows: number of rows/reviews to fetch
         """
         logger.info(f"Initiating {model_class} sentiment classification")
         self.trained = False
         self.category = category
         self.embedding = embedding
         self.model_class = model_class
-        self.frac = frac
+        self.nb_rows = nb_rows
         self.model_name = f"{model_class}-sentiment-classifier-{self.category}"
 
     def _initialize_data(self) -> None:
         self.data_processor = DataProcessor()
-        self.data_processor._load(category=self.category, frac=self.frac)
+        self.data_processor._load(category=self.category, nb_rows=self.nb_rows)
         self.data_processor._process_reviews(clean_text=False)
         self.data_processor._embedd_reviews_and_split(embedding=self.embedding)
 

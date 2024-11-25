@@ -6,9 +6,9 @@ app = typer.Typer(name="sentiment")
 
 @app.command(name="classifiers")
 def run_sentiment_classifier_pipeline(
-    category: Annotated[str, typer.Option(help="Amazon data category")] = "All_beauty",
+    category: Annotated[str, typer.Option(help="Amazon data category")] = "All Beauty",
     embedding: Annotated[str, typer.Option(help="Word embedding")] = "tf-idf",
-    frac: Annotated[float, typer.Option(help="Amazon data category")] = 0.01,
+    nb_rows: Annotated[int, typer.Option(help="Amazon data category")] = 10_000,
 ) -> None:
     
     from src.nlp.sentiment_analysis.core import sentiment_classifier_pipeline
@@ -16,14 +16,14 @@ def run_sentiment_classifier_pipeline(
     sentiment_classifier_pipeline(
         category=category,
         embedding=embedding,
-        frac=frac,
+        nb_rows=nb_rows,
     )
 
 
 @app.command(name="regressors")
 def run_bert_regressor_pipeline(
-    category: Annotated[str, typer.Option(help="Amazon data category")] = "All_beauty",
-    frac: Annotated[float, typer.Option(help="Amazon data category")] = 0.001,
+    category: Annotated[str, typer.Option(help="Amazon data category")] = "All_Beauty",
+    nb_rows: Annotated[int, typer.Option(help="Amazon data category")] = 10_000,
     debug: Annotated[bool, typer.Option(help="Amazon data category")] = False,
 ) -> None:
     
@@ -31,7 +31,7 @@ def run_bert_regressor_pipeline(
 
     sentiment_regressor_pipeline(
         category=category,
-        frac=frac,
+        nb_rows=nb_rows,
         debug=debug,
     )
 

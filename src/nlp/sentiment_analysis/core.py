@@ -2,17 +2,17 @@ from src.nlp.sentiment_analysis.classifiers import SentimentClassifier
 from src.log.logger import logger
 
 
-def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) -> None:
+def sentiment_classifier_pipeline(category: str, embedding: str, nb_rows: int) -> None:
     """
     """
-    logger.info(f"Running sentiment classifiers pipeline | category={category}, embedding={embedding}, frac={frac}")
+    logger.info(f"Running sentiment classifiers pipeline | category={category}, embedding={embedding}, nb_rows={nb_rows}")
     assert embedding in {"tf-idf", "bert"}, "embedding not valid"
 
     classifier_xbgo = SentimentClassifier(
         category=category,
         embedding=embedding,
         model_class="xgb",
-        frac=frac
+        nb_rows=nb_rows
     )
     classifier_xbgo._execute()
 
@@ -20,7 +20,7 @@ def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) ->
         category=category,
         embedding=embedding,
         model_class="rf",
-        frac=frac
+        nb_rows=nb_rows
     )
     classifier_rfst._execute()
 
@@ -28,12 +28,12 @@ def sentiment_classifier_pipeline(category: str, embedding: str, frac: float) ->
         category=category,
         embedding=None,
         model_class="bert",
-        frac=frac
+        nb_rows=nb_rows
     )
     classifier_bert._execute()
 
     return None
 
 
-def sentiment_regressor_pipeline(category: str, embedding: str, frac: float) -> None:
+def sentiment_regressor_pipeline(category: str, embedding: str, nb_rows: int) -> None:
     pass

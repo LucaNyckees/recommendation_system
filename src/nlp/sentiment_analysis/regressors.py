@@ -238,7 +238,7 @@ class BertRegressorPipeline:
         self.model.push_to_hub(hf_model_name, use_temp_dir=True)
 
 
-def regressor_pipeline(category: str = "All_beauty", frac: float = 0.001, debug: bool = False) -> None:
+def regressor_pipeline(category: str = "All_Beauty", nb_rows: int = 10_000, debug: bool = False) -> None:
     data_processor = DataProcessor()
     logger.info("data loading...")
     data_processor._load(category=category)

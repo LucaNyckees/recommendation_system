@@ -23,18 +23,18 @@ class DataProcessor:
         self.conn = connect(db_key="main")
         self.cur = self.conn.cursor()
 
-    def _load(self, category: str, frac: float = 0.01) -> None:
+    def _load(self, category: str, nb_rows: int = 10_000) -> None:
         """
         :param category: amazon product category, e.g. "All_Beauty"
-        :param frac: fraction with wich data sampling is done
+        :param nb_rows: number of rows (i.e. number of reviews) to fetch 
         """
         query = SQL("""
             SELECT *
             FROM rs_amazon_products p
             INNER JOIN rs_amazon_reviews r ON p.parent_asin = r.parent_asin
             WHERE main_category = %(main_category)s
-            TABLESAMPLE BERNOULLI(%(proportion)s)""")
-        df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "proportion": frac * 100})
+            LIMIT {nb_rows}""")
+        df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "nb_rows": nb_rows})
         logger.info(f"loaded {len(df)} rows")
 
     # def _clean_text(text: str) -> str:
