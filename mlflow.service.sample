@@ -1,0 +1,16 @@
+[Unit]
+Description=MLflow Tracking Server
+After=network.target
+
+[Service]
+User=ubuntu
+Type=simple
+WorkingDirectory=/Users/jasonmomoa/Desktop/my-repos
+ExecStart=/bin/bash -c '\
+  PATH=/Users/jasonmomoa/Desktop/my-repos/recommendation_system/venv/bin/:$PATH;\
+  exec mlflow server'
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
