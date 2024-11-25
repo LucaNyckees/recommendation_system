@@ -5,7 +5,7 @@ echo "datasets downloaded."
 make load-data
 echo "data loaded to db."
 
-mlflow server --host 0.0.0.0 --port 5000
+mlflow server --host 0.0.0.0 --port 5000 &
 echo "mlflow server launched."
 
 make sentiment
