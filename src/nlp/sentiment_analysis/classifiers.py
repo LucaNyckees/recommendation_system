@@ -108,11 +108,15 @@ class SentimentClassifier:
                 self.y_pred = y_pred.tolist()
 
     def _analyse(self) -> None:
-        self.report = classification_report(
+        report = classification_report(
             y_true=self.data_processor.y_test,
             y_pred=self.y_pred,
             target_names=self.data_processor.label_encoder.classes_,
+            output_dict=True
         )
+        # reformatting the classification report as a dict[str, float] so it can be logged to mlflow
+        self.report = {k1 + "_" + k2: report[k1][k2] for k1 in report.keys() - {"accuracy"} for k2 in report[k1].keys()}
+        self.report.update({"accuracy": report["accuracy"]})
         if self.model_class == "bert":
             self.metrics = self.trainer.evaluate()
             logger.ingo(self.metrics)
