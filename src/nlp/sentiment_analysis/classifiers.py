@@ -25,7 +25,7 @@ with open(os.path.join(ROOT, "config.toml"), "r") as f:
     config = toml.load(f)
 
 with open(RESOURCES_PATH / "sentiment_classifiers_params.json") as f:
-    model_params = json.load(f)["classifier"]
+    model_params = json.load(f)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 

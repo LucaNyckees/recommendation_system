@@ -23,7 +23,7 @@ from src.visualization import plotly_comparison, plotly_losses
 
 
 with open(RESOURCES_PATH / "sentiment_classifiers_params.json") as f:
-    classifier_params = json.load(f)["classifier"]
+    classifier_params = json.load(f)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
