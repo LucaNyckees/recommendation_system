@@ -37,7 +37,41 @@ We download Amazon product reviews data from https://amazon-reviews-2023.github.
 └── tests/
 ```
 
-### Wrapped up worflow with Docker
+## MLflow Tracking Server Service
+
+> The MLflow tracking server can be started with a service.
+
+**Setup Instructions**
+
+Let's say your project directory looks like `ROOT_DIR := PRE_ROOT_DIR / recommendation_system`.
+Go to your **`ROOT_DIR` directory** and do the following.
+
+1. Create a file called `mlflow.service` by copying the content of `mlflow.service.sample` and fill the dots `...` (twice) with adequate info about your folder structure.
+
+2. Copy the service file to `/etc/systemd/system/` with
+
+    ```sh
+    sudo cp mlflow.service /etc/systemd/system/.
+    ```
+3. Reload the services with
+    ```sh
+    sudo systemctl daemon-reload
+    ```
+4. Now the service can be started with
+    ```sh
+    sudo systemctl start mlflow.service
+    ```
+5. Make sure the service is started on boot by enabling it with
+    ```sh
+    sudo systemctl enable mlflow.service
+    ```
+6. Make sure everything works fine by checking logs with
+    ```sh
+    journalctl -ru mlflow.service
+    ```
+NB. The command at step 4 has variants with `status/stop/restart` replacing `start`.
+
+## Wrapped up worflow with Docker
 First, make sure you have **Docker** installed on your machine. If you wish to make all the steps yourself, without using Docker, you can go to the next section.
 
 **Run the command `make`**, which will basically execute
@@ -58,33 +92,35 @@ You should see the following appear in your terminal.
 ```
 Once this is done, you can access the Dash application by visiting http://0.0.0.0:8050/.
 
-### Step-by-step workflow
+## Step-by-step workflow
 
 Let's say your project directory looks like `ROOT_DIR := PRE_ROOT_DIR / recommendation_system`.
 
-0. Setup a Postgres database and specify your associated credentials in the `config.toml` file.
+1. Setup a Postgres database and specify your associated credentials in the `config.toml` file.
 
-1. Create a virtual environment named `venv` and install dependencies and requirements in it
+2. Create a virtual environment named `venv` and install dependencies and requirements in it
 ```
 make venv
 ```
-2. Activate your virtual environment.
+3. Activate your virtual environment.
 ```
 source venv/bin/activate
 ```
-3. Download Amazon datasets into your project (run from `PRE_ROOT_DIR`).
+4. Download Amazon datasets into your project (run from `PRE_ROOT_DIR`).
 ```
 python recommendation_system download datasets
 ```
-4. Load downloaded datasets to your Postgres database (run from `PRE_ROOT_DIR`).
+5. Load downloaded datasets to your Postgres database (run from `PRE_ROOT_DIR`).
 ```
 python recommendation_system load datasets
 ```
-5. Launch the FastAPI application - it creates routes that will be called by the dashboard (run from `ROOT_DIR`).
+6. Launch the MLFlow service by following the instructions of the section **MLflow Tracking Server Service** above.
+
+7. Launch the FastAPI application - it creates routes that will be called by the dashboard (run from `ROOT_DIR`).
 ```
 uvicorn src.fastapi_app.main:app
 ```
-6. Launch the Dash dashboard have check the result at http://localhost:8000 in your favorite browser (run from `ROOT_DIR`).
+8. Launch the Dash dashboard have check the result at http://localhost:8000 in your favorite browser (run from `ROOT_DIR`).
 ```
 python src/dashboard/dashboard.py
 ```
