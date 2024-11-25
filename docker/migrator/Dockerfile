@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Install Python and Alembic
 RUN pip install --upgrade pip
-RUN pip install alembic toml "psycopg2[binary]" "psycopg[binary]" SQLAlchemy alembic-utils
+RUN pip install alembic toml "psycopg2[binary]" "psycopg[binary]" SQLAlchemy alembic-utils rich
 
 # Copy the Alembic files
 COPY alembic.ini /app/

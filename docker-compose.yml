@@ -6,6 +6,7 @@ services:
     ports:
       - "8000:8000"  # Expose FastAPI
       - "8050:8050"  # Expose Dash
+      - "5001:5000"  # Expose MLFlow
     volumes:
       - ./src/dashboard/dashboard.py:/app/dashboard.py:ro
       - ./src/dashboard/assets/styles.css:/app/assets/styles.css:ro
@@ -51,6 +52,7 @@ services:
       db:
         condition: service_healthy
     volumes:
+      - ./src/log/logger.py/:/app/src/log/logger.py:ro
       - ./config.toml:/app/config.toml:ro
 
 volumes:

@@ -37,6 +37,10 @@ download-data:
 load-data:
 	python . load datasets
 
+# Run sentiment classifiers pipeline
+sentiment:
+	python . sentiment classifiers
+
 # Build the Docker images
 build:
 	docker compose build
