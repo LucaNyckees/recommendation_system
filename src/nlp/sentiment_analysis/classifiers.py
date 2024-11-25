@@ -148,3 +148,13 @@ class SentimentClassifier:
             self._analyse()
             self._make_figures()
             self._push_to_hub()
+
+            self.artifact_path = self.model_name
+            self.run_id = mlflow.active_run().info.run_id
+            self.uri = f"runs:/{self.run_id}/{self.artifact_path}"
+
+            mlflow.sklearn.log_model(
+                sk_model=self.model,
+                artifact_path=self.model_name,
+                registered_model_name=self.model_name,
+            )
