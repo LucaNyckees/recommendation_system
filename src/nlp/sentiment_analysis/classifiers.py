@@ -128,7 +128,7 @@ class SentimentClassifier:
         fig = make_confusion_matrix_plotly(
             y_test=self.data_processor.y_test,
             y_pred=self.y_pred,
-            classes=self.data_processor.label_encoder.classes_,
+            classes=self.data_processor.label_encoder.classes_.tolist(),
             file_path=FIGURES_PATH / self.model_name / "confusion_matrix.png"
         )
         mlflow.log_figure(figure=fig)
