@@ -124,14 +124,14 @@ class SentimentClassifier:
         logger.info(self.report)
         mlflow.log_metrics(self.report)
 
-    def _make_figures(self) -> None:
+    def _make_figures(self, artifact_file: str) -> None:
         fig = make_confusion_matrix_plotly(
             y_test=self.data_processor.y_test,
             y_pred=self.y_pred,
             classes=self.data_processor.label_encoder.classes_.tolist(),
             file_path=FIGURES_PATH / self.model_name / "confusion_matrix.png"
         )
-        mlflow.log_figure(figure=fig)
+        mlflow.log_figure(figure=fig, artifact_file=artifact_file)
 
     def _push_to_hub(self) -> None:
         if self.model_class == "bert":
@@ -150,7 +150,7 @@ class SentimentClassifier:
             self._train()
             self._predict()
             self._analyse()
-            self._make_figures()
+            self._make_figures(artifact_file="confusion_matrix.png")
             self._push_to_hub()
 
             self.artifact_path = self.model_name

@@ -120,3 +120,4 @@ mlflow.service
 
 # mlflow runs
 mlruns/*
+mlartifacts/*
