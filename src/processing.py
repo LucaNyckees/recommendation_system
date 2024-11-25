@@ -1,5 +1,5 @@
 import pandas as pd
-import spacy  # potentially not used, could be removed from requirements.txt
+# import spacy  # potentially not used, could be removed from requirements.txt
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
@@ -37,18 +37,18 @@ class DataProcessor:
         df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "proportion": frac * 100})
         logger.info(f"loaded {len(df)} rows")
 
-    def _clean_text(text: str) -> str:
-        nlp = spacy.load("en_core_web_sm")
-        doc = nlp(text)
-        cleaned_tokens = [token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct and token.is_alpha]
-        logger.info("Cleaned texts")
-        return " ".join(cleaned_tokens)
+    # def _clean_text(text: str) -> str:
+    #     nlp = spacy.load("en_core_web_sm")
+    #     doc = nlp(text)
+    #     cleaned_tokens = [token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct and token.is_alpha]
+    #     logger.info("Cleaned texts")
+    #     return " ".join(cleaned_tokens)
 
     def _process_reviews(self, clean_text: bool) -> None:
         self.df.rename(columns={"title_x": "review_title", "title_y": "title", "text": "review"}, inplace=True)
         self.df["review_input"] = self.df["review_title"] + self.df["review"]
-        if clean_text:
-            self.df["cleaned_review_input"] = self.df["review_input"].apply(self._clean_text)
+        # if clean_text:
+        #     self.df["cleaned_review_input"] = self.df["review_input"].apply(self._clean_text)
         self.df["sentiment"] = self.df["rating"].apply(lambda x: map_rating_to_sentiment(rating=x))
         logger.info("Processed reviews")
     
