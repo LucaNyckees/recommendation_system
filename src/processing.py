@@ -1,5 +1,5 @@
 import pandas as pd
-import spacy  # potentially not used, could be removed from requirements.txt
+# import spacy  # potentially not used, could be removed from requirements.txt
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
@@ -12,7 +12,7 @@ from tqdm import tqdm
 from psycopg.sql import SQL
 
 from src.log.logger import logger
-from src.nlp.sentiment_analysis.helpers import map_rating_to_sentiment
+from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
 from src.database.connection import connect
 from src.database.db_functions import load_dataframe_from_query
 
@@ -23,38 +23,39 @@ class DataProcessor:
         self.conn = connect(db_key="main")
         self.cur = self.conn.cursor()
 
-    def _load(self, category: str, frac: float = 0.01) -> None:
+    def _load(self, category: str, nb_rows: int = 10_000) -> None:
         """
         :param category: amazon product category, e.g. "All_Beauty"
-        :param frac: fraction with wich data sampling is done
+        :param nb_rows: number of rows (i.e. number of reviews) to fetch 
         """
         query = SQL("""
             SELECT *
             FROM rs_amazon_products p
             INNER JOIN rs_amazon_reviews r ON p.parent_asin = r.parent_asin
             WHERE main_category = %(main_category)s
-            TABLESAMPLE BERNOULLI(%(proportion)s)""")
-        df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "proportion": frac * 100})
-        logger.info(f"loaded {len(df)} rows")
+            LIMIT %(nb_rows)s""")
+        self.df = load_dataframe_from_query(cur=self.cur, query=query, params={"main_category": category, "nb_rows": nb_rows})
+        logger.info(f"loaded {len(self.df)} rows")
 
-    def _clean_text(text: str) -> str:
-        nlp = spacy.load("en_core_web_sm")
-        doc = nlp(text)
-        cleaned_tokens = [token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct and token.is_alpha]
-        return " ".join(cleaned_tokens)
+    # def _clean_text(text: str) -> str:
+    #     nlp = spacy.load("en_core_web_sm")
+    #     doc = nlp(text)
+    #     cleaned_tokens = [token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct and token.is_alpha]
+    #     logger.info("Cleaned texts")
+    #     return " ".join(cleaned_tokens)
 
     def _process_reviews(self, clean_text: bool) -> None:
-        self.df.rename(columns={"title_x": "review_title", "title_y": "title", "text": "review"}, inplace=True)
-        self.df["review_input"] = self.df["review_title"] + self.df["review"]
-        if clean_text:
-            self.df["cleaned_review_input"] = self.df["review_input"].apply(self._clean_text)
-        self.df["sentiment"] = self.df["rating"].apply(lambda x: map_rating_to_sentiment(rating=x))
+        self.df["review_input"] = self.df["title"] + self.df["text"]
+        # if clean_text:
+        #     self.df["cleaned_review_input"] = self.df["review_input"].apply(self._clean_text)
+        self.df = apply_sentiment_analysis(df=self.df)
+        logger.info("Processed reviews")
     
     def _embedd_reviews_and_split(self, embedding: str) -> None:
 
         if embedding == "tf-idf":
             X = self.df["review_input"].to_list()
-            y = self.df["sentiment"]
+            y = self.df["sentiment_category"]
 
             self.label_encoder = LabelEncoder()
             y_encoded = self.label_encoder.fit_transform(y)
@@ -83,13 +84,36 @@ class DataProcessor:
                 embeddings.append(get_bert_embedding(text).numpy())
 
             X = pd.DataFrame(embeddings)
-            y = self.df["sentiment"]
+            y = self.df["sentiment_category"]
 
             self.label_encoder = LabelEncoder()
             y_encoded = self.label_encoder.fit_transform(y)
 
             self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
-        else:
-            raise NotImplementedError(f"Embedding {embedding} not treated, should be 'tf-idf' or 'bert'.")
+        elif embedding is None:
+            def _preprocess_fn(examples):
+                return self.tokenizer(
+                    examples["text"],
+                    padding="max_length",
+                    truncation=True,
+                    max_length=512,
+                )
+
+            ## Dataset
+            dataset = Dataset.from_pandas(df)
+            n = len(dataset)
+            sizes = [int(0.8 * n), int(0.1 * n), n - int(0.8 * n) - int(0.1 * n)]
+
+            gen = torch.Generator().manual_seed(self.seed_data_split)
+
+            sets = (
+                list(map(lambda x: {"text": x["text"], "label": x["label"]}, x))
+                for x in torch.utils.data.random_split(dataset, sizes, generator=gen)
+            )
+
+            self.train_set, self.eval_set, self.test_set = (
+                Dataset.from_list(x).map(_preprocess_fn, batched=True) for x in sets
+            )
+        logger.info("Embedded reviews")
 

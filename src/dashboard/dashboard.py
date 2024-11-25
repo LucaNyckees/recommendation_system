@@ -17,8 +17,8 @@ from src.paths import ROOT
 
 with open(os.path.join(ROOT, "config.toml"), "r") as f:
     config = toml.load(f)
-    fastapi_config = config["apps"]["fastapi_app"]
-    dash_config = config["apps"]["dash_app"]
+    fastapi_config = config["apps"]["fastapi"]
+    dash_config = config["apps"]["dash"]
 
 suppress_callback_exceptions=True
 

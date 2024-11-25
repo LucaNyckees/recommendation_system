@@ -1,5 +1,5 @@
 {
-    "classifier": {
+    "bert": {
         "device": "cuda",
         "seed": 7,
         "num_epochs": 10,
@@ -11,5 +11,15 @@
         "task": "text-classification",
         "max_len": 512,
         "num_threads": 1
+    },
+    "xgb": {
+        "objective": "multi:softmax",
+        "num_class": 3,
+        "eval_metric": "mlogloss",
+        "use_label_encoder":false
+    },
+    "rf": {
+        "n_estimators": 100,
+        "random_state": 42
     }
 }

@@ -3,6 +3,7 @@ from toml import load
 from sqlalchemy import URL
 
 from src.paths import ROOT
+from src.log.logger import logger
 
 
 config = load(ROOT / "config.toml")
@@ -14,6 +15,8 @@ def format_db_url_postgresql(user: str, password: str, host: str, port: int, nam
 
 
 def get_db_url_from_key(db_key: str) -> str:
+
+    logger.info(f"Getting db_url from db_key={db_key}")
 
     db_config = config["dbs"][db_key]
 
