@@ -24,7 +24,7 @@ from src.log.logger import logger
 with open(os.path.join(ROOT, "config.toml"), "r") as f:
     config = toml.load(f)
 
-with open(RESOURCES_PATH / "params.json") as f:
+with open(RESOURCES_PATH / "sentiment_classifiers_params.json") as f:
     model_params = json.load(f)["classifier"]
 
 device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
