@@ -104,6 +104,8 @@ def display_section(selected_section):
                 dcc.Graph(id='marimekko-chart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
         ])
+    elif selected_section == "RecomDemo":
+        return html.Div("WORK IN PROGRESS")
     else:
         return html.Div("Selected section: " + selected_section)
 

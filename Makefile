@@ -36,6 +36,7 @@ download-data:
 # Load downloaded datasets to postgres database
 load-data:
 	python . load datasets
+	python . load generated-users
 
 # Run sentiment classifiers pipeline
 sentiment:
