@@ -3,6 +3,7 @@ aiohappyeyeballs==2.4.3
 aiohttp==3.11.4
 aiosignal==1.3.1
 alembic==1.14.0
+alembic_utils==0.8.5
 annotated-types==0.7.0
 anyio==4.6.2.post1
 appnope==0.1.4
@@ -32,6 +33,7 @@ executing==2.1.0
 fastapi==0.115.5
 filelock==3.16.1
 Flask==3.0.3
+flupy==1.2.1
 fonttools==4.55.0
 frozenlist==1.5.0
 fsspec==2024.10.0
@@ -78,6 +80,7 @@ opentelemetry-sdk==1.28.2
 opentelemetry-semantic-conventions==0.49b2
 packaging==24.2
 pandas==2.2.3
+parse==1.20.2
 parso==0.8.4
 patsy==1.0.1
 pexpect==4.9.0
@@ -90,6 +93,7 @@ protobuf==5.28.3
 psutil==6.1.0
 psycopg==3.2.3
 psycopg-binary==3.2.3
+psycopg2-binary==2.9.10
 ptyprocess==0.7.0
 pure_eval==0.2.3
 pyarrow==18.0.0
