@@ -26,7 +26,6 @@ def upgrade() -> None:
         sa.Column("gender", sa.VARCHAR(), autoincrement=False, nullable=True),
         sa.Column("city", sa.VARCHAR(), autoincrement=False, nullable=True),
         sa.PrimaryKeyConstraint("user_id", name="rs_amazon_users_pkey"),
-        sa.ForeignKeyConstraint(["user_id"], ["rs_amazon_reviews.user_id"], name="rs_amazon_reviews_user_id_fkey"),
     )
 
 
