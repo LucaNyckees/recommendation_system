@@ -1,9 +1,10 @@
-from dash import Dash, html, dcc, Input, Output, dash_table
+from dash import Dash, html, dcc, Input, Output, dash_table, State, MATCH, ALL
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
 import toml
+import json
 
 ROOT_DIR = ("/").join(os.getcwd().split("/"))
 import sys
@@ -12,13 +13,18 @@ sys.path.append(ROOT_DIR)
 from src.database.connection import connect
 from src.database.db_functions import get_amazon_dataframe
 from src.nlp.sentiment_analysis.helpers import apply_sentiment_analysis
-from src.dashboard.helpers import apply_layout, get_route_result
-from src.paths import ROOT
+from src.dashboard.helpers import apply_layout, get_route_result, generate
+from src.paths import ROOT, RESOURCES_PATH
 
 with open(os.path.join(ROOT, "config.toml"), "r") as f:
     config = toml.load(f)
     fastapi_config = config["apps"]["fastapi"]
     dash_config = config["apps"]["dash"]
+
+
+with open(RESOURCES_PATH / "dashboard" / "new_user_questions.json") as f:
+    questionnaire = json.load(f)
+
 
 suppress_callback_exceptions=True
 
@@ -75,6 +81,9 @@ app.layout = html.Div([
     html.Div(id='section-content'),
 ])
 
+btn = html.Button("Submit")
+answers = html.Div()
+
 # Callback to dynamically update the display section based on the selection
 @app.callback(
     Output('section-content', 'children'),
@@ -104,8 +113,11 @@ def display_section(selected_section):
                 dcc.Graph(id='marimekko-chart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
         ])
-    elif selected_section == "RecomDemo":
-        return html.Div("WORK IN PROGRESS")
+    elif selected_section == 'RecomDemo':
+        return html.Div(
+            [generate(k, v) for k, v in questionnaire.items()] +
+            [html.Br(), btn, answers]
+        )
     else:
         return html.Div("Selected section: " + selected_section)
 
@@ -221,6 +233,36 @@ def update_graphs(selected_section):
             fig_transaction_time_series,
         )
     return {}, {}, {}, {}, {}, {}
+
+
+
+# Callbacks for questionnaire
+@app.callback(
+    Output({'category': 'questionnaire', 'type': 'choice+blank', 'additional': True, 'index': MATCH}, 'disabled'),
+    Input({'category': 'questionnaire', 'type': 'choice+blank', 'additional': False, 'index': MATCH}, 'value')
+)
+def toggle_input(v):
+    return False if v == 'Yes' else True
+
+@app.callback(
+    Output(btn, 'disabled'),
+    Input({'category': 'questionnaire', 'type': ALL, 'additional': False, 'index': ALL}, 'value')
+)
+def enable_submit_button(answers):
+    return not all(answers)
+
+@app.callback(
+    Output(answers, 'children'),
+    Input(btn, 'n_clicks'),
+    [
+        State({'category': 'questionnaire', 'type': ALL, 'additional': ALL, 'index': ALL}, 'id'),
+        State({'category': 'questionnaire', 'type': ALL, 'additional': ALL, 'index': ALL}, 'value')
+    ],
+    prevent_initial_call=True
+)
+def submit_questionnaire(n_clicks, ids, values):
+    results = [{**id_dict, 'answer': values[i]} for i, id_dict in enumerate(ids)]
+    return str(results)
 
 if __name__ == "__main__":
     app.run_server(host=dash_config["host"], port=dash_config["port"], debug=True)

@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import plotly.express as px
 import requests
-
+from dash import Dash, html, dcc, Input, Output, State, MATCH, ALL
 
 writing_color = "white"
 bg_color = "#02024d"
@@ -56,3 +56,19 @@ def get_route_result(url: str) -> list[dict]:
         raise Exception(f"An error occurred: {e}")
     
     return data
+
+
+def generate(k, v):
+    match v['type']:
+        case 'choice':
+            return html.Div([html.P(str(k)+'. '+v['question']), dcc.RadioItems(id={'index': k, 'type': v['type'], 'category':'questionnaire', 'additional':False}, options={i: i for i in v['options']})])
+        case 'multi-choice':
+            return html.Div([html.P(str(k)+'. '+v['question']), dcc.Checklist(id={'index': k, 'type': v['type'], 'category':'questionnaire', 'additional':False}, options={i: i for i in v['options']})])
+        case 'choice+blank':
+            return html.Div([html.P(str(k)+'. '+v['question']), dcc.RadioItems(id={'index': k, 'type': v['type'], 'category':'questionnaire', 'additional':False}, options={i: i for i in v['options']}), dcc.Input(id={'index': k, 'type': v['type'], 'category':'questionnaire', 'additional':True}, disabled=True)])
+        case 'blank':
+            return html.Div([html.P(str(k)+'. '+v['question']), dcc.Input(id={'index': k, 'type': v['type'], 'category':'questionnaire', 'additional':False})])
+        case 'essay':
+            return html.Div([html.P(str(k)+'. ' + v['question']), dcc.Textarea(id={'index': k, 'type': v['type'], 'category':'questionnaire', 'additional':False})])
+        case _:
+            return html.Div('Something wrong...')

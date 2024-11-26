@@ -1,0 +1,67 @@
+{
+    "1": {
+        "type": "choice",
+        "question": "Does your agency use an electronic accounting software system (as opposed to manual)?",
+        "options": [
+            "Yes",
+            "No",
+            "Skip"
+        ]
+    },
+    "2": {
+        "type": "choice+blank",
+        "question": "Has your agency recently implemented any new or substantially changed systems, for example, financial management or accounting systems? (If yes, please explain.)",
+        "options": [
+            "Yes",
+            "No",
+            "Skip"
+        ]
+    },
+    "3": {
+        "type": "choice",
+        "question": "Does your agency have a written Accounting and Financial Reporting policy?",
+        "options": [
+            "Yes",
+            "No",
+            "Skip"
+        ]
+    },
+    "4": {
+        "type": "choice",
+        "question": "Does your agency have a written Personnel policy (to include travel reimbursement, fringe benefits, etc.)?",
+        "options": [
+            "Yes",
+            "No",
+            "Skip"
+        ]
+    },
+    "5": {
+        "type": "multi-choice",
+        "question": "Which of the following aspects of the OJT training program were explained to you?",
+        "options": [
+            "Training Hours",
+            "Type of Training",
+            "Training Wages",
+            "Job Choices",
+            "Entry Wages"
+        ]
+    },
+    "6": {
+        "type": "multi-choice",
+        "question": "How did you learn about this OJT program?",
+        "options": [
+            "Contractor",
+            "Community Based Organization",
+            "Union Apprenticeship Program",
+            "Other"
+        ]
+    },
+    "7": {
+        "type": "blank",
+        "question": "What are your performance based strengths (speed, strength, power, agility, balance, conditioning, etc.)?"
+    },
+    "8": {
+        "type": "essay",
+        "question": "Do you have any questions, comments or concerns?"
+    }
+}
