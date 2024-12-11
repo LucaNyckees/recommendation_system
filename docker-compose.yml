@@ -54,6 +54,22 @@ services:
     volumes:
       - ./src/log/logger.py/:/app/src/log/logger.py:ro
       - ./config.toml:/app/config.toml:ro
+  webserver:
+    build:
+      context: .
+      dockerfile: docker/airflow/Dockerfile
+    command: webserver
+    volumes:
+      - ./airflow/dags:/usr/local/airflow/dags
+    ports:
+      - "8080:8080"
+  scheduler:
+    build:
+      context: .
+      dockerfile: docker/airflow/Dockerfile
+    command: scheduler
+    volumes:
+      - ./airflow/dags:/usr/local/airflow/dags
 
 volumes:
   postgres_data:
