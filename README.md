@@ -10,7 +10,7 @@ We download Amazon product reviews data from https://amazon-reviews-2023.github.
 
 
 ## Pipeline Snapshot
-<img src="https://github.com/LucaNyckees/recommendation_system/blob/main/images/rs_pipeline.png?raw=true" width="700">
+<img src="https://github.com/LucaNyckees/recommendation_system/blob/main/images/recsys_pipeline.png?raw=true" width="700">
 
 
 ## Wrapped up worflow with Docker
