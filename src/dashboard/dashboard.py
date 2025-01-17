@@ -21,8 +21,6 @@ with open(os.path.join(ROOT, "config.toml"), "r") as f:
     fastapi_config = config["apps"]["fastapi"]
     dash_config = config["apps"]["dash"]
 
-CHATBOT_URL = os.getenv("CHATBOT_URL", "http://localhost:8000/hospital-rag-agent")
-
 suppress_callback_exceptions=True
 
 # Define a color map to match the specified palette
@@ -51,6 +49,7 @@ with connect(db_key="main") as conn:
 
 
 fastapi_route_start = f"http://{fastapi_config['host']}:{fastapi_config['port']}/dashboard/all_categories"
+CHATBOT_URL = f"{fastapi_route_start}/rag-agent"
 
 data_summary = get_route_result(url=f"{fastapi_route_start}/table_summary")
 marimekko_data = get_route_result(url=f"{fastapi_route_start}/marimekko_price_volume")

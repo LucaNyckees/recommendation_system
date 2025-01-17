@@ -98,3 +98,11 @@ async def get_summary() -> list[dict[str, Any]]:
                 ORDER BY average_rating DESC;""")
             avg_ratings = load_dicts_from_query(cur=cur, query=query, params=None)
     return avg_ratings
+
+
+@base_router.post("/dashboard/all_categories/rag-agent")
+async def rag_agent() -> list[dict[str, Any]]:
+    """
+    A route defining the ChatBot API.
+    """
+    return []
