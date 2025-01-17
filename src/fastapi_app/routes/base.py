@@ -6,11 +6,13 @@ from psycopg.sql import SQL
 from typing import Any
 import pandas as pd
 
-from src.fastapi_app.schemas.schemas import CategorySummary
+from src.fastapi_app.schemas.schemas import CategorySummary, ChatQueryInput, ChatQueryOutput
 from src.log.logger import logger
 from src.fastapi_app.utils.config import config
 from src.database.db_functions import load_dicts_from_query
 from src.database.connection import connect
+from src.fastapi_app.utils.async_utils import async_retry
+from src.rag_agent.agent import rag_agent_executor
 
 
 base_router = APIRouter()
@@ -100,9 +102,21 @@ async def get_summary() -> list[dict[str, Any]]:
     return avg_ratings
 
 
+@async_retry(max_retries=10, delay=1)
+async def invoke_agent_with_retry(query: str):
+    """
+    Retry the agent if a tool fails to run. This can help when there
+    are intermittent connection issues to external APIs.
+    """
+
+    return await rag_agent_executor.ainvoke({"input": query})
+
+
 @base_router.post("/dashboard/all_categories/rag-agent")
-async def rag_agent() -> list[dict[str, Any]]:
-    """
-    A route defining the ChatBot API.
-    """
-    return []
+async def rag_agent(query: ChatQueryInput) -> ChatQueryOutput:
+    query_response = await invoke_agent_with_retry(query.text)
+    query_response["intermediate_steps"] = [
+        str(s) for s in query_response["intermediate_steps"]
+    ]
+
+    return query_response
