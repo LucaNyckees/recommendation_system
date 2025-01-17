@@ -1,9 +1,10 @@
-from dash import Dash, html, dcc, Input, Output, dash_table
+from dash import Dash, html, dcc, Input, Output, dash_table, State
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
 import toml
+import requests
 
 ROOT_DIR = ("/").join(os.getcwd().split("/"))
 import sys
@@ -103,6 +104,21 @@ def display_section(selected_section):
             html.Div([
                 dcc.Graph(id='marimekko-chart', style=components_style),
             ], style={'display': 'flex', 'flex-direction': 'row', 'margin-top': '20px'}),
+        ])
+    elif selected_section == "RecomDemo":
+        return html.Div([
+            html.H2("Amazon Products Recommendation System Chatbot"),
+            html.Div(
+                "Ask me questions about products: their characteristics, ratings, general reviews, user feedback, and recommendations.",
+                style={"margin-bottom": "20px"}
+            ),
+            dcc.Textarea(
+                id="chat-input",
+                placeholder="Type your question here...",
+                style={"width": "100%", "height": "100px", "margin-bottom": "10px"}
+            ),
+            html.Button("Submit", id="submit-button", n_clicks=0),
+            html.Div(id="chat-history", style={"margin-top": "20px", "border": "1px solid #ccc", "padding": "10px", "max-height": "400px", "overflow-y": "scroll"})
         ])
     else:
         return html.Div("Selected section: " + selected_section)
@@ -219,6 +235,50 @@ def update_graphs(selected_section):
             fig_transaction_time_series,
         )
     return {}, {}, {}, {}, {}, {}
+
+
+# Callback to handle chatbot interaction
+@app.callback(
+    Output("chat-history", "children"),
+    Input("submit-button", "n_clicks"),
+    State("chat-input", "value"),
+    State("chat-history", "children")
+)
+def update_chat_history(n_clicks, user_input, chat_history):
+    if n_clicks > 0 and user_input:
+        chat_history = chat_history or []
+
+        # User message
+        user_message = html.Div([
+            html.Div("User:", style={"font-weight": "bold", "color": "blue"}),
+            html.Div(user_input)
+        ], style={"margin-bottom": "10px"})
+
+        # Send request to the chatbot API
+        try:
+            response = requests.post(CHATBOT_URL, json={"text": user_input})
+            if response.status_code == 200:
+                chatbot_output = response.json().get("output", "No response")
+                explanation = response.json().get("intermediate_steps", "No explanation available")
+            else:
+                chatbot_output = "An error occurred while processing your message. Please try again."
+                explanation = "N/A"
+        except Exception as e:
+            chatbot_output = f"Error: {e}"
+            explanation = "N/A"
+
+        # Chatbot response
+        bot_message = html.Div([
+            html.Div("Chatbot:", style={"font-weight": "bold", "color": "green"}),
+            html.Div(chatbot_output),
+            html.Div(f"Explanation: {explanation}", style={"font-style": "italic", "color": "gray", "margin-top": "5px"})
+        ], style={"margin-bottom": "20px"})
+
+        # Update chat history
+        chat_history.extend([user_message, bot_message])
+        return chat_history
+
+    return chat_history
 
 if __name__ == "__main__":
     app.run_server(host=dash_config["host"], port=dash_config["port"], debug=True)
