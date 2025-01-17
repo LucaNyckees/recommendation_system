@@ -4,9 +4,12 @@ from langchain import hub
 from langchain.agents import AgentExecutor, Tool, create_openai_functions_agent
 from langchain_openai import ChatOpenAI
 from src.rag_agent.tools import get_product_description
+from src.log.logger import logger
 
+AGENT_MODEL = os.getenv("AGENT_MODEL", "gpt-3.5-turbo-1106")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-AGENT_MODEL = os.getenv("AGENT_MODEL")
+logger.info(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
 agent_prompt = hub.pull("hwchase17/openai-functions-agent")
 
@@ -26,6 +29,7 @@ tools = [
 chat_model = ChatOpenAI(
     model=AGENT_MODEL,
     temperature=0,
+    openai_api_key=OPENAI_API_KEY,
 )
 
 rag_agent = create_openai_functions_agent(
