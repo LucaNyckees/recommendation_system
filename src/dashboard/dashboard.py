@@ -21,6 +21,8 @@ with open(os.path.join(ROOT, "config.toml"), "r") as f:
     fastapi_config = config["apps"]["fastapi"]
     dash_config = config["apps"]["dash"]
 
+CHATBOT_URL = os.getenv("CHATBOT_URL", "http://localhost:8000/hospital-rag-agent")
+
 suppress_callback_exceptions=True
 
 # Define a color map to match the specified palette
