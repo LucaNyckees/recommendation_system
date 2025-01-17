@@ -1,6 +1,6 @@
 from urllib.parse import quote
 from toml import load
-from sqlalchemy import URL
+from sqlalchemy.engine import URL
 
 from src.paths import ROOT
 from src.log.logger import logger

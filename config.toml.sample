@@ -20,3 +20,7 @@ port="8050"
 [apps.mlflow]
 host=""
 port=""
+
+[openai]
+api_key=""
+agent_model="gpt-3.5-turbo-1106"
