@@ -1,13 +1,16 @@
-import os
-
+from toml import load
 from langchain import hub
 from langchain.agents import AgentExecutor, Tool, create_openai_functions_agent
 from langchain_openai import ChatOpenAI
+
+from src.paths import ROOT
 from src.rag_agent.tools import get_product_description
 from src.log.logger import logger
 
-AGENT_MODEL = os.getenv("AGENT_MODEL", "gpt-3.5-turbo-1106")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+config = load(ROOT / "config.toml")
+
+AGENT_MODEL = config["openai"]["agent_model"]
+OPENAI_API_KEY = config["openai"]["api_key"]
 
 logger.info(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
