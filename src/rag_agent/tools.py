@@ -5,7 +5,12 @@ from src.database.db_functions import load_dicts_from_query
 
 
 def get_product_description(product_id: str) -> str:
-    """Get the product's description formatted as a string."""
+    """
+    Get the product's description formatted as a string.
+
+    Args:
+        - product_id (str): e.g. 'B076WQZGPM'
+    """
 
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
