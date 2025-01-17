@@ -1,9 +1,9 @@
 import os
 
-from chains.review_chain import reviews_vector_chain
 from langchain import hub
 from langchain.agents import AgentExecutor, Tool, create_openai_functions_agent
 from langchain_openai import ChatOpenAI
+from src.rag_agent.tools import get_product_description
 
 
 AGENT_MODEL = os.getenv("AGENT_MODEL")
@@ -13,8 +13,13 @@ agent_prompt = hub.pull("hwchase17/openai-functions-agent")
 tools = [
     Tool(
         name="Dummy",
-        func=reviews_vector_chain.invoke,
-        description="""Useful all the time.""",
+        func=get_product_description,
+        description="""Useful when you are asked about the description or
+        characteristics of a specific product. This tool can only get the description
+        of one product at a time and nothing else. Pass only the product id as input.
+        For example, if the prompt is "Tell me about product B01CUPMQZE", the
+        input should be "B01CUPMQZE".
+        """,
     ),
 ]
 
