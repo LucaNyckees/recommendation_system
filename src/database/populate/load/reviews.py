@@ -2,12 +2,12 @@ from rich.console import Console
 import pandas as pd
 import json
 import os
-from psycopg.sql import SQL, Identifier, Placeholder
+from langchain.embeddings import OpenAIEmbeddings
 
 from src.paths import DATA_PATH, RESOURCES_PATH
 from src.database.connection import connect
 from src.log.logger import logger
-from src.database.db_functions import insert_values, load_dicts_from_query
+from src.database.db_functions import insert_values
 from src.database.populate.helpers import get_amazon_categories_in_db
 
 
@@ -24,7 +24,8 @@ db_cols_to_inserted_cols_mapping = {
     "user_id": "user_id",
     "date": "date",
     "helpful_vote": "helpful_vote",
-    "verified_purchase": "verified_purchase"
+    "verified_purchase": "verified_purchase",
+    "title_and_text_embedding": "title_and_text_embedding",
 }
 
 
@@ -58,10 +59,13 @@ def load_reviews() -> None:
 
     reviews_dataframe["date"] = reviews_dataframe["timestamp"].dt.date
 
-    reviews_list_of_dicts = reviews_dataframe.to_dict("records")
+    logger.info("Computing review embeddings...")
+    reviews_dicts = reviews_dataframe.to_dict("records")
+    embedding_model = OpenAIEmbeddings()
+    reviews_dicts = [{**d, "title_and_text_embedding": embedding_model.embed_query(d["title"] + d["text"])} for d in reviews_dicts]
 
     logger.info("Inserting values...")
     with connect(db_key="main") as conn:
         with conn.cursor() as cur:
-            insert_values(cur=cur, table="rs_amazon_reviews", values=reviews_list_of_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
+            insert_values(cur=cur, table="rs_amazon_reviews", values=reviews_dicts, cols_mapping=db_cols_to_inserted_cols_mapping)
     Console().log("Reviews loaded")
