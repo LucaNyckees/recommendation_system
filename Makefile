@@ -37,6 +37,9 @@ download-data:
 load-data:
 	python . load datasets
 
+embed-data:
+	python . load embeddings
+
 # Run sentiment classifiers pipeline
 sentiment:
 	python . sentiment classifiers

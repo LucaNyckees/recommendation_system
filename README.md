@@ -55,9 +55,10 @@ source venv/bin/activate
 ```
 python recommendation_system download datasets
 ```
-5. Load downloaded datasets to your Postgres database (run from `PRE_ROOT_DIR`).
+5. Load downloaded datasets to your Postgres database (run from `PRE_ROOT_DIR`) and embed text data with `pgvectors`.
 ```
 python recommendation_system load datasets
+python recommendation_system load embeddings
 ```
 6. Launch the MLFlow service by running the following.
 ```

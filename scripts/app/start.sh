@@ -5,6 +5,9 @@ echo "datasets downloaded."
 make load-data
 echo "data loaded to db."
 
+make load-embeddings
+echo "text data embedded in db."
+
 mlflow server --host 0.0.0.0 --port 5000 &
 echo "mlflow server launched."
 
