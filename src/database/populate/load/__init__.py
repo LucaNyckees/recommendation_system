@@ -23,11 +23,3 @@ def load_datasets() -> None:
 
     return None
 
-
-@app.command(name="embeddings")
-def embedding_text_data() -> None:
-    from .embedding import embedd_text_cols
-
-    embedd_text_cols()
-
-    return None
