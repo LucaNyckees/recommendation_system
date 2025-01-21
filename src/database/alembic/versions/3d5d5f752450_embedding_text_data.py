@@ -19,12 +19,12 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.add_column("rs_amazon_reviews", sa.Column("title_and_text", sa.ARRAY(), autoincrement=False, nullable=True))
-    op.add_column("rs_amazon_products", sa.Column("name", sa.ARRAY(), autoincrement=False, nullable=True))
-    op.add_column("rs_amazon_products", sa.Column("description", sa.ARRAY(), autoincrement=False, nullable=True))
+    op.add_column("rs_amazon_reviews", sa.Column("title_and_text_embedding", sa.ARRAY(), autoincrement=False, nullable=True))
+    op.add_column("rs_amazon_products", sa.Column("name_embedding", sa.ARRAY(), autoincrement=False, nullable=True))
+    op.add_column("rs_amazon_products", sa.Column("description_embedding", sa.ARRAY(), autoincrement=False, nullable=True))
 
 
 def downgrade() -> None:
-    op.drop_column("rs_amazon_reviews", "title_and_text")
-    op.drop_column("rs_amazon_products", "name")
-    op.drop_column("rs_amazon_products", "description")
+    op.drop_column("rs_amazon_reviews", "title_and_text_embedding")
+    op.drop_column("rs_amazon_products", "name_embedding")
+    op.drop_column("rs_amazon_products", "description_embedding")
